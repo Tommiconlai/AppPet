@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Calendario">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+
+        android:layout_gravity="top">
+
+        <ImageView
+            android:id="@+id/Pippo"
+            android:layout_width="800dp"
+            android:layout_height="450dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/fede_circle" />
+
+        <ImageView
+            android:id="@+id/Pippo2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/circle_2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"/>
+
+
+
+    </FrameLayout>
+
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+            android:foregroundGravity="center">
+
+            <ImageView
+                android:id="@+id/animaltag"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/textviewbg"
+                android:layout_marginLeft="35dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animali"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="100sp"/>
+    </FrameLayout>
+
+        <android.widget.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:layout_marginLeft="30sp"/>
+
+        <Button
+            android:id="@+id/btnVisualizzaEventi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AGGIUNGI ATTIVITA'"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_style"/>
+
+    </LinearLayout>
+
+
+
+
