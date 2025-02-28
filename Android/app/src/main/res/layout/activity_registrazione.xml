@@ -36,66 +36,61 @@
         android:orientation="vertical">
 
         <TextView
-            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome"/>
+            android:text="Nome"
+            android:textAlignment="textStart" />
 
         <EditText
             android:id="@+id/NomeUtenteEditTxt"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Inserisci nome..."
             android:layout_marginBottom="20dp"
-           />
+            android:hint="Inserisci nome..." />
 
         <TextView
-            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cognome"/>
+            android:text="Cognome"
+            android:textAlignment="textStart" />
 
         <EditText
 
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-    android:hint="Inserisci cognome..."
             android:layout_marginBottom="20dp"
+            android:hint="Inserisci cognome..."
 
             />
 
 
         <TextView
-            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mail"/>
+            android:text="Mail"
+            android:textAlignment="textStart" />
 
 
         <EditText
 
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Inserisci mail..."
             android:layout_marginBottom="20dp"
-            />
+            android:hint="Inserisci mail..." />
 
         <TextView
-            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefono"/>
+            android:text="Telefono"
+            android:textAlignment="textStart" />
 
 
         <EditText
-           
+
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Inserisci numero..."
             android:layout_marginBottom="20dp"
-            />
-
-
+            android:hint="Inserisci numero..." />
 
 
     </LinearLayout>

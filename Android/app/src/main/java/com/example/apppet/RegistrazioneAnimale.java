@@ -1,0 +1,28 @@
+package com.example.apppet;
+
+import android.os.Bundle;
+import android.widget.EditText;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class RegistrazioneAnimale extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registrazione_animale);
+        EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
+        EditText sessoAnimaleET = findViewById(R.id.sessoAnimaleEditText);
+        EditText dataNatAnimaleET = findViewById(R.id.dataNascitaAnimaleEditText);
+        EditText pesoAnimaleET = findViewById(R.id.pesoAnimaleEditText);
+        EditText noteAnimaleET = findViewById(R.id.noteAnimaleEditText);
+
+
+
+
+    }
+}
