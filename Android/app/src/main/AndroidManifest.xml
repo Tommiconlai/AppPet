@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppPet"
         tools:targetApi="31">
         <activity
+            android:name=".ProfiloAnimale"
+            android:exported="false" />
+        <activity
             android:name=".registrazione_animale"
             android:exported="false" />
         <activity
