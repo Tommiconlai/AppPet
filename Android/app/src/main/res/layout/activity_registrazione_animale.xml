@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="top">
+
+        <ImageView
+            android:id="@+id/Pippo"
+            android:layout_width="800dp"
+            android:layout_height="429dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
+
+        <ImageView
+            android:id="@+id/Pippo2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/circle_2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"/>
+    </FrameLayout>
+<!-- fine immagine -->
+
+    <TableLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <!-- prima riga -->
+        <TableRow android:layout_width="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/nomeAnimaleEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome..." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sesso"
+                    android:textAlignment="textStart" />
+
+                <RadioGroup
+                    android:id="@+id/sessoAnimaleRadioBTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="M" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+
+        </TableRow>
+        <!-- seconda riga -->
+        <TableRow>
+
+            <LinearLayout
+                android:id="@+id/peso"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peso"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/pesoAnimaleEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Peso..." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Altezza (cm)"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/altezzaAnimaleEditText"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Altezza..." />
+
+            </LinearLayout>
+
+<!--terza riga-->
+        </TableRow>
+
+        <TableRow android:layout_width="810dp">
+
+
+            <LinearLayout
+                android:layout_width="23dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data di nascita"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/dataNascitaAnimaleEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Data..." />
+
+            </LinearLayout>
+
+
+        </TableRow>
+<!-- quarta riga -->
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:textAlignment="textStart" />
+
+            <EditText
+                android:id="@+id/noteAnimaleEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="Note..." />
+
+        </LinearLayout>
+    </TableLayout>
+
+
+<!-- bottone -->
+    <Button
+        android:id="@+id/btnConferma"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:text="CONFERMA"
+        android:layout_gravity="center"/>
+
+
+
+
+</LinearLayout>
+
+
+
