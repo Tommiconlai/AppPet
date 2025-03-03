@@ -6,13 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class ProfiloAnimale extends AppCompatActivity {
+public class ProfiloAnimaleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +26,7 @@ public class ProfiloAnimale extends AppCompatActivity {
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(ProfiloAnimale.this,RegistrazioneAnimale.class);
+                Intent i = new Intent(ProfiloAnimaleActivity.this,RegistrazioneAnimale.class);
 
             }
         });

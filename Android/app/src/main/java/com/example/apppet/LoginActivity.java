@@ -21,8 +21,9 @@ public class LoginActivity extends AppCompatActivity {
         TextView goToRegistration = (TextView) findViewById(R.id.registrazioneTxt);
         goToRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+                Intent intent = new Intent(LoginActivity.this, CartellaClinica.class);
                 startActivity(intent);
             }
         });
