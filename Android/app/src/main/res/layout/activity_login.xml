@@ -48,8 +48,10 @@
         <EditText
             android:id="@+id/usernameEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
             android:hint="Inserisci username"
+            android:background="@drawable/edit_text_background"
             android:layout_marginBottom="40dp"/>
 
         <TextView
@@ -61,8 +63,10 @@
         <EditText
             android:id="@+id/passwordEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Password"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
             android:layout_marginBottom="20dp"/>
 
         <Button
