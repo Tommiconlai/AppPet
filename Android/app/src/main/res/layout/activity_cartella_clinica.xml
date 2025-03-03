@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfiloAnimale">
+
+
+    <FrameLayout
+        android:id="@+id/img_top"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="top">
+
+        <ImageView
+            android:id="@+id/Pippo"
+            android:layout_width="800dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
+
+        <ImageView
+            android:id="@+id/Pippo2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/circle_2" />
+
+    </FrameLayout>
+
+    <!--fine immagine logo-->
+    <!--list view-->
+    <LinearLayout
+        android:id="@+id/titoloCC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_top">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Cartella clinica"
+        android:textSize="20sp"/>
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listaCartellaClinica"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titoloCC"/>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
