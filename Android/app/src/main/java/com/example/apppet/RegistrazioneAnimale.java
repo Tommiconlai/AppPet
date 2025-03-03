@@ -1,7 +1,10 @@
 package com.example.apppet;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +19,7 @@ public class RegistrazioneAnimale extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
-        EditText sessoAnimaleET = findViewById(R.id.sessoAnimaleEditText);
+        RadioGroup sessoAnimaleET = findViewById(R.id.sessoAnimaleRadioBTN);
         EditText dataNatAnimaleET = findViewById(R.id.dataNascitaAnimaleEditText);
         EditText pesoAnimaleET = findViewById(R.id.pesoAnimaleEditText);
         EditText noteAnimaleET = findViewById(R.id.noteAnimaleEditText);

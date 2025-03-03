@@ -12,13 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="top">
+
         <ImageView
-            android:layout_marginTop="-120dp"
             android:id="@+id/Pippo"
             android:layout_width="800dp"
-            android:layout_height="500dp"
-            android:src="@drawable/cricle_1"
-            android:layout_gravity="center"/>
+            android:layout_height="429dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
 
         <ImageView
             android:id="@+id/Pippo2"
@@ -36,11 +37,11 @@
         android:layout_gravity="center">
 
         <!-- prima riga -->
-        <TableRow>
+        <TableRow android:layout_width="wrap_content">
 
             <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="128dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -60,7 +61,7 @@
             <LinearLayout
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="right"
+
                 android:orientation="vertical">
 
                 <TextView
@@ -69,11 +70,24 @@
                     android:text="Sesso"
                     android:textAlignment="textStart" />
 
-                <EditText
-                    android:id="@+id/sessoAnimaleEditText"
-                    android:layout_width="180dp"
+                <RadioGroup
+                    android:id="@+id/sessoAnimaleRadioBTN"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Sesso..." />
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="M" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="F" />
+
+                </RadioGroup>
+
 
             </LinearLayout>
 
@@ -83,8 +97,9 @@
         <TableRow>
 
             <LinearLayout
+                android:id="@+id/peso"
                 android:layout_width="180dp"
-                android:layout_height="122dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -110,12 +125,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Altezza (cm)"
+                    android:textAlignment="textStart" />
+
+                <EditText
+                    android:id="@+id/altezzaAnimaleEditText"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Altezza..." />
+
+            </LinearLayout>
+
+<!--terza riga-->
+        </TableRow>
+
+        <TableRow android:layout_width="810dp">
+
+
+            <LinearLayout
+                android:layout_width="23dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Data di nascita"
                     android:textAlignment="textStart" />
 
                 <EditText
                     android:id="@+id/dataNascitaAnimaleEditText"
-                    android:layout_width="180dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:hint="Data..." />
 
@@ -123,8 +163,7 @@
 
 
         </TableRow>
-
-<!-- terza riga -->
+<!-- quarta riga -->
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="wrap_content"
