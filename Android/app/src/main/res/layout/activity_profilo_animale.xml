@@ -34,8 +34,6 @@
 
     <!--fine immagine logo-->
 
-    <!--tasto modifica-->
-
 
     <TextView
         android:id="@+id/nomeProfiloAnimale"
