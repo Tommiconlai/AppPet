@@ -1,6 +1,8 @@
 package com.example.apppet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,9 +28,12 @@ public class ProfiloAnimale extends AppCompatActivity {
         Button cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
 
         //logica database?
+        modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(ProfiloAnimale.this,RegistrazioneAnimale.class);
 
-        //extra
-
+            }
+        });
 
 
 
