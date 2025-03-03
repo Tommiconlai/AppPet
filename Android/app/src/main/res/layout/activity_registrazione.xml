@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,13 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="top">
+
         <ImageView
-            android:layout_marginTop="-120dp"
             android:id="@+id/Pippo"
             android:layout_width="800dp"
             android:layout_height="500dp"
-            android:src="@drawable/cricle_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
 
         <ImageView
             android:id="@+id/Pippo2"
@@ -36,61 +38,95 @@
         android:orientation="vertical">
 
         <TextView
+            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome"
-            android:textAlignment="textStart" />
+            android:text="Nome"/>
 
         <EditText
             android:id="@+id/NomeUtenteEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:hint="Inserisci nome..."
             android:layout_marginBottom="20dp"
-            android:hint="Inserisci nome..." />
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
+            />
 
         <TextView
+            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cognome"
-            android:textAlignment="textStart" />
+            android:text="Cognome"/>
+
+
 
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_height="40dp"
             android:hint="Inserisci cognome..."
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
 
             />
 
-
         <TextView
+            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mail"
-            android:textAlignment="textStart" />
+            android:text="Telefono"/>
 
 
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:hint="Inserisci numero..."
             android:layout_marginBottom="20dp"
-            android:hint="Inserisci mail..." />
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
+            />
 
         <TextView
+            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefono"
-            android:textAlignment="textStart" />
+            android:text="Mail"/>
 
 
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:hint="Inserisci mail..."
             android:layout_marginBottom="20dp"
-            android:hint="Inserisci numero..." />
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
+            />
+
+        <TextView
+            android:textAlignment="textStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"/>
+
+
+        <EditText
+
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:hint="Inserisci password..."
+            android:layout_marginBottom="20dp"
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"/>
+
+
+
+
 
 
     </LinearLayout>
