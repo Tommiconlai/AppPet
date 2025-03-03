@@ -1,5 +1,9 @@
 package com.example.apppet;
 
+import android.app.Activity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Date;
 
 public class Servizio {

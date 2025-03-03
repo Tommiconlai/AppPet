@@ -1,6 +1,6 @@
 package com.example.apppet;
 
-public class Animale {
+public class Animale  {
     String nome;
     float peso;
     float altezza;
@@ -9,6 +9,7 @@ public class Animale {
     String dataNascita;
 
     public Animale(String nome, float peso, float altezza, String note, boolean sesso, String dataNascita) {
+        super();
         this.nome = nome;
         this.peso = peso;
         this.altezza = altezza;
@@ -16,4 +17,6 @@ public class Animale {
         this.sesso = sesso;
         this.dataNascita = dataNascita;
     }
+
+
 }

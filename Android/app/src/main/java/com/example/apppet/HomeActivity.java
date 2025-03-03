@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_goToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                return;
             }
         });
 

@@ -52,7 +52,6 @@
     <!--prima linea -->
 
     <LinearLayout
-        android:below="@id/rigaTitolo"
         android:padding="20dp"
         android:id="@+id/primaLinea"
         android:layout_width="match_parent"
