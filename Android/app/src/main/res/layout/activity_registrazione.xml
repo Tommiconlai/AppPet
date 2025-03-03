@@ -59,11 +59,25 @@
 
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-    android:hint="Inserisci cognome..."
+            android:hint="Inserisci cognome..."
             android:layout_marginBottom="20dp"
 
             />
 
+        <TextView
+            android:textAlignment="textStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefono"/>
+
+
+        <EditText
+
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci numero..."
+            android:layout_marginBottom="20dp"
+            />
 
         <TextView
             android:textAlignment="textStart"
@@ -84,16 +98,17 @@
             android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefono"/>
+            android:text="Password"/>
 
 
         <EditText
-           
+
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="Inserisci numero..."
-            android:layout_marginBottom="20dp"
-            />
+            android:hint="Inserisci password..."
+            android:layout_marginBottom="20dp" />
+
+
 
 
 
