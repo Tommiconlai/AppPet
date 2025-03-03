@@ -13,13 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="top">
+
         <ImageView
-            android:layout_marginTop="-120dp"
             android:id="@+id/Pippo"
             android:layout_width="800dp"
             android:layout_height="500dp"
-            android:src="@drawable/cricle_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
 
         <ImageView
             android:id="@+id/Pippo2"
@@ -45,9 +46,11 @@
         <EditText
             android:id="@+id/NomeUtenteEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Inserisci nome..."
             android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
             />
 
         <TextView
@@ -56,12 +59,16 @@
             android:layout_height="wrap_content"
             android:text="Cognome"/>
 
+
+
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Inserisci cognome..."
             android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
 
             />
 
@@ -75,9 +82,11 @@
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Inserisci numero..."
             android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
             />
 
         <TextView
@@ -90,9 +99,12 @@
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Inserisci mail..."
             android:layout_marginBottom="20dp"
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
             />
 
         <TextView
@@ -105,9 +117,12 @@
         <EditText
 
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Inserisci password..."
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"/>
 
 
 

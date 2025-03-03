@@ -15,5 +15,7 @@ public class RicercaServizi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca_servizi);
 
+
+
     }
 }
