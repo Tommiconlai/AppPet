@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".LoginActivity"
     android:orientation="vertical">
 
     <FrameLayout
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="top">
@@ -30,10 +31,13 @@
     </FrameLayout>
 
     <LinearLayout
+        android:layout_below="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_centerInParent="true">
 
         <TextView
             android:textAlignment="textStart"
@@ -44,8 +48,10 @@
         <EditText
             android:id="@+id/usernameEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
             android:hint="Inserisci username"
+            android:background="@drawable/edit_text_background"
             android:layout_marginBottom="40dp"/>
 
         <TextView
@@ -57,8 +63,10 @@
         <EditText
             android:id="@+id/passwordEditTxt"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="Password"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_background"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -66,17 +74,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/Blu_base"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <TextView
+        android:layout_marginBottom="30dp"
         android:id="@+id/registrazioneTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Non hai un account?"
+        android:text="Non hai un account? Registrati"
         android:textColor="#FF0000"
-        android:layout_gravity="center_horizontal"
-        android:gravity="bottom"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="true"/>
 
-</LinearLayout>
+</RelativeLayout>
