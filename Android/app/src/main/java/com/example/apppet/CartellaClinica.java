@@ -1,0 +1,36 @@
+package com.example.apppet;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.widget.ListView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CartellaClinica extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cartella_clinica);
+
+        //al posto di questa lista ci vorrebbe il database
+        List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
+
+        ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
+        lista.add(new LogCartellaClinica("Evento 1", "01/03/2025", "Descrizione evento 1"));
+        lista.add(new LogCartellaClinica("Evento 2", "02/03/2025", "Descrizione evento 2"));
+        lista.add(new LogCartellaClinica("Evento 3", "03/03/2025", "Descrizione evento 3"));
+
+        CustomAdapterCC adapter = new CustomAdapterCC(this, lista);
+        listviewLogClinica.setAdapter(adapter);
+
+
+    }
+}
