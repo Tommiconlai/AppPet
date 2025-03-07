@@ -1,6 +1,8 @@
 package com.example.apppet;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,17 +10,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Calendario extends AppCompatActivity {
+public class Calendario_attivita extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_calendario);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        try{
+             setContentView(R.layout.activity_calendario);
+            CustomCalendarView customCalendarView = findViewById(R.id.custom_calendar_view);
+            if (customCalendarView != null) {
+                customCalendarView.setVisibility(View.VISIBLE);  // Assicurati che la vista sia visibile
+            } else {
+                Log.e("MainActivity", "CustomCalendarView non trovata");
+            }
+            // Inizializza altre risorse
+        } catch (Exception e) {
+            e.printStackTrace(); // Questo ti aiuterà a vedere eventuali errori.
+        }
+
     }
 }

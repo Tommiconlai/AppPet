@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendario">
+    tools:context=".HomeActivity"
+    android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/header_home"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="top">
+    <ImageView
+        android:layout_marginTop="-120dp"
+        android:id="@+id/Pippo"
+        android:layout_width="800dp"
+        android:layout_height="500dp"
+        android:src="@drawable/cricle_1"
+        android:layout_gravity="center"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/Pippo2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/circle_2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/lista_animali_home"
+        android:layout_below="@id/header_home"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <com.example.apppet.CustomCalendarView
+            android:layout_marginTop="20dp"
+            android:id="@+id/custom_calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
