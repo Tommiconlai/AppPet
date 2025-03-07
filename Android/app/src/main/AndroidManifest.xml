@@ -18,11 +18,12 @@
             android:name=".Calendario_attivita"
             android:exported="false" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".RicercaServizi" />
-        <activity android:name=".Registrazione" />
+        <activity android:name=".CartellaClinicaActivity"/>
+        <activity android:name=".RicercaServiziActivity" />
+        <activity android:name=".RegistrazioneActivity" />
         <activity android:name=".NuovoServizioActivity" />
-        <activity android:name=".RegistrazioneAnimale" />
-        <activity android:name=".ProfiloAnimale" />
+        <activity android:name=".RegistrazioneAnimaleActivity" />
+        <activity android:name=".ProfiloAnimaleActivity" />
         <activity android:name=".ProfiloUtenteActivity" />
         <activity
             android:name=".LoginActivity"

@@ -26,7 +26,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(ProfiloAnimaleActivity.this,RegistrazioneAnimale.class);
+                Intent i = new Intent(ProfiloAnimaleActivity.this, RegistrazioneAnimaleActivity.class);
 
             }
         });
