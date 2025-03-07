@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartellaClinica extends AppCompatActivity {
+public class CartellaClinicaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +16,9 @@ public class CartellaClinica extends AppCompatActivity {
         setContentView(R.layout.activity_cartella_clinica);
 
         //al posto di questa lista ci vorrebbe il database
-        //List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
+        List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
 
-        List <LogCartellaClinica> lista = new ArrayList<>();
+        //List <LogCartellaClinica> lista = new ArrayList<>();
 
         ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
         lista.add(new LogCartellaClinica("Evento 1", "01/03/2025", "Descrizione evento 1"));

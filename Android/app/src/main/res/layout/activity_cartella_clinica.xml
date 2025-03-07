@@ -34,8 +34,9 @@
     <!--fine immagine logo-->
     <!--list view-->
     <LinearLayout
+        android:layout_centerHorizontal="true"
         android:id="@+id/titoloCC"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_top">
 
@@ -48,9 +49,10 @@
 
     </LinearLayout>
     <ListView
+        android:layout_centerHorizontal="true"
         android:id="@+id/listaCartellaClinica"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/titoloCC"/>
 
 

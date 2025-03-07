@@ -3,40 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#50A4C2">
+    android:background="@color/lightblue"
+    android:padding="20dp">
 
     <EditText
         android:id="@+id/eventname"
-        android:background="@color/white"
+        android:background="@drawable/edit_text_background"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:gravity="center"
+        android:padding="10dp"
         android:hint="Type event"
         android:inputType="textShortMessage"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
 
         <ImageButton
             android:id="@+id/seteventtime"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/time_icon"
-            android:layout_margin="10dp"/>
+            android:layout_marginRight="10dp"/>
 
         <TextView
             android:id="@+id/eventtime"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00:00 AM"
-            android:gravity="center"
             android:textSize="30sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="10dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -48,7 +49,7 @@
         android:layout_margin="10dp"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:background="#4B6D78"
+        android:backgroundTint="@color/Blu_base"
         android:textColor="@color/black"/>
 
 </LinearLayout>
