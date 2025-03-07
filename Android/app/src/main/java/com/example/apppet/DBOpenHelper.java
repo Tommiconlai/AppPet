@@ -51,7 +51,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
 
 
-    public Cursor ReadEvents(String date) {
+    public Cursor ReadEvents(String date, SQLiteDatabase database) {
         SQLiteDatabase database = this.getReadableDatabase();
         String[] projection = {
                 DBStructure.EVENT, DBStructure.TIME, DBStructure.DATE,
