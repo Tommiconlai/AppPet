@@ -12,19 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPet"
         tools:targetApi="31">
-        <activity
-            android:name=".CartellaClinica"
-            android:exported="false"
-            />
-        <activity
-            android:name=".ProfiloAnimaleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegistrazioneAnimale"
-            android:exported="false" />
-        <activity
-            android:name=".SecondActivity"
-            android:exported="false" />
+
+        <activity android:name=".CartellaClinica"/>
+        <activity android:name=".ProfiloAnimaleActivity"/>
+        <activity android:name=".RegistrazioneAnimale" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
