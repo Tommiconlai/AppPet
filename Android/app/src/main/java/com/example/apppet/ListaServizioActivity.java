@@ -26,9 +26,9 @@ public class ListaServizioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lista_servizio);
 
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listviewServ);
 
         // Creazione dati fittizi
         listaServizi = new ArrayList<>();

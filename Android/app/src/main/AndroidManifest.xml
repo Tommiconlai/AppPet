@@ -17,9 +17,7 @@
         <activity
             android:name=".ListaServizioActivity"
             android:exported="false" />
-        <activity
-            android:name=".ServizioAdapter"
-            android:exported="false" />
+
         <activity
             android:name=".Calendario_attivita"
             android:exported="false" />
