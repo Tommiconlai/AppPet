@@ -1,8 +1,10 @@
-package com.example.apppet;
+package com.example.apppet.Activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.apppet.R;
 
 public class RegistrazioneActivity extends AppCompatActivity {
 
