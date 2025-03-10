@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".Activities.HomeActivity"
     android:orientation="vertical">
 
     <FrameLayout
@@ -82,6 +82,7 @@
             android:text="Attività di oggi"/>
 
         <ImageButton
+            android:id="@+id/add_attività_BTN"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +128,7 @@
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I miei animali"/>
+            android:text="Ultime ricerche"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListaAttivitàHome"
@@ -138,7 +139,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/BTN_cerca_home"
+        android:id="@+id/cerca_servizi_BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
