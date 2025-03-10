@@ -50,10 +50,10 @@ import java.util.Locale;
             TextView tvIndirizzo = convertView.findViewById(R.id.tvIndirizzo);
             TextView tvOrario = convertView.findViewById(R.id.tvOrario);
 
-            tvNomeAttivita.setText(servizio.getNomeAttivita());
+            tvNomeAttivita.setText(servizio.getNome_attivita());
             tvDescrizione.setText(servizio.getDescrizione());
             tvFornitore.setText("Fornitore: " + servizio.getFornitore());
-            tvIndirizzo.setText("Indirizzo: " + servizio.getIndirizzo() + ", " + servizio.getNumeroCivico());
+            tvIndirizzo.setText("Indirizzo: " + servizio.getIndirizzo() + ", " + servizio.getNumerocivico());
             tvOrario.setText("Orario: " + dateFormat.format(servizio.getOrario()));
 
             return convertView;
