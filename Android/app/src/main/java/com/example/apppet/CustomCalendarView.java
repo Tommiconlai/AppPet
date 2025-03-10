@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.AttributeSet;
@@ -128,6 +129,12 @@ public class CustomCalendarView extends LinearLayout {
                 builder.setView(addView);
                 alertDialog = builder.create();
                 alertDialog.show();
+                alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        SetUpCalendar();
+                    }
+                });
 
 
             }
@@ -144,14 +151,22 @@ public class CustomCalendarView extends LinearLayout {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(showView.getContext());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setHasFixedSize(true);
-                EventRecyclerAdapter eventRecyclerAdapter = new EventRecyclerAdapter(showView.getContext(),
-                        CollectEventByDate(date));
+                EventRecyclerAdapter eventRecyclerAdapter = new EventRecyclerAdapter(
+                        showView.getContext(),
+                        CollectEventByDate(date),
+                        CustomCalendarView.this);
                 recyclerView.setAdapter(eventRecyclerAdapter);
                 eventRecyclerAdapter.notifyDataSetChanged();
 
                 builder.setView(showView);
                 alertDialog = builder.create();
                 alertDialog.show();
+                alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        SetUpCalendar();
+                    }
+                });
 
                 return true;
             }
@@ -241,4 +256,11 @@ public class CustomCalendarView extends LinearLayout {
         cursor.close();
         dbOpenHelper.close();
     }
+
+
+    public void updateCalendar() {
+        SetUpCalendar();
+    }
+
+
 }

@@ -47,6 +47,14 @@
                 android:text="Orario"
                 android:textSize="20dp"/>
 
+            <ImageButton
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bin"
+                android:backgroundTint="@color/lightblue"/>
+
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
