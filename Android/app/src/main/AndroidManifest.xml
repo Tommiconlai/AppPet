@@ -15,22 +15,22 @@
         android:theme="@style/Theme.AppPet"
         tools:targetApi="31">
         <activity
-            android:name=".ListaServizioActivity"
+            android:name=".Activities.ListaServizioActivity"
             android:exported="false" />
 
         <activity
-            android:name=".Calendario_attivita"
+            android:name=".Activities.Calendario_attivita"
             android:exported="false" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".CartellaClinicaActivity" />
-        <activity android:name=".RicercaServiziActivity" />
-        <activity android:name=".RegistrazioneActivity" />
-        <activity android:name=".NuovoServizioActivity" />
-        <activity android:name=".RegistrazioneAnimaleActivity" />
-        <activity android:name=".ProfiloAnimaleActivity" />
-        <activity android:name=".ProfiloUtenteActivity" />
+        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".Activities.CartellaClinicaActivity" />
+        <activity android:name=".Activities.RicercaServiziActivity" />
+        <activity android:name=".Activities.RegistrazioneActivity" />
+        <activity android:name=".Activities.NuovoServizioActivity" />
+        <activity android:name=".Activities.RegistrazioneAnimaleActivity" />
+        <activity android:name=".Activities.ProfiloAnimaleActivity" />
+        <activity android:name=".Activities.ProfiloUtenteActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

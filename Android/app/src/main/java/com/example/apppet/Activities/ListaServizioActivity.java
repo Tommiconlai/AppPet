@@ -1,17 +1,14 @@
-package com.example.apppet;
+package com.example.apppet.Activities;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import android.os.Bundle;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.apppet.R;
+import com.example.apppet.Servizio;
+import com.example.apppet.ServizioAdapter;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -8,7 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/cane_BTN"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -16,26 +16,33 @@
         app:civ_border_width="4dp"
         app:civ_border_color="@color/sfondo_search"/>
 
-    <TextView
-        android:layout_gravity="center"
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome Bello"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:shadowColor="@color/black"
-        android:shadowRadius="5"/>
+        android:orientation="vertical">
 
-    <RatingBar
-        android:layout_marginBottom=""
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbarSize="10dp"
-        style="@style/custom_ratingbar"
-        android:numStars="3"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome Bello"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:shadowColor="@color/black"
+            android:shadowRadius="5"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"/>
 
-
+        <RatingBar
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbarSize="10dp"
+            android:rating="2"
+            style="@style/custom_ratingbar"
+            android:numStars="3" />
+    </LinearLayout>
 
 </FrameLayout>

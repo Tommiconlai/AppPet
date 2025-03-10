@@ -1,9 +1,13 @@
-package com.example.apppet;
+package com.example.apppet.Activities;
 
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.apppet.CustomAdapterCC;
+import com.example.apppet.LogCartellaClinica;
+import com.example.apppet.R;
 
 import java.util.ArrayList;
 import java.util.List;

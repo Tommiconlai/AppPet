@@ -1,10 +1,12 @@
-package com.example.apppet;
+package com.example.apppet.Activities;
 
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.apppet.R;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 

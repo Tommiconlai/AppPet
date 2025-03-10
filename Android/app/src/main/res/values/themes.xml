@@ -9,5 +9,6 @@
 
     <style name="custom_ratingbar" parent="Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/custom_ratingbar</item>
+        <item name="android:maxHeight">48dp</item>
     </style>
 </resources>
