@@ -1,11 +1,15 @@
 package com.example.apppet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -13,13 +17,31 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ImageButton btn_goToProfile = (ImageButton) findViewById(R.id.BTNprofilo);
+        ImageButton btn_goToProfile = findViewById(R.id.BTNprofilo);
         btn_goToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                return;
+            public void onClick(View v){
+                Intent intent = new Intent(HomeActivity.this, ProfiloUtenteActivity.class);
+                startActivity(intent);
             }
         });
 
+        ImageButton nuovaAttivita = findViewById(R.id.add_attività_BTN);
+        nuovaAttivita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Calendario_attivita.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton cercaServizi = findViewById(R.id.cerca_servizi_BTN);
+        cercaServizi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, RicercaServiziActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

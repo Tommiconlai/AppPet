@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Empty heart for background -->
+    <item android:id="@android:id/background"
+        android:drawable="@drawable/empty_heart" />
+    <!-- Half heart for secondary progress (when the rating includes half hearts) -->
+    <item android:id="@android:id/secondaryProgress"
+        android:drawable="@drawable/half_heart" />
+    <!-- Full heart for progress -->
+    <item android:id="@android:id/progress"
+        android:drawable="@drawable/full_heart" />
+</layer-list>
