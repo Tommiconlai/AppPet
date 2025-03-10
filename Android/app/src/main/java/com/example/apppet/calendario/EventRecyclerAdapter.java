@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.calendario;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.apppet.R;
 
 import java.util.ArrayList;
 

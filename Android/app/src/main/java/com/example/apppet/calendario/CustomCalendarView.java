@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.calendario;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -23,6 +23,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.apppet.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

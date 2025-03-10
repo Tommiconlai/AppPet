@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.apppet.CustomCalendarView;
+import com.example.apppet.calendario.CustomCalendarView;
 import com.example.apppet.R;
 
 public class Calendario_attivita extends AppCompatActivity {

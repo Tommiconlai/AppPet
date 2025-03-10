@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.calendario;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
+import com.example.apppet.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
