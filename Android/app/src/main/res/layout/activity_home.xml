@@ -33,13 +33,13 @@
             android:id="@+id/BTNprofilo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/btn_profilo"
+            android:background="@drawable/profile_btn"
             android:layout_gravity="end"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="40dp"/>
     </FrameLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/lista_animali_home"
         android:layout_below="@id/header_home"
         android:layout_width="300dp"
@@ -48,22 +48,22 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_weight="9"
+            android:layout_alignParentLeft="true"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="I miei animali"
             android:layout_gravity="center"/>
 
         <ImageButton
+            android:layout_alignParentRight="true"
             android:id="@+id/add_animale_BTN"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/btn_aggiungi"/>
+            android:background="@drawable/add_btn"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_centerHorizontal="true"
@@ -74,7 +74,7 @@
         app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/Header_attivita_oggi_home"
         android:layout_below="@id/animali_recycler_view"
         android:layout_marginTop="20dp"
@@ -85,21 +85,21 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_alignParentLeft="true"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_weight="9"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Attività di oggi"/>
 
         <ImageButton
+            android:layout_alignParentRight="true"
             android:id="@+id/add_attività_BTN"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/btn_aggiungi"/>
+            android:background="@drawable/add_btn"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/attivita_oggi_home"
@@ -156,6 +156,6 @@
         android:layout_marginBottom="20dp"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/btn_cerca"/>
+        android:background="@drawable/btn_cerca"/>
 
 </RelativeLayout>
