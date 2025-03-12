@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:id="@+id/carousel_item_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="140dp"
+    android:layout_height="120dp"
     android:foreground="?attr/selectableItemBackground"
     app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_gravity="center_horizontal"
         android:id="@+id/cane_BTN"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/cane"
         app:civ_border_width="4dp"
-        app:civ_border_color="@color/sfondo_search"/>
+        app:civ_border_color="@color/sfondo_search"
+        android:layout_gravity="center"/>
 
     <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:orientation="vertical">
 
         <TextView
+            android:gravity="center"
+            android:id="@+id/nome_animale"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,6 +38,7 @@
             android:layout_marginBottom="20dp"/>
 
         <RatingBar
+            android:id="@+id/rating_animale"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

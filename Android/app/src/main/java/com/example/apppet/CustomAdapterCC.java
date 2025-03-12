@@ -35,7 +35,7 @@ import java.util.List;
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(context).inflate(R.layout.activity_cartella_clinica, parent, false);
+                convertView = LayoutInflater.from(context).inflate(R.layout.listviewclinica, parent, false);
             }
 
             TextView txtTitle = convertView.findViewById(R.id.txtTitle);
