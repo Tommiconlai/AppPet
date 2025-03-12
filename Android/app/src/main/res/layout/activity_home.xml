@@ -42,12 +42,13 @@
     <LinearLayout
         android:id="@+id/lista_animali_home"
         android:layout_below="@id/header_home"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
+            android:layout_weight="9"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_width="300dp"
@@ -55,19 +56,28 @@
             android:text="I miei animali"
             android:layout_gravity="center"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/animali_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
+        <ImageButton
+            android:id="@+id/add_animale_BTN"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_aggiungi"/>
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lista_animali_home"
+        android:id="@+id/animali_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
+
+
     <LinearLayout
         android:id="@+id/Header_attivita_oggi_home"
-        android:layout_below="@id/lista_animali_home"
+        android:layout_below="@id/animali_recycler_view"
         android:layout_marginTop="20dp"
-
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

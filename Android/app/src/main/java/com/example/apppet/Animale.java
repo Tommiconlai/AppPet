@@ -1,19 +1,18 @@
 package com.example.apppet;
 
-import android.widget.RatingBar;
-
 public class Animale  {
     String nome;
-    float peso;
-    float altezza;
+    String peso;
+    String altezza;
     String note;
-    boolean sesso;
+    String sesso;
     String dataNascita;
     float ratingAnimale;
 
-    public Animale(String nome, float peso, float altezza, String note, boolean sesso, String dataNascita) {
+    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso, String dataNascita) {
         super();
         this.nome = nome;
+        this.ratingAnimale = rating;
         this.peso = peso;
         this.altezza = altezza;
         this.note = note;
@@ -21,20 +20,15 @@ public class Animale  {
         this.dataNascita = dataNascita;
     }
 
-    public Animale(String nome, float rating){
-        this.nome = nome;
-        this.ratingAnimale = rating;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public float getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public float getAltezza() {
+    public String getAltezza() {
         return altezza;
     }
 
@@ -46,7 +40,7 @@ public class Animale  {
         return dataNascita;
     }
 
-    public boolean isSesso() {
+    public String isSesso() {
         return sesso;
     }
 

@@ -15,26 +15,44 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Get Extras
+        String nomeAnimale = getIntent().getStringExtra("NOME");
+        float ratingAnimale = getIntent().getFloatExtra("RATING", 0);
+        String pesoAnimale = getIntent().getStringExtra("PESO");
+        String altezzaAnimale = getIntent().getStringExtra("ALTEZZA");
+        String noteAnimale = getIntent().getStringExtra("NOTE");
+        String sessoAnimale = getIntent().getStringExtra("SESSO");
+        String dataNascita = getIntent().getStringExtra("DATANASCITA");
+
         //findviewbyid
         setContentView(R.layout.activity_profilo_animale);
-        TextView nomeAnimale = findViewById(R.id.nomeProfiloAnimale);
-        TextView sessoAnimale = findViewById(R.id.sessoProfiloAnimale);
-        TextView altezzaAnimale = findViewById(R.id.altezzaProfiloAnimale);
-        TextView pesoAnimale = findViewById(R.id.pesoProfiloAnimale);
-        TextView noteAnimale = findViewById(R.id.noteProfiloAnimale);
+        TextView tvNomeAnimale = findViewById(R.id.nomeProfiloAnimale);
+        TextView tvSessoAnimale = findViewById(R.id.sessoProfiloAnimale);
+        TextView tvAltezzaAnimale = findViewById(R.id.altezzaProfiloAnimale);
+        TextView tvPesoAnimale = findViewById(R.id.pesoProfiloAnimale);
+        TextView tvNoteAnimale = findViewById(R.id.noteProfiloAnimale);
+        TextView tvDataNascita = findViewById(R.id.dataProfiloAnimale);
+
+        //Buttons
         Button modificaProfiloAnimale = findViewById(R.id.modificaBTN);
         Button cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
+
+        //Set Text
+        tvNomeAnimale.setText(nomeAnimale);
+        tvSessoAnimale.setText(sessoAnimale);
+        tvAltezzaAnimale.setText(altezzaAnimale);
+        tvPesoAnimale.setText(pesoAnimale);
+        tvNoteAnimale.setText(noteAnimale);
+        tvDataNascita.setText(dataNascita);
+
 
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(ProfiloAnimaleActivity.this, RegistrazioneAnimaleActivity.class);
-
+                Intent intent = new Intent(ProfiloAnimaleActivity.this, RegistrazioneAnimaleActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
-
     }
 }

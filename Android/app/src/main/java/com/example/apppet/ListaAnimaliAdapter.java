@@ -18,20 +18,21 @@ import com.example.apppet.Activities.ProfiloAnimaleActivity;
 import java.util.ArrayList;
 
 public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapter.ViewHolder> {
-
+    private final RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface;
     private Context context;
     private ArrayList<Animale> animali;
 
-    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali) {
+    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali, RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface) {
         this.context = context;
         this.animali = animali;
+        this.recyclerViewListaAnimaliInterface = recyclerViewListaAnimaliInterface;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_animali_image, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, recyclerViewListaAnimaliInterface);
     }
 
     @Override
@@ -50,10 +51,22 @@ public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapte
         TextView nomeAnimale;
         RatingBar ratingAnimale;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface) {
             super(itemView);
             nomeAnimale = itemView.findViewById(R.id.nome_animale);
             ratingAnimale = itemView.findViewById(R.id.rating_animale);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewListaAnimaliInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewListaAnimaliInterface.onItemClicked(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

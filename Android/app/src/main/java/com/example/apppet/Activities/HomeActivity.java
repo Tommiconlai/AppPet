@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apppet.Animale;
 import com.example.apppet.ListaAnimaliAdapter;
 import com.example.apppet.R;
+import com.example.apppet.RecyclerViewListaAnimaliInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements RecyclerViewListaAnimaliInterface {
     private ListaAnimaliAdapter adapterAnimali;
     private ArrayList<Animale> animaliLista = new ArrayList<>();
 
@@ -42,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         animaliLista.add(new Animale("Demetrio il mago del regno", 2.5f));
         */
 
-        adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista);
+        adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
         recyclerAnimali.setAdapter(adapterAnimali);
         recyclerAnimali.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -77,13 +78,27 @@ public class HomeActivity extends AppCompatActivity {
 
     public void inizializzaAnimali(){
         //Dati finti di prova
-        Animale animale1 = new Animale("Fuffi", 1f);
-        Animale animale2 = new Animale("Pippo", 2f);
-        Animale animale3 = new Animale("Demetrio", 2.5f);
+        Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M", "12/03/2023");
+        Animale animale2 = new Animale("Pippo", 2, "43", "57", "Labrador che sbava ovunque", "F", "01/05/2019");
+        Animale animale3 = new Animale("Demetrio", 2.5f, "12", "22", "Persiano liscio liscio", "M", "25/10/2021");
 
         animaliLista.add(animale1);
         animaliLista.add(animale2);
         animaliLista.add(animale3);
     }
 
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(HomeActivity.this, ProfiloAnimaleActivity.class);
+
+        intent.putExtra("NOME", animaliLista.get(position).getNome());
+        intent.putExtra("RATING", animaliLista.get(position).getRatingAnimale());
+        intent.putExtra("PESO", animaliLista.get(position).getPeso());
+        intent.putExtra("ALTEZZA", animaliLista.get(position).getAltezza());
+        intent.putExtra("NOTE", animaliLista.get(position).getNote());
+        intent.putExtra("SESSO", animaliLista.get(position).isSesso());
+        intent.putExtra("DATANASCITA", animaliLista.get(position).getDataNascita());
+
+        startActivity(intent);
+    }
 }
