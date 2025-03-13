@@ -32,15 +32,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
 
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
 
-
         inizializzaAnimali();
-
-        /*
-        //Dati finti di prova
-        animaliLista.add(new Animale("Fuffi", 1f));
-        animaliLista.add(new Animale("Pippo", 2f));
-        animaliLista.add(new Animale("Demetrio il mago del regno", 2.5f));
-        */
 
         adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
         recyclerAnimali.setAdapter(adapterAnimali);

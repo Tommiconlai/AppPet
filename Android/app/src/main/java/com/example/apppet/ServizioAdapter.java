@@ -11,107 +11,82 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-    public class ServizioAdapter extends RecyclerView.Adapter<ServizioAdapter.ViewHolder> {
-        private Context context;
-        private List<Servizio> servizi;
-        private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+public class ServizioAdapter extends RecyclerView.Adapter<ServizioAdapter.ViewHolder> {
 
-        private final RecyclerViewInterface recyclerViewInterface;
+    private final RecyclerViewInterface recyclerViewInterface;
+    private Context context;
+    private ArrayList<Servizio> servizi;
 
-        public ServizioAdapter(Context context, List<Servizio> servizi, RecyclerViewInterface recyclerViewInterface) {
-            this.context = context;
-            this.servizi = servizi;
-            this.recyclerViewInterface = recyclerViewInterface;
+    public ServizioAdapter(Context context, ArrayList<Servizio> servizi, RecyclerViewInterface recyclerViewInterface) {
+        this.context = context;
+        this.servizi = servizi;
+        this.recyclerViewInterface = recyclerViewInterface;
+    }
 
-        }
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_servizio, parent, false);
+        return new ViewHolder(view, recyclerViewInterface);
+    }
 
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.item_servizio, parent, false);
-            return new ViewHolder(view, recyclerViewInterface);
-        }
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Servizio servizio = servizi.get(position);
+        holder.tvNome.setText(servizio.getNome_attivita());
+        holder.tvDescr.setText(servizio.getDescrizione());
+        holder.tvFornitore.setText(servizio.getFornitore());
+        holder.tvIndirizzo.setText(servizio.getIndirizzo());
+        holder.tvOrario.setText(servizio.getOrario());
+    }
 
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Servizio servizio = servizi.get(position);
-            holder.tvNome.setText(servizio.getNome_attivita());
-            holder.tvDescr.setText(servizio.getDescrizione());
-            holder.tvFornitore.setText(servizio.getFornitore());
-            holder.tvIndirizzo.setText(servizio.getIndirizzo());
-            holder.tvOrario.setText(servizio.getOrario());
+    @Override
+    public int getItemCount() {
+        return servizi.size();
+    }
 
-        }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Override
-        public int getItemCount() {
-            return servizi.size();
-        }
+        TextView tvNome;
+        TextView tvDescr;
 
+        TextView tvIndirizzo;
 
-        /*
-           @Override
-           public View getView(int position, View convertView, ViewGroup parent) {
-               if (convertView == null) {
-                   convertView = LayoutInflater.from(context).inflate(R.layout.item_servizio, parent, false);
-               }
+        TextView tvFornitore;
 
-               Servizio servizio = servizi.get(position);
-
-               TextView tvNomeAttivita = convertView.findViewById(R.id.tvNomeAttivita);
-               TextView tvDescrizione = convertView.findViewById(R.id.tvDescrizione);
-               TextView tvFornitore = convertView.findViewById(R.id.tvFornitore);
-               TextView tvIndirizzo = convertView.findViewById(R.id.tvIndirizzo);
-               TextView tvOrario = convertView.findViewById(R.id.tvOrario);
-
-               tvNomeAttivita.setText(servizio.getNome_attivita());
-               tvDescrizione.setText(servizio.getDescrizione());
-               tvFornitore.setText("Fornitore: " + servizio.getFornitore());
-               tvIndirizzo.setText("Indirizzo: " + servizio.getIndirizzo() + ", " + servizio.getNumerocivico());
-               tvOrario.setText("Orario: " + dateFormat.format(servizio.getOrario()));
-
-               return convertView;
-           }
+        TextView tvOrario;
 
 
+        public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
+            super(itemView);
 
-         */
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-
-            TextView tvNome;
-            TextView tvDescr;
-
-            TextView tvIndirizzo;
-
-            TextView tvFornitore;
-
-            TextView tvOrario;
+            tvNome = itemView.findViewById(R.id.tvNomeAttivita);
+            tvDescr = itemView.findViewById(R.id.tvDescrizione);
+            tvFornitore = itemView.findViewById(R.id.tvFornitore);
+            tvIndirizzo = itemView.findViewById(R.id.tvIndirizzo);
+            tvOrario = itemView.findViewById(R.id.tvOrario);
 
 
-            public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
-                super(itemView);
-
-
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (recyclerViewListaAnimaliInterface != null) {
-                            int position = getAdapterPosition();
-                            if (position != RecyclerView.NO_POSITION) {
-                                recyclerViewListaAnimaliInterface.onItemClicked(position);
-                            }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClicked(position);
                         }
                     }
-                });
-            }
-
+                }
+            });
         }
 
-
-
     }
+
+
+}
 
 
