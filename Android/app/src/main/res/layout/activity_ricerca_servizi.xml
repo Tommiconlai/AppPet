@@ -37,8 +37,11 @@
     <ListView
         android:layout_centerHorizontal="true"
         android:layout_below="@id/Ricerca"
+        android:id="@+id/listviewServ"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+    </ListView>
 
 
 </RelativeLayout>

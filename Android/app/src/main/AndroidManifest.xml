@@ -14,9 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppPet"
         tools:targetApi="31">
-        <activity
-            android:name=".Activities.ListaServizioActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".Activities.Calendario_attivita"

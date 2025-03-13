@@ -15,6 +15,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profilo_animale);
 
         //Get Extras
         String nomeAnimale = getIntent().getStringExtra("NOME");
@@ -26,7 +27,6 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         String dataNascita = getIntent().getStringExtra("DATANASCITA");
 
         //findviewbyid
-        setContentView(R.layout.activity_profilo_animale);
         TextView tvNomeAnimale = findViewById(R.id.nomeProfiloAnimale);
         TextView tvSessoAnimale = findViewById(R.id.sessoProfiloAnimale);
         TextView tvAltezzaAnimale = findViewById(R.id.altezzaProfiloAnimale);
@@ -45,7 +45,6 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         tvPesoAnimale.setText(pesoAnimale);
         tvNoteAnimale.setText(noteAnimale);
         tvDataNascita.setText(dataNascita);
-
 
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
