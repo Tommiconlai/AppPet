@@ -15,12 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apppet.Animale;
 import com.example.apppet.ListaAnimaliAdapter;
 import com.example.apppet.R;
-import com.example.apppet.RecyclerViewListaAnimaliInterface;
+import com.example.apppet.RecyclerViewInterface;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements RecyclerViewListaAnimaliInterface {
+public class HomeActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ListaAnimaliAdapter adapterAnimali;
     private ArrayList<Animale> animaliLista = new ArrayList<>();
 

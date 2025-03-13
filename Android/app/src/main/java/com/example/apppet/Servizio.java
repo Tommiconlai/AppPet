@@ -20,11 +20,11 @@ public class Servizio {
 
     int numerocivico;
 
-    Date orario;
+    String orario;
 
     //Creo il costruttore di SERVIZIO
 
-    public Servizio( String nome_attivita, String descrizione, String fornitore, String indirizzo, int numerocivico, Date orario) {
+    public Servizio( String nome_attivita, String descrizione, String fornitore, String indirizzo, int numerocivico, String orario) {
 
         this.nome_attivita = nome_attivita;
         this.descrizione = descrizione;
@@ -58,7 +58,7 @@ public class Servizio {
         return numerocivico;
     }
 
-    public Date getOrario() {
+    public String getOrario() {
         return orario;
 
     }

@@ -1,11 +1,15 @@
 package com.example.apppet.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apppet.R;
+import com.example.apppet.RecyclerViewInterface;
 import com.example.apppet.Servizio;
 import com.example.apppet.ServizioAdapter;
 
@@ -14,7 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class RicercaServiziActivity extends AppCompatActivity {
+public class RicercaServiziActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private ServizioAdapter adapter;
     private List<Servizio> listaServizi;
@@ -23,23 +27,45 @@ public class RicercaServiziActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca_servizi);
 
+        RecyclerView recyclerViewServ = findViewById(R.id.listviewServ);
 
-        ListView listView = findViewById(R.id.listviewServ);
+        adapter = new ServizioAdapter(this, listaServizi, this);
+        recyclerViewServ.setAdapter(adapter);
+        recyclerViewServ.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+
+
+        RecyclerView listView = findViewById(R.id.listviewServ);
 
         // Creazione dati fittizi
         listaServizi = new ArrayList<>();
-        listaServizi.add(new Servizio("Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", 10, getOrario(9, 30)));
-        listaServizi.add(new Servizio("Addestratore", "Addestramento cane", "CaneWay", "Via Milano", 25, getOrario(14, 0)));
-        listaServizi.add(new Servizio("Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", 50, getOrario(16, 15)));
+        listaServizi.add(new Servizio("Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", 10, "9:30" ));
+        listaServizi.add(new Servizio("Addestratore", "Addestramento cane", "CaneWay", "Via Milano", 25, "9:30" ));
+        listaServizi.add(new Servizio("Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", 50, "9:30" ));
 
-        adapter = new ServizioAdapter(this, listaServizi);
-        listView.setAdapter(adapter);
 
     }
-    private Date getOrario(int ore, int minuti) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, ore);
-        calendar.set(Calendar.MINUTE, minuti);
-        return calendar.getTime();
+
+    @Override
+    public void onItemClicked(int position) {
+
+        Intent intent = new Intent(RicercaServiziActivity.this, ProfiloServizio.class);
+
+        String nome_attivita = getIntent().getStringExtra("NOME");
+        String descrizione = getIntent().getStringExtra("DESCRIZIONE");
+        String fornitore = getIntent().getStringExtra("FORNITORE");
+        String indirizzo = getIntent().getStringExtra("INDIRIZZO");
+        String numerocivico = getIntent().getStringExtra("NUMERO CIVICO");
+        String orario = getIntent().getStringExtra("ORARIO");
+
+
+
+
+
+        startActivity(intent);
+
+
+
     }
+
+
 }

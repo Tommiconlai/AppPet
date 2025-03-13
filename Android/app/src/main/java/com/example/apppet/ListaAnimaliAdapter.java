@@ -18,11 +18,11 @@ import com.example.apppet.Activities.ProfiloAnimaleActivity;
 import java.util.ArrayList;
 
 public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapter.ViewHolder> {
-    private final RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface;
+    private final RecyclerViewInterface recyclerViewListaAnimaliInterface;
     private Context context;
     private ArrayList<Animale> animali;
 
-    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali, RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface) {
+    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
         this.context = context;
         this.animali = animali;
         this.recyclerViewListaAnimaliInterface = recyclerViewListaAnimaliInterface;
@@ -51,7 +51,7 @@ public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapte
         TextView nomeAnimale;
         RatingBar ratingAnimale;
 
-        public ViewHolder(@NonNull View itemView, RecyclerViewListaAnimaliInterface recyclerViewListaAnimaliInterface) {
+        public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
             super(itemView);
             nomeAnimale = itemView.findViewById(R.id.nome_animale);
             ratingAnimale = itemView.findViewById(R.id.rating_animale);
