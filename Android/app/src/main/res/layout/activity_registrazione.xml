@@ -44,7 +44,7 @@
             android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/NomeUtenteEditTxt"
+            android:id="@+id/NomeUtenteEditText"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
@@ -61,7 +61,7 @@
 
 
         <EditText
-
+            android:id="@+id/cognomeUtenteEditText"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
@@ -79,6 +79,7 @@
 
         <EditText
 
+            android:id="@+id/cellulareUtenteEditText"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
@@ -96,6 +97,7 @@
 
         <EditText
 
+            android:id="@+id/mailUtenteEditText"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
@@ -114,6 +116,7 @@
 
         <EditText
 
+            android:id="@+id/pwUtenteEditText"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
@@ -130,6 +133,7 @@
 
 
     <Button
+        android:id="@+id/registratiBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="registrati"
