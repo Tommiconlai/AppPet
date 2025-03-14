@@ -2,7 +2,6 @@ package com.example.apppet.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,14 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apppet.R;
-import com.example.apppet.RecyclerViewInterface;
-import com.example.apppet.Servizio;
-import com.example.apppet.ServizioAdapter;
+import com.example.apppet.servizio.Servizio;
+import com.example.apppet.servizio.ServizioAdapter;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class RicercaServiziActivity extends AppCompatActivity implements RecyclerViewInterface {
 

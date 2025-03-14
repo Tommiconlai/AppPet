@@ -1,19 +1,18 @@
-package com.example.apppet;
+package com.example.apppet.servizio;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
+import com.example.apppet.R;
+import com.example.apppet.Activities.RecyclerViewInterface;
+
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class ServizioAdapter extends RecyclerView.Adapter<ServizioAdapter.ViewHolder> {
 

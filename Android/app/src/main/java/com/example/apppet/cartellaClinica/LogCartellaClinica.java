@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.cartellaClinica;
 
 public class LogCartellaClinica {
     private String title;

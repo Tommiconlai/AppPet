@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.cartellaClinica;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.apppet.R;
+
 import java.util.List;
 
     public class CustomAdapterCC extends BaseAdapter {

@@ -1,4 +1,4 @@
-package com.example.apppet;
+package com.example.apppet.Activities;
 
 public interface RecyclerViewInterface {
 

@@ -12,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apppet.Animale;
-import com.example.apppet.ListaAnimaliAdapter;
+import com.example.apppet.animale.Animale;
+import com.example.apppet.animale.ListaAnimaliAdapter;
 import com.example.apppet.R;
-import com.example.apppet.RecyclerViewInterface;
 
 import java.util.ArrayList;
 

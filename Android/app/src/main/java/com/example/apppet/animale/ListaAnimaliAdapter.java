@@ -1,9 +1,6 @@
-package com.example.apppet;
-
-import static androidx.core.content.ContextCompat.startActivity;
+package com.example.apppet.animale;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apppet.Activities.ProfiloAnimaleActivity;
+import com.example.apppet.R;
+import com.example.apppet.Activities.RecyclerViewInterface;
 
 import java.util.ArrayList;
 

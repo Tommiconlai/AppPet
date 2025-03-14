@@ -5,8 +5,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.apppet.CustomAdapterCC;
-import com.example.apppet.LogCartellaClinica;
+import com.example.apppet.cartellaClinica.CustomAdapterCC;
+import com.example.apppet.cartellaClinica.LogCartellaClinica;
 import com.example.apppet.R;
 
 import java.util.ArrayList;
