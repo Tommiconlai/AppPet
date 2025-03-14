@@ -20,7 +20,7 @@ public class ProfiloUtenteActivity extends AppCompatActivity {
         BTNmodificaDati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfiloUtenteActivity.this, RegistrazioneActivity.class);
+                Intent intent = new Intent(ProfiloUtenteActivity.this, ModificaDatiUtenteActivity.class);
                 startActivity(intent);
 
             }

@@ -25,9 +25,9 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         //List <LogCartellaClinica> lista = new ArrayList<>();
 
         ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
-        lista.add(new LogCartellaClinica("Evento 1", "01/03/2025", "Descrizione evento 1"));
-        lista.add(new LogCartellaClinica("Evento 2", "02/03/2025", "Descrizione evento 2"));
-        lista.add(new LogCartellaClinica("Evento 3", "03/03/2025", "Descrizione evento 3"));
+        lista.add(new LogCartellaClinica(1,"Evento 1", "01/03/2025", "Descrizione evento 1"));
+        lista.add(new LogCartellaClinica(2,"Evento 2", "02/03/2025", "Descrizione evento 2"));
+        lista.add(new LogCartellaClinica(3,"Evento 3", "03/03/2025", "Descrizione evento 3"));
 
         CustomAdapterCC adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
