@@ -6,12 +6,11 @@ public class Utente {
     String cognome;
     String email;
     String password;
-    long telefono;
+    String telefono;
 
 
 
-    public Utente(long id, String nome, String cognome, String email, String password, long telefono) {
-        this.id = id;
+    public Utente(String nome, String cognome, String email, String password, String telefono) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
@@ -42,11 +41,11 @@ public class Utente {
         this.email = email;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }
