@@ -1,5 +1,6 @@
 package com.example.apppet.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,6 +20,8 @@ public class ProfiloUtenteActivity extends AppCompatActivity {
         BTNmodificaDati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(ProfiloUtenteActivity.this, RegistrazioneActivity.class);
+                startActivity(intent);
 
             }
         });
