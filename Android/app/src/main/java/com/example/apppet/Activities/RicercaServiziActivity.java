@@ -27,9 +27,9 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
         RecyclerView recyclerViewServ = findViewById(R.id.listviewServ);
 
         // Creazione dati fittizi
-        Servizio s1 = new Servizio("Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", 10, "9:30" );
-        Servizio s2 = new Servizio("Addestratore", "Addestramento cane", "CaneWay", "Via Milano", 25, "9:30" );
-        Servizio s3 = new Servizio("Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", 50, "9:30" );
+        Servizio s1 = new Servizio(1,"Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", 10, "9:30" );
+        Servizio s2 = new Servizio(2,"Addestratore", "Addestramento cane", "CaneWay", "Via Milano", 25, "9:30" );
+        Servizio s3 = new Servizio(3,"Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", 50, "9:30" );
 
         listaServizi.add(s1);
         listaServizi.add(s2);
