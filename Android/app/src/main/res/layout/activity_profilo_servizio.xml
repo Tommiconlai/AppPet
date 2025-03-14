@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".Activities.ProfiloServizio">
+    android:padding="16dp"
+    android:layout_centerHorizontal="true"
+    >
 
-    <TextView android:id="@+id/Nome"
+    <TextView
+        android:id="@+id/NomeProfAtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        />
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:text="Nome Attività" />
 
-    <TextView android:id="@+id/Descrizione"
+    <TextView
+        android:id="@+id/DescrProfAtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descrizione"
-        />
+        android:textSize="18sp"
+        android:text="Descrizione" />
 
-    <TextView android:id="@+id/Fornitore"
+    <TextView
+        android:id="@+id/FornitProfAtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        />
+        android:textSize="16sp"
+        android:text="Fornitore" />
 
-    <TextView android:id="@+id/NumeroCvc"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/IndirizzoProfAtt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        />
+        android:textSize="16sp"
+        android:text="Indirizzo" />
 
-    <TextView android:id="@+id/Indirizzo"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/NumeroCvc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        />
+        android:textSize="16sp"
+        android:text="Numero civico" />
 
-    <TextView android:id="@+id/Orario"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/OrarioProfAtt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome"
-        />
-
-
-
+        android:textSize="16sp"
+        android:text="Orario" />
 </LinearLayout>
