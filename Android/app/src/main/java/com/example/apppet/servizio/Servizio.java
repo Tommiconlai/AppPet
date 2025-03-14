@@ -4,6 +4,8 @@ public class Servizio {
 
     //Definisco gli attributi da visualizzare in servizio
 
+    long id;
+
     String nome_attivita;
 
     String descrizione;
@@ -18,8 +20,9 @@ public class Servizio {
 
     //Creo il costruttore di SERVIZIO
 
-    public Servizio( String nome_attivita, String descrizione, String fornitore, String indirizzo, int numerocivico, String orario) {
+    public Servizio(int id,String nome_attivita, String descrizione, String fornitore, String indirizzo, int numerocivico, String orario) {
 
+        this.id=id;
         this.nome_attivita = nome_attivita;
         this.descrizione = descrizione;
         this.fornitore = fornitore;
