@@ -29,7 +29,7 @@ public class ProfiloServizio extends AppCompatActivity {
         TextView tvDesc = findViewById(R.id.DescrProfAtt);
         TextView tvForn = findViewById(R.id.FornitProfAtt);
         TextView tvIndir = findViewById(R.id.IndirizzoProfAtt);
-        TextView tvNumc = findViewById(R.id.NumeroCvc);
+        TextView tvNumc = findViewById(R.id.Cap);
         TextView tvOrario = findViewById(R.id.OrarioProfAtt);
 
         tvNome.setText(nomeServ);
