@@ -181,12 +181,13 @@ public class CustomCalendarView extends LinearLayout {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = dbOpenHelper.ReadEvents(date,database);
         while (cursor.moveToNext()) {
+            @SuppressLint("Range") long id = cursor.getLong(cursor.getColumnIndex(DBStructure.ID));
             @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructure.EVENT));
             @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructure.TIME));
             @SuppressLint("Range") String Date = cursor.getString(cursor.getColumnIndex(DBStructure.DATE));
             @SuppressLint("Range") String Month = cursor.getString(cursor.getColumnIndex(DBStructure.MONTH));
             @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructure.YEAR));
-            Events events = new Events(event,time, Date, Month,Year);
+            Events events = new Events(id, event,time, Date, Month,Year);
             arrayList.add(events);
         }
 
@@ -247,12 +248,13 @@ public class CustomCalendarView extends LinearLayout {
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = dbOpenHelper.ReadEventsperMonth(month, year);
         while (cursor.moveToNext()) {
+            @SuppressLint("Range") long id = cursor.getLong(cursor.getColumnIndex(DBStructure.ID));
             @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructure.EVENT));
             @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructure.TIME));
             @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex(DBStructure.DATE));
             @SuppressLint("Range") String Month = cursor.getString(cursor.getColumnIndex(DBStructure.MONTH));
             @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructure.YEAR));
-            Events events = new Events(event, time, date, Month, Year);
+            Events events = new Events(id, event, time, date, Month, Year);
             eventsList.add(events);
         }
         cursor.close();
