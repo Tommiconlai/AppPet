@@ -25,12 +25,12 @@ public class ProfiloServizio extends AppCompatActivity {
         String numcServ = getIntent().getStringExtra("NUMERO CIVICO");
         String orarioServ = getIntent().getStringExtra("ORARIO");
 
-        TextView tvNome = findViewById(R.id.Nome);
-        TextView tvDesc = findViewById(R.id.Descrizione);
-        TextView tvForn = findViewById(R.id.Fornitore);
-        TextView tvIndir = findViewById(R.id.Indirizzo);
-        TextView tvNumc = findViewById(R.id.NumeroCvc);
-        TextView tvOrario = findViewById(R.id.Orario);
+        TextView tvNome = findViewById(R.id.NomeProfAtt);
+        TextView tvDesc = findViewById(R.id.DescrProfAtt);
+        TextView tvForn = findViewById(R.id.FornitProfAtt);
+        TextView tvIndir = findViewById(R.id.IndirizzoProfAtt);
+        TextView tvNumc = findViewById(R.id.Cap);
+        TextView tvOrario = findViewById(R.id.OrarioProfAtt);
 
         tvNome.setText(nomeServ);
         tvDesc.setText(descrServ);

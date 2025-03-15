@@ -1,0 +1,47 @@
+drop schema if exists apppet;
+create database apppet;
+use apppet;
+
+create table utenti(
+id int primary key not null auto_increment,
+nome varchar(50),
+cognome varchar(50),
+email varchar(50),
+password varchar(50),
+telefono varchar(10)
+);
+
+create table animali(
+id int primary key not null auto_increment,
+id_utente int, foreign key (id_utente) references Utenti(id),
+nome varchar(50),
+sesso boolean,
+peso float,
+altezza float,
+caratteristiche varchar(200)
+);
+
+create table attivita_calendario(
+id int primary key not null auto_increment,
+id_animale int, foreign key (id_animale) references animali(id),
+nome varchar(50),
+descrizione varchar(50)
+);
+create table servizi(
+id int primary key not null auto_increment,
+id_fornitore int, foreign key (id_fornitore) references fornitori(id),
+id_tipoAttivita int, foreign key (id_tipoAttivita) references tipoAttivita(id),
+nome varchar(50),
+indirizzo varchar(100),
+orari varchar(50),
+cap char(5),
+latitudine double,
+longitudine double
+
+);
+create table cartelle_cliniche(
+id int primary key not null auto_increment,
+id_animale int, foreign key (id_animale) references animali(id),
+descrizione varchar(200),
+date date);
+
