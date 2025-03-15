@@ -1,7 +1,6 @@
 package com.example.apppet.calendario;
 
 public class DBStructure {
-    public static final String ID = "id";
 
     public static final String DB_NAME = "calendar_db";
     public static final int DB_VERSION = 1;

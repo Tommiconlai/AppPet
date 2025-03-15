@@ -1,22 +1,23 @@
 package com.example.apppet.calendario;
 
 public class Events {
-
-    Long id;
+    int id;
     String EVENT;
     String TIME;
     String DATE;
     String MONTH;
     String YEAR;
 
-    public Events(Long id,String EVENT, String TIME, String DATE, String MONTH, String YEAR) {
-        this.id=id;
+    public Events(String EVENT, String TIME, String DATE, String MONTH, String YEAR) {
+
         this.EVENT = EVENT;
         this.TIME = TIME;
         this.DATE = DATE;
         this.MONTH = MONTH;
         this.YEAR = YEAR;
     }
+
+
 
     public String getEVENT() {
         return EVENT;
