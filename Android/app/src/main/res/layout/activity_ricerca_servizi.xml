@@ -20,18 +20,54 @@
             android:layout_height="180dp"
             android:layout_gravity="center"
             android:layout_marginTop="-35dp"
-            android:src="@drawable/cricle_1"/>
+            android:src="@drawable/cricle_1" />
 
     </FrameLayout>
 
 
+    <AutoCompleteTextView
+
+        android:id="@+id/Autotxt"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_home"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:hint="Scegli il servizio..." />
+
+    <LinearLayout
+        android:id="@+id/LinearServ"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Autotxt"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="Inserisci CAP..." />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/header_home"
-        android:layout_centerHorizontal="true"
+
         android:id="@+id/listviewServ"
         android:layout_width="350dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearServ"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
