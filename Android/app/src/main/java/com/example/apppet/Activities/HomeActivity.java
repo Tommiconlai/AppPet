@@ -63,6 +63,12 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
                 startActivity(intent);
             }
         });
+
+        ImageButton btnAggiungiAnimale = findViewById(R.id.add_animale_BTN);
+        btnAggiungiAnimale.setOnClickListener(v ->{
+            Intent intent = new Intent(HomeActivity.this, RegistrazioneAnimaleActivity.class);
+            startActivity(intent);
+        });
     }
 
 

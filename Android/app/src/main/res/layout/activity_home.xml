@@ -5,147 +5,148 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.HomeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activities.HomeActivity">
 
     <FrameLayout
         android:id="@+id/header_home"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:layout_gravity="top">
+
         <ImageView
-            android:layout_marginTop="-120dp"
             android:id="@+id/Pippo"
             android:layout_width="800dp"
             android:layout_height="500dp"
-            android:src="@drawable/cricle_1"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="-120dp"
+            android:src="@drawable/cricle_1" />
 
         <ImageView
             android:id="@+id/Pippo2"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/circle_2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="80dp"/>
+            android:layout_marginTop="80dp"
+            android:src="@drawable/circle_2" />
 
         <ImageButton
             android:id="@+id/BTNprofilo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/profile_btn"
             android:layout_gravity="end"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="40dp"/>
+            android:background="@drawable/profile_btn" />
     </FrameLayout>
 
     <RelativeLayout
         android:id="@+id/lista_animali_home"
-        android:layout_below="@id/header_home"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header_home"
         android:layout_centerInParent="true"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_alignParentLeft="true"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
             android:text="I miei animali"
-            android:layout_gravity="center"/>
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ImageButton
-            android:layout_alignParentRight="true"
             android:id="@+id/add_animale_BTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/add_btn"/>
+            android:layout_alignParentRight="true"
+            android:background="@drawable/add_btn" />
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/lista_animali_home"
         android:id="@+id/animali_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:layout_below="@id/lista_animali_home"
+        android:layout_centerHorizontal="true"
         app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
 
 
     <RelativeLayout
         android:id="@+id/Header_attivita_oggi_home"
-        android:layout_below="@id/animali_recycler_view"
-        android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_below="@id/animali_recycler_view"
         android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_alignParentLeft="true"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Attività di oggi"/>
+            android:layout_alignParentLeft="true"
+            android:text="Attività di oggi"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ImageButton
-            android:layout_alignParentRight="true"
             android:id="@+id/add_attività_BTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/add_btn"/>
+            android:layout_alignParentRight="true"
+            android:background="@drawable/add_btn" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/attivita_oggi_home"
-        android:layout_below="@id/Header_attivita_oggi_home"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_below="@id/Header_attivita_oggi_home"
         android:layout_centerInParent="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/nome_attività_oggi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nome attività"/>
+            android:text="nome attività" />
 
         <TextView
             android:id="@+id/orario_attività_oggi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="00:00"/>
+            android:text="00:00" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/lista_servizi_home"
-        android:layout_below="@id/attivita_oggi_home"
-        android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/attivita_oggi_home"
         android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <TextView
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ultime ricerche"/>
+            android:text="Ultime ricerche"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListaAttivitàHome"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"/>
+            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
 
     </LinearLayout>
 
@@ -153,9 +154,9 @@
         android:id="@+id/cerca_servizi_BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_cerca"/>
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_cerca" />
 
 </RelativeLayout>
