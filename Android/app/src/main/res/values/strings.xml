@@ -6,7 +6,20 @@
         <item name="Toilettatura" type="string">Toilettatura</item>
         <item name="PetSitter" type="string">PetSitter</item>
         <item name="Veterinario" type="string">Veterinario</item>
+        <item name="Addestramento" type="string">Addestramento da Gianni</item>
+        <item name="Toilettatura" type="string">Toilettatura da Claudia</item>
+        <item name="PetSitter" type="string">PetSitting Davide Marroni</item>
+        <item name="Veterinario" type="string">Veterinario Cuccia Felice </item>
 
+
+    </string-array>
+    
+    <string-array name="Spinner_servizi" >
+
+        <item>Addestramento</item>
+        <item>Toilettatura</item>
+        <item>PetSitter</item>
+        <item>Veterinario</item>
 
     </string-array>
 </resources>

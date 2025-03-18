@@ -2,8 +2,12 @@ package com.example.apppet.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +20,7 @@ import com.example.apppet.servizio.ServizioAdapter;
 
 import java.util.ArrayList;
 
-public class RicercaServiziActivity extends AppCompatActivity implements RecyclerViewInterface {
+public class RicercaServiziActivity extends AppCompatActivity implements RecyclerViewInterface, AdapterView.OnItemSelectedListener {
 
     private ServizioAdapter adapter;
     private ArrayList<Servizio> listaServizi = new ArrayList<>();
@@ -28,12 +32,17 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca_servizi);
 
+        Spinner servSpinner= findViewById(R.id.servSpinner);
+        servSpinner.setOnItemSelectedListener(this);
+
+
+
         //CREO L'AUTOCOMPLETE DEI TIPI DI SERVIZIO E SETTO L'ADAPTER
         autoCompleteTextView = findViewById(R.id.AutoCompltxt);
         String [] itemArray = getResources().getStringArray(R.array.ListaServizi);
         ArrayAdapter <String> arrayAdapter = new ArrayAdapter<String>(RicercaServiziActivity.this, android.R.layout.simple_list_item_1,itemArray);
         autoCompleteTextView.setAdapter(arrayAdapter);
-        
+
 
 
         //USO LA RECYCLERVIEW
@@ -70,5 +79,15 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
         intent.putExtra("ORARIO", listaServizi.get(position).getOrario());
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
