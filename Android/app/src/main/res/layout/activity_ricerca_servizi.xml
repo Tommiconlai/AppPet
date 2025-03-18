@@ -27,35 +27,40 @@
 
     <AutoCompleteTextView
 
-        android:id="@+id/Autotxt"
+        android:id="@+id/AutoCompltxt"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/header_home"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:hint="Scegli il servizio..." />
+        android:maxLines="1"
+        />
+
+
 
     <LinearLayout
         android:id="@+id/LinearServ"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Autotxt"
+        android:layout_below="@id/AutoCompltxt"
         android:layout_centerInParent="true"
         android:orientation="horizontal">
+
 
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1" />
+            android:layout_weight="2"
+            />
 
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:hint="Inserisci la provincia" />
+            android:layout_weight="1"
+            android:hint="Provincia" />
 
     </LinearLayout>
 

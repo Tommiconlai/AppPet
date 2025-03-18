@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AppPet</string>
+    <string-array name="ListaServizi">
+
+        <item name="Addestramento" type="string">Addestramento</item>
+        <item name="Toilettatura" type="string">Toilettatura</item>
+        <item name="PetSitter" type="string">PetSitter</item>
+        <item name="Veterinario" type="string">Veterinario</item>
+
+
+    </string-array>
 </resources>
