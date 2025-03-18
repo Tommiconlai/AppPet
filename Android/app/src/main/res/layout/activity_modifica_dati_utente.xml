@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RegistrazioneActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activities.RegistrazioneActivity">
 
     <FrameLayout
         android:id="@+id/header_home"
@@ -25,23 +25,22 @@
     </FrameLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:id="@+id/Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
-        android:orientation="vertical"
         android:layout_below="@+id/header_home"
         android:layout_centerInParent="true"
-        >
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome"
             android:textAlignment="textStart"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/nomeET"
@@ -53,11 +52,11 @@
             android:paddingLeft="10dp" />
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cognome"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
 
 
         <EditText
@@ -67,14 +66,14 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_background"
             android:hint="Inserisci cognome..."
-            android:paddingLeft="10dp"/>
+            android:paddingLeft="10dp" />
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Telefono"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
 
 
         <EditText
@@ -87,11 +86,11 @@
             android:paddingLeft="10dp" />
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mail"
-            android:textAlignment="textStart" />
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
 
 
         <EditText
@@ -100,30 +99,44 @@
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_background"
-
             android:hint="Inserisci mail..."
             android:paddingLeft="10dp" />
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password"
-            android:textAlignment="textStart" />
+            android:text="Indirizzo"
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
 
 
         <EditText
-            android:id="@+id/passwordET"
+            android:id="@+id/etIndirizzoutente"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/edit_text_background"
-
-            android:hint="Inserisci password..."
+            android:hint="Inserisci indirizzo..."
             android:paddingLeft="10dp" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textAlignment="textStart"
+            android:textStyle="bold" />
 
+
+        <EditText
+
+            android:id="@+id/pwUtenteEditText"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Inserisci password..."
+            android:paddingLeft="10dp" />
 
 
     </LinearLayout>
@@ -133,11 +146,11 @@
         android:id="@+id/modificaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Conferma modifiche"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/Blu_base"
+        android:text="Conferma modifiche"
 
         />
 

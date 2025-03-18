@@ -71,8 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_below="@id/lista_animali_home"
-        android:layout_centerHorizontal="true"
-        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
+        android:layout_centerHorizontal="true" />
 
 
     <RelativeLayout
@@ -138,15 +137,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ultime ricerche"
+            android:text="Preferiti"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListaAttivitàHome"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager" />
+            android:layout_height="60dp" />
 
     </LinearLayout>
 
