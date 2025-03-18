@@ -32,8 +32,6 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca_servizi);
 
-
-
         Spinner servSpinner= findViewById(R.id.servSpinner);
         servSpinner.setOnItemSelectedListener(this);
 
