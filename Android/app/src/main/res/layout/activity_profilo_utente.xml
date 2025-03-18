@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textStyle="bold"
-            android:text="Nome"
+            android:text="Nome utente"
             android:layout_marginBottom="20dp"/>
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textStyle="bold"
-            android:text="Cognome"
+            android:text="Cognome utente"
             android:layout_marginBottom="20dp"/>
 
         <TextView
@@ -97,6 +97,19 @@
             android:layout_height="match_parent"
             android:textStyle="bold"
             android:text="email@diprova.siuuu"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Indirizzo"/>
+
+        <TextView
+            android:id="@+id/indirizzo_utente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="Indirizzo utente"
             android:layout_marginBottom="20dp"/>
 
         <TextView
