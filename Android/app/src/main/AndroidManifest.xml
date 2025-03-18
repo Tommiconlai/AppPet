@@ -27,7 +27,6 @@
         <activity android:name=".Activities.CartellaClinicaActivity" />
         <activity android:name=".Activities.RicercaServiziActivity" />
         <activity android:name=".Activities.RegistrazioneActivity" />
-        <activity android:name=".Activities.NuovoServizioActivity" />
         <activity android:name=".Activities.RegistrazioneAnimaleActivity" />
         <activity android:name=".Activities.ProfiloAnimaleActivity" />
         <activity android:name=".Activities.ProfiloUtenteActivity" />
