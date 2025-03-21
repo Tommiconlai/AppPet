@@ -48,11 +48,10 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
         //Set Text
         tvNomeAnimale.setText(animale.getNome());
-        tvSessoAnimale.setText(animale.getSesso());
+        tvSessoAnimale.setText(animale.isSesso());
         tvAltezzaAnimale.setText(animale.getAltezza());
         tvPesoAnimale.setText(animale.getPeso());
         tvNoteAnimale.setText(animale.getNote());
-        tvDataNascita.setText(animale.getDataNascita());
 
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +72,6 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
         apriCartellaClinica.setOnClickListener(v ->{
             Intent intent = new Intent(ProfiloAnimaleActivity.this, CartellaClinicaActivity.class);
-            intent.putExtra("ARRIVO", true);
             startActivity(intent);
         });
     }

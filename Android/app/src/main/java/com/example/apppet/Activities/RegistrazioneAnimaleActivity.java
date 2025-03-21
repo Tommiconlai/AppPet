@@ -1,5 +1,7 @@
 package com.example.apppet.Activities;
 
+import android.app.Application;
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +23,12 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
-
+        
 
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
         RadioGroup sessoGruppo = findViewById(R.id.sessoGruppo);
         RadioButton sessoM = findViewById(R.id.rbMaschio);
         RadioButton sessoF = findViewById(R.id.rbFemmina);
-        EditText dataNatAnimaleET = findViewById(R.id.dataNascitaAnimaleEditText);
         EditText pesoAnimaleET = findViewById(R.id.pesoAnimaleEditText);
         EditText altezzaAnimaleET = findViewById(R.id.altezzaAnimaleEditText);
         EditText noteAnimaleET = findViewById(R.id.noteAnimaleEditText);
@@ -56,13 +57,12 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
          */
 
         nomeAnimaleET.setText(animale.getNome());
-        dataNatAnimaleET.setText(animale.getDataNascita());
         pesoAnimaleET.setText(animale.getPeso());
         noteAnimaleET.setText(animale.getNote());
         altezzaAnimaleET.setText(animale.getAltezza());
-        if(animale.getSesso().equals("M"))
+        if(animale.isSesso().equals("M"))
             sessoM.setChecked(true);
-        else if(animale.getSesso().equals("F"))
+        else if(animale.isSesso().equals("F"))
             sessoF.setChecked(true);
 
         sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -91,7 +91,6 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             animale.setNote(noteAnimaleET.getText().toString());
             animale.setPeso(pesoAnimaleET.getText().toString());
             animale.setAltezza(altezzaAnimaleET.getText().toString());
-            animale.setDataNascita(dataNatAnimaleET.getText().toString());
             intent.putExtra("ANIMALE", animale);
             startActivity(intent);
         });
