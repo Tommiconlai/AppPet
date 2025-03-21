@@ -53,6 +53,7 @@
         <a href="register.html">Non hai un account? Registrati</a>
     </div>
 
+
     <script>
         function login() {
             const username = document.getElementById('username').value;
@@ -64,6 +65,34 @@
                 alert('Inserisci username e password');
             }
         }
+
+
     </script>
+
+    <script>
+        
+        function getLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        document.getElementById("location").innerText = 
+                            `Latitudine: ${lat}, Longitudine: ${lon}`;
+                    },
+                    function(error) {
+                        document.getElementById("location").innerText = 
+                            "Errore: " + error.message;
+                    }
+                );
+            } else {
+                document.getElementById("location").innerText = 
+                    "Geolocalizzazione non supportata dal browser.";
+            }
+        }
+    </script>
+
+
+
 </body>
 </html>
