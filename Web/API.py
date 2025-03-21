@@ -16,7 +16,7 @@ connection = pymysql.connect(
 
 @crickle.route('/registrazioneUtente', methods = ['POST','GET'])
 def registrazioneUtente():
-    return render_template('register.html')
+    return 
 
 @crickle.route('/registrazioneAnimale', methods = ['POST'])
 def registrazioneA():
@@ -26,9 +26,9 @@ def registrazioneA():
 def creaAttività():
     return "ciao2"
 
-@crickle.route('/registrazioneFornitore', methods = ['POST'])
+@crickle.route('/registrazioneFornitore', methods = ['POST','GET'])
 def registrazioneF():
-    return
+    return render_template('register.html')
 
 @crickle.route('/')
 def prova():
