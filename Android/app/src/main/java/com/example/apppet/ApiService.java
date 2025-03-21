@@ -8,6 +8,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
-    @POST("registrazione")
-    Call<ResponseBody> registrazioneUtente(@Body Utente utente);
+    @POST("/registrazioneUtente")
+    Call<UtenteRegisterResponse> registrazioneUtente (@Body Utente utente);
 }

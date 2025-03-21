@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, redirect, render_template, request
 import pymysql
 
-
 import pymysql.cursors
 
 crickle = Flask(__name__)
@@ -15,27 +14,25 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-
-
-@crickle.route('/registrazioneUtente', methods = ['POST','GET'])
+@crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
-    return 
+    data = request.get_json()
+    nome = data.get('nomeUtente')
+    cognome = data.get('cognomeUtente')
+    email = data.get('mailUtente')
+    password = data.get('passwordUtente')
+    telefono = data.get('telefonoUtenete')
+    
+    query = "INSERT INTO utenti (Nome, Cognome, Email, password, Telefono) VALUES (%s, %s, %s, %s, %s)"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (nome, cognome, email, password, telefono))
+        
+    return jsonify({'message': 'Utente registrato con successo'})
 
 @crickle.route('/registrazioneAnimale', methods = ['POST'])
 def registrazioneA():
-    data  = request.get_json()
-    ID_utente = data.get("ID_utente")
-    nome = data.get("nome")
-    sesso = data.get("sesso")
-    peso = data.get("peso")
-    altezza = data.get("altezza")
-    caratteristiche = data.get("caratteristiche")
-
-
-    query = "INSERT INTO Animali (ID_utente,nome,sesso,peso,altezza,caratteristiche) VALUES (%s,%s,%s,%s,%s,%s)"
-    with connection.cursor() as cursor:
-        cursor.execute(query,(ID_utente,nome,sesso,peso,altezza,caratteristiche))
-    return jsonify({"message":"animale registrato"}), 200
+    return
 
 @crickle.route('/creaAttività', methods = ['POST'])
 def creaAttività():

@@ -1,11 +1,18 @@
 package com.example.apppet.utente;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Utente {
     long id;
+    @SerializedName("nome")
     String nome;
+    @SerializedName("cognome")
     String cognome;
+    @SerializedName("email")
     String email;
+    @SerializedName("password")
     String password;
+    @SerializedName("telefono")
     String telefono;
 
 
