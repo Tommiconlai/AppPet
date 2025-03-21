@@ -74,7 +74,6 @@ public class RegistrazioneActivity extends AppCompatActivity {
                     if (registerResponse != null && "Utente registrato con successo".equals(registerResponse.getMessage())) {
                         Toast.makeText(RegistrazioneActivity.this, "Registrazione effettuata", Toast.LENGTH_SHORT).show();
 
-
                         Intent intent = new Intent(RegistrazioneActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
@@ -82,7 +81,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
                         Toast.makeText(RegistrazioneActivity.this, "Errore nella registrazione", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(RegistrazioneActivity.this, "Errore nella registrazione", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrazioneActivity.this, "connessione fallita(primo if)", Toast.LENGTH_SHORT).show();
                 }
             }
 
