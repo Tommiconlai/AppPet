@@ -68,6 +68,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         ImageButton btnAggiungiAnimale = findViewById(R.id.add_animale_BTN);
         btnAggiungiAnimale.setOnClickListener(v ->{
             Intent intent = new Intent(HomeActivity.this, RegistrazioneAnimaleActivity.class);
+            intent.putExtra("ARRIVO", false);
             startActivity(intent);
         });
     }

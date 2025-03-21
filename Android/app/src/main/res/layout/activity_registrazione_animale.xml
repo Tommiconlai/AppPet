@@ -26,7 +26,7 @@
 
     <TableLayout
         android:id="@+id/tabella"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/header_home"
         android:layout_centerHorizontal="true"
@@ -173,18 +173,17 @@
 
             <EditText
                 android:id="@+id/noteAnimaleEditText"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:hint="Note..." />
 
         </LinearLayout>
+
     </TableLayout>
 
-
-    <!-- bottone -->
+    <!-- bottoni -->
     <Button
-        android:id="@+id/btnConferma"
+        android:id="@+id/btnConfermaModifiche"
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
@@ -192,7 +191,20 @@
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/Blu_base"
-        android:text="CONFERMA" />
+        android:text="CONFERMA"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btnConfermaRegistrazione"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Blu_base"
+        android:text="CONFERMA"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

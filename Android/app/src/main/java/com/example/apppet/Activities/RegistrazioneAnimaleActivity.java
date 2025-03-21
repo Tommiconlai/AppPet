@@ -2,13 +2,13 @@ package com.example.apppet.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,8 +31,21 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         EditText pesoAnimaleET = findViewById(R.id.pesoAnimaleEditText);
         EditText altezzaAnimaleET = findViewById(R.id.altezzaAnimaleEditText);
         EditText noteAnimaleET = findViewById(R.id.noteAnimaleEditText);
+        Button btnConfermaModifiche = findViewById(R.id.btnConfermaModifiche);
+        Button btnRegistraAnimale = findViewById(R.id.btnConfermaRegistrazione);
 
+
+
+        boolean arrivo = getIntent().getBooleanExtra("ARRIVO", true);
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
+
+
+        if(arrivo)
+            btnRegistraAnimale.setVisibility(View.VISIBLE);
+        else if(!arrivo)
+            btnConfermaModifiche.setVisibility(View.VISIBLE);
+
+
         /*
         String nomeAnimale = getIntent().getStringExtra("NOME");
         String pesoAnimale = getIntent().getStringExtra("PESO");
@@ -48,9 +61,9 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         noteAnimaleET.setText(animale.getNote());
         altezzaAnimaleET.setText(animale.getAltezza());
         if(animale.getSesso().equals("M"))
-            sessoM.setActivated(true);
+            sessoM.setChecked(true);
         else if(animale.getSesso().equals("F"))
-            sessoF.setActivated(true);
+            sessoF.setChecked(true);
 
         sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -71,7 +84,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         });
 
 
-        Button btnConferma = findViewById(R.id.btnConferma);
+        Button btnConferma = findViewById(R.id.btnConfermaModifiche);
         btnConferma.setOnClickListener(v ->{
             Intent intent = new Intent(RegistrazioneAnimaleActivity.this, ProfiloAnimaleActivity.class);
             animale.setNome(nomeAnimaleET.getText().toString());
