@@ -87,7 +87,8 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         });
 
 
-        Button btnConferma = findViewById(R.id.btnConfermaModifiche);
+        Button btnConferma =
+                findViewById(R.id.btnConfermaModifiche);
         btnConferma.setOnClickListener(v ->{
             Intent intent = new Intent(RegistrazioneAnimaleActivity.this, ProfiloAnimaleActivity.class);
             animale.setNome(nomeAnimaleET.getText().toString());
@@ -107,6 +108,8 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                 String sessoAnimale;
                 if(sessoM.isChecked()){ sessoAnimale="M"; }
                 else{ sessoAnimale="F"; }
+
+                registerAnimale(nomeAnimale,altezzaAnimale,pesoAnimale,noteAnimale,sessoAnimale);
 
 
             }
@@ -130,7 +133,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                     if (registerResponse != null && "Utente registrato con successo".equals(registerResponse.getMessage())) {
                         Toast.makeText(RegistrazioneAnimaleActivity.this, "Registrazione effettuata", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(RegistrazioneAnimaleActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(RegistrazioneAnimaleActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
