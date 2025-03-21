@@ -1,7 +1,7 @@
 package com.example.apppet;
 
 public class RegisterResponse {
-    //cambiare nome perche è genrica
+
 
         private String message;
 

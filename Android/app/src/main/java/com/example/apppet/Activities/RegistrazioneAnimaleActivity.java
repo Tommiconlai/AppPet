@@ -1,5 +1,6 @@
 package com.example.apppet.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,9 @@ import retrofit2.Response;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
+    Animale a1 = new Animale(null,0, null, null, null, null);
+
+    @SuppressLint("SuspiciousIndentation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +49,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
         if(callerActivity != null){
             if(callerActivity.equals("ProfiloAnimaleActivity"))
-                //btnConfermaModifiche.setVisibility(View.VISIBLE);
+                btnConfermaModifiche.setVisibility(View.VISIBLE);
                 nomeAnimaleET.setText(animale.getNome());
                 pesoAnimaleET.setText(animale.getPeso());
                 noteAnimaleET.setText(animale.getNote());
@@ -54,6 +58,25 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                     sessoM.setChecked(true);
                 else if(animale.isSesso().equals("F"))
                     sessoF.setChecked(true);
+
+            sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(sessoM.isChecked()){
+                        animale.setSesso("M");
+                    }
+                }
+            });
+
+            sessoF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(sessoF.isChecked()){
+                        animale.setSesso("F");
+                    }
+                }
+            });
+
         }
 
 
@@ -72,7 +95,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(sessoM.isChecked()){
-                    animale.setSesso("M");
+                    a1.setSesso("M");
                 }
             }
         });
@@ -81,14 +104,13 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(sessoF.isChecked()){
-                    animale.setSesso("F");
+                    a1.setSesso("F");
                 }
             }
         });
 
 
-        Button btnConferma =
-                findViewById(R.id.btnConfermaModifiche);
+        Button btnConferma = findViewById(R.id.btnConfermaModifiche);
         btnConferma.setOnClickListener(v ->{
             Intent intent = new Intent(RegistrazioneAnimaleActivity.this, ProfiloAnimaleActivity.class);
             animale.setNome(nomeAnimaleET.getText().toString());
@@ -98,6 +120,8 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             intent.putExtra("ANIMALE", animale);
             startActivity(intent);
         });
+
+        btnRegistraAnimale.setVisibility(View.VISIBLE);
         btnRegistraAnimale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +145,12 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             Toast.makeText(RegistrazioneAnimaleActivity.this, "i campi obbligatori", Toast.LENGTH_SHORT).show();
             return;
         }
-        Animale a1 = new Animale(nomeAnimale,0,pesoAnimale,altezzaAnimale,noteAnimale,sessoAnimale);
+
+        a1.setNome(nomeAnimale);
+        a1.setRatingAnimale(0);
+        a1.setPeso(pesoAnimale);
+        a1.setAltezza(altezzaAnimale);
+        a1.setNote(noteAnimale);
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterResponse> call = apiService.registrazioneAnimale(a1);
 
@@ -130,7 +159,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful()) {
                     RegisterResponse registerResponse = response.body();
-                    if (registerResponse != null && "Utente registrato con successo".equals(registerResponse.getMessage())) {
+                    if (registerResponse != null && "Animale registrato con successo".equals(registerResponse.getMessage())) {
                         Toast.makeText(RegistrazioneAnimaleActivity.this, "Registrazione effettuata", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(RegistrazioneAnimaleActivity.this, HomeActivity.class);

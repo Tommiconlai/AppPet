@@ -34,16 +34,16 @@ def registrazioneUtente():
 def registrazioneA():
     data = request.get_json()
     nome = data.get('nome')
-    sesso = data.get('sesso')
     peso = data.get('peso')
     altezza = data.get('altezza')
     note = data.get('note')
+    sesso = data.get('sesso')
     ratingAnimale = data.get('ratingAnimale')
     
-    query = "INSERT INTO animali (Nome, Sesso, Peso, Altezza, Note, RatingAnimale) VALUES (%s, %s, %s, %s, %s, %s)"
+    query = "INSERT INTO animali (Nome, Peso, Altezza, Note, Sesso, RatingAnimale) VALUES (%s, %s, %s, %s, %s, %s)"
     
     with connection.cursor() as cursor:
-        cursor.execute(query, (nome, sesso, peso, altezza, note, ratingAnimale))
+        cursor.execute(query, (nome, peso, altezza, note, sesso, ratingAnimale))
         
     return jsonify({'message': 'Animale registrato con successo'})
 
