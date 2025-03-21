@@ -3,6 +3,7 @@ package com.example.apppet.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
@@ -87,13 +88,17 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClicked(int position) {
         Intent intent = new Intent(HomeActivity.this, ProfiloAnimaleActivity.class);
 
+        /*
         intent.putExtra("NOME", animaliLista.get(position).getNome());
         intent.putExtra("RATING", animaliLista.get(position).getRatingAnimale());
         intent.putExtra("PESO", animaliLista.get(position).getPeso());
         intent.putExtra("ALTEZZA", animaliLista.get(position).getAltezza());
         intent.putExtra("NOTE", animaliLista.get(position).getNote());
-        intent.putExtra("SESSO", animaliLista.get(position).isSesso());
+        intent.putExtra("SESSO", animaliLista.get(position).getSesso());
         intent.putExtra("DATANASCITA", animaliLista.get(position).getDataNascita());
+         */
+
+        intent.putExtra("ANIMALE", (Parcelable) animaliLista.get(position));
 
         startActivity(intent);
     }

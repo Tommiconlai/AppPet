@@ -212,7 +212,6 @@
             android:id="@+id/noteProfiloAnimale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="5"
             android:text="@string/lorem_ipsum"
             android:textSize="20dp" />
 
