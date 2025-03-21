@@ -17,11 +17,11 @@ connection = pymysql.connect(
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
     data = request.get_json()
-    nome = data.get('nomeUtente')
-    cognome = data.get('cognomeUtente')
-    email = data.get('mailUtente')
-    password = data.get('passwordUtente')
-    telefono = data.get('telefonoUtenete')
+    nome = data.get('nome')
+    cognome = data.get('cognome')
+    email = data.get('email')
+    password = data.get('password')
+    telefono = data.get('telefono')
     
     query = "INSERT INTO utenti (Nome, Cognome, Email, password, Telefono) VALUES (%s, %s, %s, %s, %s)"
     
