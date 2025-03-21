@@ -47,4 +47,4 @@ def prova():
     return "ciao"
 
 if __name__ == '__main__':
-    crickle.run(debug=True,port=5000)
+    crickle.run(host = '0.0.0.0', debug=True)

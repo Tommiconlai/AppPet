@@ -10,7 +10,7 @@ public class RetrofitClient {
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://127.0.0.1:5000")  // Sostituisci con l'URL del tuo server Flask
+                    .baseUrl("http://192.168.0.107:5000")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
