@@ -65,6 +65,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
                 intent.putExtra("SESSO", tvSessoAnimale.getText());
                 intent.putExtra("DATANASCITA", tvDataNascita.getText());
                  */
+                intent.putExtra("ActivityCaller", "ProfiloAnimaleActivity");
                 intent.putExtra("ANIMALE", animale);
                 startActivity(intent);
             }

@@ -2,6 +2,7 @@ package com.example.apppet.Activities;
 
 import android.app.Application;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,6 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
-        
 
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
         RadioGroup sessoGruppo = findViewById(R.id.sessoGruppo);
@@ -36,15 +36,23 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         Button btnRegistraAnimale = findViewById(R.id.btnConfermaRegistrazione);
 
 
-
-        boolean arrivo = getIntent().getBooleanExtra("ARRIVO", true);
+        String callerActivity = getIntent().getStringExtra("ActivityCaller");
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
 
+        System.out.println("Arrivo da: " + callerActivity);
 
-        if(arrivo)
-            btnRegistraAnimale.setVisibility(View.VISIBLE);
-        else if(!arrivo)
-            btnConfermaModifiche.setVisibility(View.VISIBLE);
+        if(callerActivity != null){
+            if(callerActivity.equals("ProfiloAnimaleActivity"))
+                btnConfermaModifiche.setVisibility(View.VISIBLE);
+                nomeAnimaleET.setText(animale.getNome());
+                pesoAnimaleET.setText(animale.getPeso());
+                noteAnimaleET.setText(animale.getNote());
+                altezzaAnimaleET.setText(animale.getAltezza());
+                if(animale.isSesso().equals("M"))
+                    sessoM.setChecked(true);
+                else if(animale.isSesso().equals("F"))
+                    sessoF.setChecked(true);
+        }
 
 
         /*
@@ -56,14 +64,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         String dataNascita = getIntent().getStringExtra("DATANASCITA");
          */
 
-        nomeAnimaleET.setText(animale.getNome());
-        pesoAnimaleET.setText(animale.getPeso());
-        noteAnimaleET.setText(animale.getNote());
-        altezzaAnimaleET.setText(animale.getAltezza());
-        if(animale.isSesso().equals("M"))
-            sessoM.setChecked(true);
-        else if(animale.isSesso().equals("F"))
-            sessoF.setChecked(true);
+
 
         sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
