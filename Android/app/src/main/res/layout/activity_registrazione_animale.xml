@@ -22,16 +22,16 @@
             android:src="@drawable/cricle_1" />
 
     </FrameLayout>
-<!-- fine immagine -->
+    <!-- fine immagine -->
 
     <TableLayout
         android:id="@+id/tabella"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/header_home"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_below="@id/header_home"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
 
         <!-- prima riga -->
         <TableRow android:layout_width="wrap_content">
@@ -56,9 +56,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-
                 android:orientation="vertical">
 
                 <TextView
@@ -68,23 +67,23 @@
                     android:textAlignment="textStart" />
 
                 <RadioGroup
-                    android:id="@+id/sessoAnimaleRadioBTN"
+                    android:id="@+id/sessoGruppo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/rbMaschio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="M" />
 
                     <RadioButton
+                        android:id="@+id/rbFemmina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="F" />
-
                 </RadioGroup>
-
 
             </LinearLayout>
 
@@ -133,7 +132,7 @@
 
             </LinearLayout>
 
-<!--terza riga-->
+            <!--terza riga-->
         </TableRow>
 
         <TableRow android:layout_width="810dp">
@@ -144,23 +143,13 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Data di nascita"
-                    android:textAlignment="textStart" />
 
-                <EditText
-                    android:id="@+id/dataNascitaAnimaleEditText"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Data..." />
 
             </LinearLayout>
 
 
         </TableRow>
-<!-- quarta riga -->
+        <!-- quarta riga -->
         <LinearLayout
             android:layout_width="160dp"
             android:layout_height="wrap_content"
@@ -183,19 +172,17 @@
     </TableLayout>
 
 
-<!-- bottone -->
+    <!-- bottone -->
     <Button
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
         android:id="@+id/btnConferma"
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:text="CONFERMA"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:backgroundTint="@color/Blu_base"/>
-
-
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Blu_base"
+        android:text="CONFERMA" />
 
 
 </RelativeLayout>

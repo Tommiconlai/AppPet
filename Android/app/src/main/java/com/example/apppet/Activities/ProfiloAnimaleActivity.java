@@ -2,13 +2,16 @@ package com.example.apppet.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apppet.R;
+import com.example.apppet.animale.Animale;
 
 public class ProfiloAnimaleActivity extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profilo_animale);
 
         //Get Extras
+        /*
         String nomeAnimale = getIntent().getStringExtra("NOME");
         float ratingAnimale = getIntent().getFloatExtra("RATING", 0);
         String pesoAnimale = getIntent().getStringExtra("PESO");
@@ -25,6 +29,9 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         String noteAnimale = getIntent().getStringExtra("NOTE");
         String sessoAnimale = getIntent().getStringExtra("SESSO");
         String dataNascita = getIntent().getStringExtra("DATANASCITA");
+
+         */
+        Animale animale = getIntent().getParcelableExtra("ANIMALE");
 
         //findviewbyid
         TextView tvNomeAnimale = findViewById(R.id.nomeProfiloAnimale);
@@ -35,23 +42,38 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         TextView tvDataNascita = findViewById(R.id.dataProfiloAnimale);
 
         //Buttons
-        Button modificaProfiloAnimale = findViewById(R.id.modificaBTN);
-        Button cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
+        ImageButton modificaProfiloAnimale = findViewById(R.id.modificaBTN);
+        TextView cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
+        ImageButton apriCartellaClinica = findViewById(R.id.cartellaClinicaBTN);
 
         //Set Text
-        tvNomeAnimale.setText(nomeAnimale);
-        tvSessoAnimale.setText(sessoAnimale);
-        tvAltezzaAnimale.setText(altezzaAnimale);
-        tvPesoAnimale.setText(pesoAnimale);
-        tvNoteAnimale.setText(noteAnimale);
-        tvDataNascita.setText(dataNascita);
+        tvNomeAnimale.setText(animale.getNome());
+        tvSessoAnimale.setText(animale.getSesso());
+        tvAltezzaAnimale.setText(animale.getAltezza());
+        tvPesoAnimale.setText(animale.getPeso());
+        tvNoteAnimale.setText(animale.getNote());
+        tvDataNascita.setText(animale.getDataNascita());
 
         //logica database?
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfiloAnimaleActivity.this, RegistrazioneAnimaleActivity.class);
+                /*
+                intent.putExtra("NOME", tvNomeAnimale.getText());
+                intent.putExtra("PESO", tvPesoAnimale.getText());
+                intent.putExtra("ALTEZZA", tvAltezzaAnimale.getText());
+                intent.putExtra("NOTE", tvNoteAnimale.getText());
+                intent.putExtra("SESSO", tvSessoAnimale.getText());
+                intent.putExtra("DATANASCITA", tvDataNascita.getText());
+                 */
+                intent.putExtra("ANIMALE", animale);
                 startActivity(intent);
             }
+        });
+
+        apriCartellaClinica.setOnClickListener(v ->{
+            Intent intent = new Intent(ProfiloAnimaleActivity.this, CartellaClinicaActivity.class);
+            startActivity(intent);
         });
     }
 }

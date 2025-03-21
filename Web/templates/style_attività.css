@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+
+}
+
+h2{
+    text-align: center;
+}
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5rem;
+}
+button {
+    padding: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    text-align: center;
+}
+a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+.immagineSopra{
+    position: absolute;
+    margin-top: -10cap;
+    top: 0;
+    background-color: #007bff;
+    width: 150%;
+    height: 30%;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

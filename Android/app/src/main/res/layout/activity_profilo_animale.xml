@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <FrameLayout
         android:id="@+id/header_home"
@@ -25,90 +22,90 @@
 
     <!--fine immagine logo-->
 
-
-    <TextView
-        android:id="@+id/nomeProfiloAnimale"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/header_home"
-        android:layout_marginTop="0dp"
-        android:padding="20dp"
-        android:text="NOME Animale"
-        android:textSize="26sp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
-    <!--prima linea -->
-
-    <LinearLayout
-        android:padding="20dp"
-        android:id="@+id/primaLinea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nomeProfiloAnimale"
-        android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Peso"
-                    android:textAlignment="textStart" />
-
-                <TextView
-                    android:id="@+id/pesoProfiloAnimale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"/>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sesso"
-                    android:textAlignment="textStart" />
-
-                <TextView
-                    android:id="@+id/sessoProfiloAnimale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"/>
-
-            </LinearLayout>
-
-    </LinearLayout>
-    <!--seconda linea-->
-    <LinearLayout
-        android:padding="20dp"
-        android:id="@+id/secondaLinea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/primaLinea"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:layout_weight="1"
+        <TextView
+            android:id="@+id/nomeProfiloAnimale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp"
+            android:text="NOME Animale"
+            android:textSize="26sp" />
+
+        <ImageButton
+            android:id="@+id/modificaBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_modifica" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/primaLinea"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/loPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Peso"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/pesoProfiloAnimale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPeso"
+                android:gravity="bottom"
+                android:text="30"
+                android:textSize="40dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/pesoProfiloAnimale"
+                android:layout_toRightOf="@id/pesoProfiloAnimale"
+                android:padding="10dp"
+                android:text="kg" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loAltezza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAltezza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Altezza"
                 android:textAlignment="textStart" />
 
@@ -116,23 +113,70 @@
                 android:id="@+id/altezzaProfiloAnimale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"/>
-
-
-        </LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+                android:layout_below="@id/tvAltezza"
+                android:gravity="bottom"
+                android:text="30"
+                android:textSize="40dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/altezzaProfiloAnimale"
+                android:layout_toRightOf="@id/altezzaProfiloAnimale"
+                android:padding="10dp"
+                android:text="cm" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondaLinea"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/primaLinea"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/loSesso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSesso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Sesso"
+                android:textAlignment="textStart" />
+
+            <TextView
+                android:id="@+id/sessoProfiloAnimale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSesso"
+                android:gravity="bottom"
+                android:text="M"
+                android:textSize="40dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loDataNascita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Data di nascita"
                 android:textAlignment="textStart" />
 
@@ -140,85 +184,76 @@
                 android:id="@+id/dataProfiloAnimale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"/>
+                android:layout_below="@id/tvData"
+                android:gravity="bottom"
+                android:text="10/10/2019"
+                android:textSize="40dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/terzaLinea"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/secondaLinea"
-        android:orientation="horizontal"
-        android:padding="20dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:text="Note"
+            android:textAlignment="textStart" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Note"
-                android:textAlignment="textStart" />
-
-            <TextView
-                android:id="@+id/noteProfiloAnimale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp" />
-
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/noteProfiloAnimale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem_ipsum"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/terzaLinea"
-        >
+        android:layout_centerHorizontal="true">
 
-        <Button
-            android:id="@+id/modificaBTN"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
-            android:text="modifica profilo"
-            android:backgroundTint="@color/Blu_base"/>
-
-        <Button
+        <ImageButton
             android:id="@+id/cartellaClinicaBTN"
-            android:layout_width="242dp"
-            android:layout_height="93dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:text="cartella clinica"
-            android:backgroundTint="@color/Blu_base"/>
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/terzaLinea"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_rectangle"
+            android:text="Cartella clinica" />
 
-        <Button
-            android:id="@+id/cancellaBTN"
-            android:layout_width="165dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:backgroundTint="@color/Blu_base"
-            android:text="cancella profilo" />
+            android:layout_gravity="center"
+            android:text="Cartella clinica"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
+    </FrameLayout>
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/cancellaBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Blu_base"
+        android:text="Cancella profilo"
+        android:textColor="@color/red" />
 
-
-
-
-
-
-    </RelativeLayout>
+</RelativeLayout>
 
 
 

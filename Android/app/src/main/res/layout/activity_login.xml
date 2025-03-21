@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Non hai un account? Registrati"
-        android:textColor="#FF0000"
+        android:textColor="@color/red"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textIsSelectable="true"/>

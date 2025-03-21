@@ -6,10 +6,9 @@ public class Animale  {
     String altezza;
     String note;
     String sesso;
-    String dataNascita;
     float ratingAnimale;
 
-    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso, String dataNascita) {
+    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso) {
         super();
         this.nome = nome;
         this.ratingAnimale = rating;
@@ -17,7 +16,6 @@ public class Animale  {
         this.altezza = altezza;
         this.note = note;
         this.sesso = sesso;
-        this.dataNascita = dataNascita;
     }
 
     public String getNome() {
@@ -34,10 +32,6 @@ public class Animale  {
 
     public String getNote() {
         return note;
-    }
-
-    public String getDataNascita() {
-        return dataNascita;
     }
 
     public String isSesso() {
