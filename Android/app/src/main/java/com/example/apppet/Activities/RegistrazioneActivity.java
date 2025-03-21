@@ -7,23 +7,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apppet.ApiService;
 import com.example.apppet.R;
 import com.example.apppet.RetrofitClient;
-import com.example.apppet.UtenteRegisterResponse;
+import com.example.apppet.RegisterResponse;
 import com.example.apppet.utente.Utente;
 
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegistrazioneActivity extends AppCompatActivity {
 
@@ -64,13 +58,13 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
 
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        Call<UtenteRegisterResponse> call = apiService.registrazioneUtente(ut1);
+        Call<RegisterResponse> call = apiService.registrazioneUtente(ut1);
 
-        call.enqueue(new Callback<UtenteRegisterResponse>() {
+        call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<UtenteRegisterResponse> call, Response<UtenteRegisterResponse> response) {
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful()) {
-                    UtenteRegisterResponse registerResponse = response.body();
+                    RegisterResponse registerResponse = response.body();
                     if (registerResponse != null && "Utente registrato con successo".equals(registerResponse.getMessage())) {
                         Toast.makeText(RegistrazioneActivity.this, "Registrazione effettuata", Toast.LENGTH_SHORT).show();
 
@@ -86,7 +80,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UtenteRegisterResponse> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(RegistrazioneActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
             }
         });

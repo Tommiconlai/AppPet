@@ -1,15 +1,16 @@
 package com.example.apppet;
 
+import com.example.apppet.animale.Animale;
 import com.example.apppet.utente.Utente;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
     @POST("/registrazioneUtente")
-    Call<UtenteRegisterResponse> registrazioneUtente (@Body Utente utente);
+    Call<RegisterResponse> registrazioneUtente (@Body Utente utente);
 
-
+    @POST("/registrazioneAnimale")
+    Call<RegisterResponse> registrazioneAnimale (@Body Animale animale);
 }
