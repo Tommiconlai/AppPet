@@ -1,5 +1,6 @@
 package com.example.apppet.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.app.Service;
 import android.content.ComponentName;
@@ -20,6 +21,7 @@ import com.example.apppet.animale.Animale;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
+    @SuppressLint("SuspiciousIndentation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

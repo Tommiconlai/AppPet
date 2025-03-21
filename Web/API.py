@@ -32,7 +32,20 @@ def registrazioneUtente():
 
 @crickle.route('/registrazioneAnimale', methods = ['POST'])
 def registrazioneA():
-    return
+    data = request.get_json()
+    nome = data.get('nome')
+    sesso = data.get('sesso')
+    peso = data.get('peso')
+    altezza = data.get('altezza')
+    note = data.get('note')
+    ratingAnimale = data.get('ratingAnimale')
+    
+    query = "INSERT INTO animali (Nome, Sesso, Peso, Altezza, Note, RatingAnimale) VALUES (%s, %s, %s, %s, %s, %s)"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (nome, sesso, peso, altezza, note, ratingAnimale))
+        
+    return jsonify({'message': 'Animale registrato con successo'})
 
 @crickle.route('/creaAttività', methods = ['POST'])
 def creaAttività():
