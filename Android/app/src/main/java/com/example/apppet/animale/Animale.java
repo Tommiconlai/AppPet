@@ -1,20 +1,14 @@
 package com.example.apppet.animale;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
-public class Animale implements Parcelable {
+public class Animale  {
     String nome;
     String peso;
     String altezza;
     String note;
     String sesso;
-    String dataNascita;
     float ratingAnimale;
 
-    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso, String dataNascita) {
+    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso) {
         super();
         this.nome = nome;
         this.ratingAnimale = rating;
@@ -22,32 +16,8 @@ public class Animale implements Parcelable {
         this.altezza = altezza;
         this.note = note;
         this.sesso = sesso;
-        this.dataNascita = dataNascita;
     }
 
-    protected Animale(Parcel in) {
-        nome = in.readString();
-        peso = in.readString();
-        altezza = in.readString();
-        note = in.readString();
-        sesso = in.readString();
-        dataNascita = in.readString();
-        ratingAnimale = in.readFloat();
-    }
-
-    public static final Creator<Animale> CREATOR = new Creator<Animale>() {
-        @Override
-        public Animale createFromParcel(Parcel in) {
-            return new Animale(in);
-        }
-
-        @Override
-        public Animale[] newArray(int size) {
-            return new Animale[size];
-        }
-    };
-
-    //Getters
     public String getNome() {
         return nome;
     }
@@ -64,60 +34,11 @@ public class Animale implements Parcelable {
         return note;
     }
 
-    public String getDataNascita() {
-        return dataNascita;
-    }
-
-    public String getSesso() {
+    public String isSesso() {
         return sesso;
-    }
-
-    //Setters
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setPeso(String peso) {
-        this.peso = peso;
-    }
-
-    public void setAltezza(String altezza) {
-        this.altezza = altezza;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public void setSesso(String sesso) {
-        this.sesso = sesso;
-    }
-
-    public void setDataNascita(String dataNascita) {
-        this.dataNascita = dataNascita;
-    }
-
-    public void setRatingAnimale(float ratingAnimale) {
-        this.ratingAnimale = ratingAnimale;
     }
 
     public float getRatingAnimale() {
         return ratingAnimale;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(nome);
-        dest.writeString(peso);
-        dest.writeString(altezza);
-        dest.writeString(note);
-        dest.writeString(sesso);
-        dest.writeString(dataNascita);
-        dest.writeFloat(ratingAnimale);
     }
 }
