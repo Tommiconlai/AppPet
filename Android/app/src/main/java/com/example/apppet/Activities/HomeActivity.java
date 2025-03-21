@@ -75,9 +75,9 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
 
     public void inizializzaAnimali(){
         //Dati finti di prova
-        Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M", "12/03/2023");
-        Animale animale2 = new Animale("Pippo", 2, "43", "57", "Labrador che sbava ovunque", "F", "01/05/2019");
-        Animale animale3 = new Animale("Demetrio", 2.5f, "12", "22", "Persiano liscio liscio", "M", "25/10/2021");
+        Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M");
+        Animale animale2 = new Animale("Pippo", 2, "43", "57", "Labrador che sbava ovunque", "F");
+        Animale animale3 = new Animale("Demetrio", 2.5f, "12", "22", "Persiano liscio liscio", "M");
 
         animaliLista.add(animale1);
         animaliLista.add(animale2);
