@@ -38,5 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /* mettere la logica per cui controlla se l'utente è già registrato
+    se è già registrato gli fa fare il login e salva i dati nelle shared preferences
+
 
 }

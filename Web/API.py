@@ -14,6 +14,23 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
+@crickle.route('/login', methods = ['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    
+    query = "SELECT * FROM utenti WHERE Email = %s AND password = %s"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (email, password))
+        result = cursor.fetchone()
+        
+    if result:
+        return jsonify({'message': 'Login effettuato con successo'})
+    else:
+        return jsonify({'message': 'Login fallito'})
+
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
     data = request.get_json()
