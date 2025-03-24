@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ListaAnimaliAdapter adapterAnimali;
-    private ArrayList<Animale> animaliLista = new ArrayList<>();
+    public static ArrayList<Animale> animaliLista = new ArrayList<>();
 
     RatingBar ratingAnimale;
 
@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         ImageButton btnAggiungiAnimale = findViewById(R.id.add_animale_BTN);
         btnAggiungiAnimale.setOnClickListener(v ->{
             Intent intent = new Intent(HomeActivity.this, RegistrazioneAnimaleActivity.class);
-            //intent.putExtra("ActivityCaller", "HomeActivity");
+            intent.putExtra("ActivityCaller", "HomeActivity");
             startActivity(intent);
         });
     }
