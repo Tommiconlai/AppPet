@@ -24,25 +24,27 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
+    LoginRequest utente = new LoginRequest();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         EditText emailET = findViewById(R.id.usernameEditTxt);
         EditText passwordET = findViewById(R.id.passwordEditTxt);
-        sharedPreferences = getSharedPreferences("user_pref",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
 
-        Button loginBTN = (Button) findViewById(R.id.loginBTN);
+        Button loginBTN = findViewById(R.id.loginBTN);
         loginBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /*Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
                 Toast.makeText(LoginActivity.this, "Hai effettuato il login", Toast.LENGTH_SHORT).show();*/
-                String email=emailET.getText().toString();
-                String password=passwordET.getText().toString();
-                checkCredentials(email,password);
+                String email = emailET.getText().toString();
+                String password = passwordET.getText().toString();
+                checkCredentials(email, password);
             }
         });
 
@@ -55,42 +57,34 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void checkCredentials(String email, String password){
-            ApiService apiservice = RetrofitClient.getClient().create(ApiService.class);
-            Call<RegisterResponse> call = apiservice.login(new LoginRequest());
-            call.enqueue(new Callback<>() {
-                @Override
-                public void onResponse(Call<LoginRequest> call, Response<RegisterResponse> response) {
-                        RegisterResponse loginResponse= response.body();
-                        if(loginResponse != null && "Login effettuato".equals(loginResponse.getMessage())){
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putLong("userId",loginResponse.getUserId());
-                            editor.putString("userEmail",loginResponse.getEmail());
-                            editor.putString("userPassword", loginResponse.getPassword());
 
-                            editor.apply();
-
-                        }
-                    }
+    private void checkCredentials(String email, String password) {
+        ApiService apiservice = RetrofitClient.getClient().create(ApiService.class);
+        Call<RegisterResponse> call = apiservice.login(utente);
+        call.enqueue(new Callback<>() {
 
 
-                @Override
-                public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                    RegisterResponse registerResponse= response.body();
-                    if(registerResponse != null && "Login effettuato".equals(registerResponse.getMessage())){
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putLong("userId",response.body().getUserId());
-                        editor.putString("userEmail",registerResponse.getEmail());
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                RegisterResponse registerResponse = response.body();
+                if (registerResponse != null && "Login effettuato".equals(registerResponse.getMessage())) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("userId", response.body().getUserId());
+                    editor.putString("userEmail", registerResponse.getEmail());
+                    editor.putString("userPassword", registerResponse.getPassword());
+
+                    editor.apply();
 
                 }
 
             }
 
-                @Override
-                public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
 
-                });
-
+            }
+        });
     }
 }
 

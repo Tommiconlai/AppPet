@@ -17,8 +17,6 @@ public class LoginRequest {
         this.email = email;
     }
 
-
-
     public String getPassword() {
         return password;
     }
