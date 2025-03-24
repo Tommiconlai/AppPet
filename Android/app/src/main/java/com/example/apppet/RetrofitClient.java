@@ -10,7 +10,7 @@ public class RetrofitClient {
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.107:5000")
+                    .baseUrl("http://192.168.0.121:5000")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

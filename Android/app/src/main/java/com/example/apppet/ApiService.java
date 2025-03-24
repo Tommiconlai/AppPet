@@ -1,10 +1,12 @@
 package com.example.apppet;
 
 import com.example.apppet.animale.Animale;
+import com.example.apppet.utente.LoginRequest;
 import com.example.apppet.utente.Utente;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
@@ -13,4 +15,7 @@ public interface ApiService {
 
     @POST("/registrazioneAnimale")
     Call<RegisterResponse> registrazioneAnimale (@Body Animale animale);
+
+    @GET("/login")
+    Call<RegisterResponse> login (@Body LoginRequest loginRequest);
 }
