@@ -16,6 +16,6 @@ public interface ApiService {
     @POST("/registrazioneAnimale")
     Call<RegisterResponse> registrazioneAnimale (@Body Animale animale);
 
-    @GET("login")
+    @POST("login")
     Call<RegisterResponse> login (@Body LoginRequest loginRequest);
 }

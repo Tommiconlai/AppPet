@@ -54,7 +54,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
         }
 
 
-        Utente ut1 = new Utente(nomeUtente, passwordUtente, mailUtente, cognomeUtente, telefonoUtente);
+        Utente ut1 = new Utente(nomeUtente, cognomeUtente, mailUtente, passwordUtente, telefonoUtente);
 
 
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
