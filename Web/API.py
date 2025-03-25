@@ -29,9 +29,9 @@ def login():
             result = cursor.fetchone()
             
         if result:
-            return jsonify({'id':result[0]},{'message':'Login effettuato'})
+            return jsonify({'userId': result['id'], 'message': 'Login effettuato', 'email': email})
         else:
-            return jsonify({'message': 'Login fallito'})
+            return jsonify({'message': 'Login fallito'}), 401
         
 
 @crickle.route('/registrazioneUtente', methods = ['POST'])
