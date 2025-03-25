@@ -34,6 +34,7 @@ def login():
             return jsonify({'message': 'Login fallito'}), 401
         
 
+
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
     data = request.get_json()
@@ -76,10 +77,22 @@ def registrazioneF():
     
     return render_template('register.html')
 
+@crickle.route('/listaAnimali', methods = ['POST'])
+def listaAnimali():
+    idUtente=request.json
+    query= "SELECT * from animali WHERE ID_utente = %s"
+    with connection.cursor() as cursor:
+        cursor.fetchall(query, (idUtente))
+        
+        
+    return jsonify(cursor)
+    
+
 @crickle.route('/')
 def prova():
     #aggiunto questo reder template
     return render_template('home.html')
+
 
 if __name__ == '__main__':
     crickle.run(host = '0.0.0.0', debug=True)
