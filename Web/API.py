@@ -82,10 +82,12 @@ def listaAnimali():
     idUtente=request.json
     query= "SELECT * from animali WHERE ID_utente = %s"
     with connection.cursor() as cursor:
-        cursor.fetchall(query, (idUtente))
+        rows=cursor.fetchall(query, (idUtente))
         
-        
-    return jsonify(cursor)
+        result = [dict(row) for row in rows]
+
+    #return jsonify (cursor)?
+    return jsonify(result)
     
 
 @crickle.route('/')
