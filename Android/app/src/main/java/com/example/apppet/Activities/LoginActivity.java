@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-    LoginRequest utente = new LoginRequest();
+    LoginRequest utente = new LoginRequest("", "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,50 +39,56 @@ public class LoginActivity extends AppCompatActivity {
         loginBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                Toast.makeText(LoginActivity.this, "Hai effettuato il login", Toast.LENGTH_SHORT).show();*/
                 String email = emailET.getText().toString();
                 String password = passwordET.getText().toString();
                 checkCredentials(email, password);
+
             }
         });
 
-        TextView goToRegistration = (TextView) findViewById(R.id.registrazioneTxt);
-        goToRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegistrazioneActivity.class);
-                startActivity(intent);
-            }
+        TextView goToRegistration = findViewById(R.id.registrazioneTxt);
+        goToRegistration.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrazioneActivity.class);
+            startActivity(intent);
         });
     }
 
     private void checkCredentials(String email, String password) {
+        LoginRequest loginRequest = new LoginRequest(email, password);
+
         ApiService apiservice = RetrofitClient.getClient().create(ApiService.class);
-        Call<RegisterResponse> call = apiservice.login(utente);
+        Call<RegisterResponse> call = apiservice.login(loginRequest);
         call.enqueue(new Callback<>() {
-
-
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                RegisterResponse registerResponse = response.body();
-                if (registerResponse != null && "Login effettuato".equals(registerResponse.getMessage())) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putLong("userId", response.body().getUserId());
-                    editor.putString("userEmail", registerResponse.getEmail());
-                    editor.putString("userPassword", registerResponse.getPassword());
+                System.out.println(response.code());
+                if (response.isSuccessful()) {
 
-                    editor.apply();
+                    RegisterResponse registerResponse = response.body();
+                    if (registerResponse != null && "Login effettuato".equals(registerResponse.getMessage())) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putLong("userId", registerResponse.getUserId());
+                        editor.putString("userEmail", registerResponse.getEmail());
+                        editor.putString("userPassword", registerResponse.getPassword());
+                        editor.apply();
 
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Login non corretto", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    if (response.code() == 401) {
+                        Toast.makeText(LoginActivity.this, "Credenziali non valide", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Errore durante il login", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
-
             }
         });
     }

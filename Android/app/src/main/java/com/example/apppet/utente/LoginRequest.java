@@ -1,14 +1,15 @@
 package com.example.apppet.utente;
 
 public class LoginRequest {
-    String password;
-    String email;
-    long id;
+    private String email;
+    private String password;
 
-    public long getId() {
-        return id;
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
+    // Getter e Setter
     public String getEmail() {
         return email;
     }
@@ -24,7 +25,4 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
 }
