@@ -1,13 +1,19 @@
 package com.example.apppet;
 
+import android.content.SharedPreferences;
+
 import com.example.apppet.animale.Animale;
 import com.example.apppet.utente.LoginRequest;
 import com.example.apppet.utente.Utente;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @POST("/registrazioneUtente")
@@ -18,4 +24,7 @@ public interface ApiService {
 
     @POST("login")
     Call<RegisterResponse> login (@Body LoginRequest loginRequest);
+
+    @GET("/listaAnimali") //http://localhost:8080/listaAnimali?idutente=1
+    Call<ArrayList<Animale>> listaAnimali(@Query("idutente") int idutente);
 }
