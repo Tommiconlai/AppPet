@@ -15,23 +15,24 @@ connection = pymysql.connect(
 )
 
 @crickle.route('/login', methods = ['POST'])
+    
 def login():
-    data = request.get_json()
-    email = data.get('email')
-    password = data.get('password')
-    
-    query = "SELECT id FROM utenti WHERE Email = %s AND password = %s"
-    
-    
-    with connection.cursor() as cursor:
-        cursor.execute(query, (email, password))
-        result = cursor.fetchone()
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
         
-    if result:
-        return jsonify({'id':result[0]},{'message':'Login effettuato'})
-    else:
-        return jsonify({'message': 'Login fallito'})
-    
+        query = "SELECT id FROM utenti WHERE Email = %s AND password = %s"
+        
+        
+        with connection.cursor() as cursor:
+            cursor.execute(query, (email, password))
+            result = cursor.fetchone()
+            
+        if result:
+            return jsonify({'id':result[0]},{'message':'Login effettuato'})
+        else:
+            return jsonify({'message': 'Login fallito'})
+        
 
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
@@ -72,11 +73,13 @@ def creaAttività():
 
 @crickle.route('/registrazioneFornitore', methods = ['POST','GET'])
 def registrazioneF():
+    
     return render_template('register.html')
 
 @crickle.route('/')
 def prova():
-    return "ciao"
+    #aggiunto questo reder template
+    return render_template('home.html')
 
 if __name__ == '__main__':
     crickle.run(host = '0.0.0.0', debug=True)
