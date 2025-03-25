@@ -77,17 +77,20 @@ def registrazioneF():
     
     return render_template('register.html')
 
-@crickle.route('/listaAnimali', methods = ['POST'])
+@crickle.route('/listaAnimali', methods = ['GET'])
 def listaAnimali():
-    idUtente=request.json
+    idUtente=request.args.get('idutente')
     query= "SELECT * from animali WHERE ID_utente = %s"
     with connection.cursor() as cursor:
-        rows=cursor.fetchall(query, (idUtente))
-        
-        result = [dict(row) for row in rows]
+        cursor.execute(query, (idUtente))
+        values=cursor.fetchall()
 
-    #return jsonify (cursor)?
-    return jsonify(result)
+    return jsonify (values)
+
+#columns = [col[0] for col in cursor.description]
+#for row in cursor.fetchall():
+    #row = dict(zip(columns, row))
+    #print(row)
     
 
 @crickle.route('/')
