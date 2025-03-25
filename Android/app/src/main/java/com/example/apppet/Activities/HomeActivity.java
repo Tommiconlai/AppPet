@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +18,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apppet.animale.Animale;
 import com.example.apppet.animale.ListaAnimaliAdapter;
 import com.example.apppet.R;
+import com.example.apppet.calendario.DBOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ListaAnimaliAdapter adapterAnimali;
     public static ArrayList<Animale> animaliLista = new ArrayList<>();
 
+
     RatingBar ratingAnimale;
+
+    private TextView textViewUltimoEvento;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +40,8 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_home);
 
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
+        textViewUltimoEvento = findViewById(R.id.nome_attivita_oggi);
+
 
         inizializzaAnimali();
 
@@ -71,8 +82,26 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
             intent.putExtra("ActivityCaller", "HomeActivity");
             startActivity(intent);
         });
+
+        updateLastEvent();
+
     }
 
+
+    private void updateLastEvent() {
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(this);
+        // Ottieni la data corrente nel formato "dd-MM-yyyy"
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String todayDate = dateFormat.format(calendar.getTime());
+
+        // Chiama il metodo getEventForToday() con la data corrente
+        String eventForToday = dbOpenHelper.getEventForToday(todayDate);
+        Log.d("HomeActivity", "Evento per oggi: " + eventForToday);
+        // Aggiorna la TextView
+        textViewUltimoEvento.setText(eventForToday);
+
+    }
 
     public void inizializzaAnimali(){
         //Dati finti di prova

@@ -50,7 +50,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     }
 
 
-
     public Cursor ReadEvents(String date, SQLiteDatabase database) {
         SQLiteDatabase datab = this.getReadableDatabase();
         String[] projection = {
@@ -82,6 +81,27 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         database.delete(DBStructure.EVENT_TABLE_NAME, selection, selectionArgs);
     }
 
+    public String getEventForToday(String todayDate) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        String eventForToday = "Nessun evento per oggi";
+
+            db = this.getReadableDatabase();
+            String selection = DBStructure.DATE + "=?";
+            String[] selectionArgs = {todayDate};
+            cursor = db.query(DBStructure.EVENT_TABLE_NAME, new String[]{DBStructure.EVENT}, selection, selectionArgs, null, null, null);
+            if (cursor.moveToFirst()) {
+                int eventColumnIndex = cursor.getColumnIndex(DBStructure.EVENT);
+                if (eventColumnIndex != -1) {
+                    eventForToday = cursor.getString(eventColumnIndex);
+
+                }
+            }
+                cursor.close();
+                db.close();
 
 
+        return eventForToday;
+    }
 }
+
