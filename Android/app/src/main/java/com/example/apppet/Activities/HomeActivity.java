@@ -2,22 +2,31 @@ package com.example.apppet.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apppet.ApiService;
+import com.example.apppet.RegisterResponse;
+import com.example.apppet.RetrofitClient;
 import com.example.apppet.animale.Animale;
 import com.example.apppet.animale.ListaAnimaliAdapter;
 import com.example.apppet.R;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ListaAnimaliAdapter adapterAnimali;
@@ -75,14 +84,29 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
 
 
     public void inizializzaAnimali(){
-        //Dati finti di prova
-        Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M");
+        SharedPreferences sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
+        int idutente = (int) sharedPreferences.getLong("userId", -1);
+
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<ArrayList<Animale>> call = apiService.listaAnimali(idutente);
+        call.enqueue(new Callback<ArrayList<Animale>>() {
+                         @Override
+                         public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
+                             HomeActivity.this.animaliLista = response.body();
+                         }
+
+                         @Override
+                         public void onFailure(Call<ArrayList<Animale>> call, Throwable t) {
+                             Toast.makeText(HomeActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
+                         }
+                     });
+/*                Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M");
         Animale animale2 = new Animale("Pippo", 2, "43", "57", "Labrador che sbava ovunque", "F");
         Animale animale3 = new Animale("Demetrio", 2.5f, "12", "22", "Persiano liscio liscio", "M");
 
         animaliLista.add(animale1);
         animaliLista.add(animale2);
-        animaliLista.add(animale3);
+        animaliLista.add(animale3);*/
     }
 
     @Override
