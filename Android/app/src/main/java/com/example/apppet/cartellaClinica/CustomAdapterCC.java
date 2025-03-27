@@ -53,6 +53,10 @@ import java.util.List;
 
             return convertView;
         }
+        public void setData(List<LogCartellaClinica> data) {
+            this.lista = data;
+            notifyDataSetChanged();
+        }
     }
 
 

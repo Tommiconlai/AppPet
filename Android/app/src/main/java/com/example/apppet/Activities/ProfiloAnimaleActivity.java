@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilo_animale);
 
+
         //Get Extras
         /*
         String nomeAnimale = getIntent().getStringExtra("NOME");
@@ -32,6 +34,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
          */
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
+        //Toast.makeText(ProfiloAnimaleActivity.this,Toast.LENGTH_SHORT).show();
 
         //findviewbyid
         TextView tvNomeAnimale = findViewById(R.id.nomeProfiloAnimale);
