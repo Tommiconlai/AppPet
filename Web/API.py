@@ -48,8 +48,12 @@ def registrazioneUtente():
     
     with connection.cursor() as cursor:
         cursor.execute(query, (nome, cognome, email, password, telefono))
-        
+        result = cursor.execute
+
+    if result:
+            return jsonify({'userId': result['id'], 'message': 'Login effettuato', 'email': email})
     return jsonify({'message': 'Utente registrato con successo'})
+
 
 @crickle.route('/registrazioneAnimale', methods = ['POST'])
 def registrazioneA():
