@@ -108,10 +108,7 @@ def creaAttività():
         
     return jsonify({'message': 'Animale registrato con successo'})
 
-@crickle.route('/registrazioneFornitore', methods = ['POST','GET'])
-def registrazioneF():
-    
-    return render_template('register.html')
+
 
 @crickle.route('/listaAnimali', methods = ['GET'])
 def listaAnimali():
@@ -143,6 +140,24 @@ def listaCartelleCliniche():
         values=cursor.fetchall()
 
     return jsonify (values)
+
+@crickle.route('/cartella_clinica', methods = ['POST'])
+def cartellaClinica():
+    data = request.get_json()
+    title = data.get('title')
+    desc = data.get('description')
+    date = data.get('date')
+    idAnimale = data.get('idAnimale')
+
+    
+    query = "INSERT INTO cartelle_cliniche (ID_animale,descrizione,data_appuntamento,titolo) VALUES (%s, %s, %s, %s)"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idAnimale,desc,date,title))
+        
+    return jsonify({'message': 'appuntamento registrato con successo'})
+
+
     
 
 @crickle.route('/')
