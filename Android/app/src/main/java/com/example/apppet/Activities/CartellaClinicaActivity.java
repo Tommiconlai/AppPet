@@ -1,10 +1,12 @@
 package com.example.apppet.Activities;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.apppet.calendario.DBOpenHelper;
 import com.example.apppet.cartellaClinica.CustomAdapterCC;
 import com.example.apppet.cartellaClinica.LogCartellaClinica;
 import com.example.apppet.R;
@@ -13,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartellaClinicaActivity extends AppCompatActivity {
+    private List<LogCartellaClinica> lista = new ArrayList<>();
+    private CustomAdapterCC adapter;
+    private DBOpenHelper dbOpenHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +26,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cartella_clinica);
 
         //al posto di questa lista ci vorrebbe il database
-        List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
+       List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
 
         //List <LogCartellaClinica> lista = new ArrayList<>();
 
