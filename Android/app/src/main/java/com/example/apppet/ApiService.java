@@ -1,6 +1,7 @@
 package com.example.apppet;
 
 import com.example.apppet.animale.Animale;
+import com.example.apppet.cartellaClinica.LogCartellaClinica;
 import com.example.apppet.utente.LoginRequest;
 import com.example.apppet.utente.Utente;
 
@@ -22,8 +23,14 @@ public interface ApiService {
     @POST("login")
     Call<RegisterResponse> login (@Body LoginRequest loginRequest);
 
-
     @GET("/listaAnimali")
     Call<ArrayList<Animale>> listaAnimali (@Query("idutente") int idutente);
+
+    //da provare
+    @GET("/animale")
+    Call<Animale> getAnimale (@Query("idAnimale") int idAnimale);
+
+    @GET("/listaCartellecliniche")
+    Call<ArrayList<LogCartellaClinica>> listaCartelleCliniche (@Query("idAnimale") int idAnimale);
     
 }
