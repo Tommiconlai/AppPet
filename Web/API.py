@@ -87,10 +87,15 @@ def listaAnimali():
 
     return jsonify (values)
 
-#columns = [col[0] for col in cursor.description]
-#for row in cursor.fetchall():
-    #row = dict(zip(columns, row))
-    #print(row)
+@crickle.route('/listaCartelleCliniche', methods = ['GET'])
+def listaCartelleCliniche():
+    idAnimali=request.args.get('idAnimale')
+    query= "SELECT * from cartelle cliniche WHERE ID_animale = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idAnimali))
+        values=cursor.fetchall()
+
+    return jsonify (values)
     
 
 @crickle.route('/')
