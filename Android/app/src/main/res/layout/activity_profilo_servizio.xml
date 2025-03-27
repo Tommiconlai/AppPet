@@ -22,10 +22,10 @@
 
     <LinearLayout
         android:id="@+id/llInfoServizio"
-        android:layout_below="@id/header_home"
         android:layout_width="350dp"
-        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header_home"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -50,67 +50,75 @@
 
             <TextView
                 android:id="@+id/tvTipoServizio"
-                android:layout_below="@id/tvNomeServizio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo Servizio"/>
+                android:layout_below="@id/tvNomeServizio"
+                android:text="Tipo Servizio" />
 
             <RatingBar
                 android:id="@+id/rbRatingServizio"
+                style="?android:attr/ratingBarStyleIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="15dp"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:rating="2"/>
+                android:rating="2" />
 
         </RelativeLayout>
 
-
-
-
-
-        </LinearLayout>
-
+    </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/llIndirizzoServizio"
-        android:layout_below="@id/llInfoServizio"
         android:layout_width="350dp"
-        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_below="@id/llInfoServizio"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvIndirizzoServizio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Via Esempio molto Bella, 123"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvCityServizio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Milano"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:text="Milano" />
 
         <TextView
             android:id="@+id/tvCapServizio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12345"/>
+            android:text="12345" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_below="@id/llIndirizzoServizio"
-        android:layout_centerHorizontal="true"
+    <TextView
+        android:id="@+id/tvOrarioServizio"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/llIndirizzoServizio"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_horizontal"
+        android:text="09.00 - 12.30, 13.30 - 18.00 chiuso sabato mattina e domenica"/>
+
+    <!--
+    <LinearLayout
+        android:id="@+id/llOrariServizioV2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llIndirizzoServizio"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_rectangle"
         android:backgroundTint="@color/grey">
 
@@ -121,170 +129,65 @@
             android:padding="10dp">
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Lun"/>
+                android:gravity="center_horizontal"
+                android:text="Lun" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mar"/>
+                android:gravity="center_horizontal"
+                android:text="Mar" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mer"/>
+                android:gravity="center_horizontal"
+                android:text="Mer" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gio"/>
+                android:gravity="center_horizontal"
+                android:text="Gio" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ven"/>
+                android:gravity="center_horizontal"
+                android:text="Ven" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sab"/>
+                android:gravity="center_horizontal"
+                android:text="Sab" />
 
             <TextView
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Dom"/>
-
+                android:gravity="center_horizontal"
+                android:text="Dom" />
 
         </LinearLayout>
 
-
-
     </LinearLayout>
+    -->
 
-    <TextView
-        android:id="@+id/OrarioProfAtt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Orario:"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/Recensione"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Aggiungi una recensione qui"
-        android:textSize="18dp"
-        android:textStyle="bold" />
+    <ListView
+        android:id="@+id/lvRecensioni"
+        android:layout_below="@id/tvOrarioServizio"
+        android:layout_centerHorizontal="true"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>
-
-    <!--
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
-
-        <ImageView
-            android:id="@+id/Pippo"
-            android:layout_width="800dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="-35dp"
-            android:src="@drawable/cricle_1" />
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/img_service" />
-
-        <TextView
-            android:id="@+id/NomeProfAtt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Nome Attività:"
-            android:textAllCaps="true"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/DescrProfAtt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="Descrizione:"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/FornitProfAtt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Fornitore:"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/IndirizzoProfAtt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Indirizzo:"
-            android:textSize="20dp" />
-
-
-        <TextView
-            android:id="@+id/Cap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="CAP:"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/OrarioProfAtt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Orario:"
-            android:textSize="20dp" />
-
-
-        <TextView
-            android:id="@+id/Recensione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Aggiungi una recensione qui"
-            android:textSize="20dp" />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Aggiungi 🛎️" />
-
-    </LinearLayout>
-    -->
