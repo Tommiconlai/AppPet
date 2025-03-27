@@ -32,6 +32,7 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity implements RecyclerViewInterface {
     private ListaAnimaliAdapter adapterAnimali;
     public static ArrayList<Animale> animaliLista = new ArrayList<>();
+    public RecyclerView recyclerAnimali;
 
     SharedPreferences sharedPreferences;
     long idutente;
@@ -44,14 +45,13 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_home);
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
-        RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
+
+        recyclerAnimali = findViewById(R.id.animali_recycler_view);
         idutente = sharedPreferences.getLong("userId", 0);
 
         inizializzaAnimali();
 
-        adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
-        recyclerAnimali.setAdapter(adapterAnimali);
-        recyclerAnimali.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
 
         System.out.println("Id utente = " + idutente);
         for (Animale animale : animaliLista) {
@@ -101,6 +101,9 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
                 animaliLista = response.body();
+                adapterAnimali = new ListaAnimaliAdapter(HomeActivity.this, (ArrayList<Animale>) animaliLista, HomeActivity.this);
+                recyclerAnimali.setAdapter(adapterAnimali);
+                recyclerAnimali.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
             }
 
             @Override
