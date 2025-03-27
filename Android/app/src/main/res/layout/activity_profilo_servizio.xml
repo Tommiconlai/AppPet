@@ -24,14 +24,15 @@
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img_service"
+            android:layout_marginBottom="10dp"
 
             />
 
 
-        <!-- Titolo del servizio -->
+
         <TextView
             android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nome Servizio"
             android:textSize="18dp"
