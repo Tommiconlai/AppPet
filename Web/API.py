@@ -9,7 +9,7 @@ connection = pymysql.connect(
     host='localhost',
     user='root',
     password='1234',
-    database= 'appet',
+    database= 'apppet',
     autocommit=True,
     cursorclass=pymysql.cursors.DictCursor
 )
@@ -60,11 +60,12 @@ def registrazioneA():
     note = data.get('note')
     sesso = data.get('sesso')
     ratingAnimale = data.get('ratingAnimale')
+    idUtente = data.get('idutente')
     
-    query = "INSERT INTO animali (Nome, Peso, Altezza, Note, Sesso, RatingAnimale) VALUES (%s, %s, %s, %s, %s, %s)"
+    query = "INSERT INTO animali (ID_utente, Nome, Peso, Altezza, Note, Sesso, RatingAnimale) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     
     with connection.cursor() as cursor:
-        cursor.execute(query, (nome, peso, altezza, note, sesso, ratingAnimale))
+        cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale))
         
     return jsonify({'message': 'Animale registrato con successo'})
 

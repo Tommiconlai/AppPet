@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,22 +47,21 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
         idutente = sharedPreferences.getLong("userId", 0);
 
-
         inizializzaAnimali();
-
-        System.out.println("Iddio utente = " + idutente);
-        for (Animale animale : animaliLista) {
-            System.out.println("Nome animale: " + animale.getNome());
-        }
 
         adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
         recyclerAnimali.setAdapter(adapterAnimali);
         recyclerAnimali.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
+        System.out.println("Id utente = " + idutente);
+        for (Animale animale : animaliLista) {
+            System.out.println("Nome animale: " + animale.getNome());
+        }
+
         ImageButton btn_goToProfile = findViewById(R.id.BTNprofilo);
         btn_goToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ProfiloUtenteActivity.class);
                 startActivity(intent);
             }
@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
         ImageButton btnAggiungiAnimale = findViewById(R.id.add_animale_BTN);
-        btnAggiungiAnimale.setOnClickListener(v ->{
+        btnAggiungiAnimale.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, RegistrazioneAnimaleActivity.class);
             intent.putExtra("ActivityCaller", "HomeActivity");
             startActivity(intent);
@@ -94,42 +94,25 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
     }
 
 
-    public void inizializzaAnimali(){
+    public void inizializzaAnimali() {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<ArrayList<Animale>> call = apiService.listaAnimali(idutente);
         call.enqueue(new Callback<>() {
-                         @Override
-                         public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
-                             animaliLista = response.body();
-                         }
+            @Override
+            public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
+                animaliLista = response.body();
+            }
 
-                         @Override
-                         public void onFailure(Call<ArrayList<Animale>> call, Throwable t) {
-                             Toast.makeText(HomeActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
-                         }
-                     });
-/*                Animale animale1 = new Animale("Fuffi", 1, "30", "35", "Barboncino un po' cresciuto", "M");
-        Animale animale2 = new Animale("Pippo", 2, "43", "57", "Labrador che sbava ovunque", "F");
-        Animale animale3 = new Animale("Demetrio", 2.5f, "12", "22", "Persiano liscio liscio", "M");
-
-        animaliLista.add(animale1);
-        animaliLista.add(animale2);
-        animaliLista.add(animale3);*/
+            @Override
+            public void onFailure(Call<ArrayList<Animale>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onItemClicked(int position) {
         Intent intent = new Intent(HomeActivity.this, ProfiloAnimaleActivity.class);
-
-        /*
-        intent.putExtra("NOME", animaliLista.get(position).getNome());
-        intent.putExtra("RATING", animaliLista.get(position).getRatingAnimale());
-        intent.putExtra("PESO", animaliLista.get(position).getPeso());
-        intent.putExtra("ALTEZZA", animaliLista.get(position).getAltezza());
-        intent.putExtra("NOTE", animaliLista.get(position).getNote());
-        intent.putExtra("SESSO", animaliLista.get(position).getSesso());
-        intent.putExtra("DATANASCITA", animaliLista.get(position).getDataNascita());
-         */
 
         intent.putExtra("ANIMALE", animaliLista.get(position));
 
