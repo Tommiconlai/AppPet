@@ -52,9 +52,9 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
 
         //GENERO SERVIZI DI PROVA
         // Creazione dati fittizi
-        Servizio s1 = new Servizio(1, "Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", 10, "9:30");
-        Servizio s2 = new Servizio(2, "Addestratore", "Addestramento cane", "CaneWay", "Via Milano", 25, "9:30");
-        Servizio s3 = new Servizio(3, "Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", 50, "9:30");
+        Servizio s1 = new Servizio(1, "Toilettatura", "Taglio e piega", "HairConditioner", "Via Roma", "12345", "9:30");
+        Servizio s2 = new Servizio(2, "Addestratore", "Addestramento cane", "CaneWay", "Via Milano", "12345", "9:30");
+        Servizio s3 = new Servizio(3, "Allevamento", "Pensione per cani di ogni tipo", "Dott. Rossi", "Corso Italia", "12345", "9:30");
 
         listaServizi.add(s1);
         listaServizi.add(s2);
@@ -73,12 +73,17 @@ public class RicercaServiziActivity extends AppCompatActivity implements Recycle
 
         //INTENT DEL PUT EXTRA PER SETTARE L'INSERIMENTO DEI CAMPI
 
+        /*
         intent.putExtra("NOME", listaServizi.get(position).getNome_attivita());
         intent.putExtra("DESCRIZIONE", listaServizi.get(position).getDescrizione());
         intent.putExtra("FORNITORE", listaServizi.get(position).getFornitore());
         intent.putExtra("INDIRIZZO", listaServizi.get(position).getIndirizzo());
         intent.putExtra("NUMERO CIVICO", listaServizi.get(position).getNumerocivico());
         intent.putExtra("ORARIO", listaServizi.get(position).getOrario());
+
+         */
+
+        intent.putExtra("SERVIZIO", listaServizi.get(position));
 
         startActivity(intent);
     }
