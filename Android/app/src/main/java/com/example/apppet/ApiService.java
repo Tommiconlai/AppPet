@@ -6,6 +6,7 @@ import com.example.apppet.utente.LoginRequest;
 import com.example.apppet.utente.Utente;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -32,5 +33,11 @@ public interface ApiService {
 
     @GET("/listaCartellecliniche")
     Call<ArrayList<LogCartellaClinica>> listaCartelleCliniche (@Query("idAnimale") int idAnimale);
+
+    @GET("/catella_clinica")
+    Call<ArrayList<LogCartellaClinica>> getAllClinicLogs();
+
+    @POST("/catella_clinica")
+    Call<LogCartellaClinica> createClinicLog(@Body LogCartellaClinica log);
     
 }
