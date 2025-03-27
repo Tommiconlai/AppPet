@@ -7,6 +7,16 @@
     android:padding="20dp">
 
     <EditText
+        android:id="@+id/dataTitle"
+        android:background="@drawable/edit_text_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:inputType="textShortMessage"
+        android:hint="Immetti Titolo"/>
+
+    <EditText
         android:id="@+id/dataName"
         android:background="@drawable/edit_text_background"
         android:layout_width="match_parent"
@@ -15,6 +25,7 @@
         android:padding="10dp"
         android:hint="Immetti dati clinici"
         android:inputType="textShortMessage"/>
+
 
 
     <Button
