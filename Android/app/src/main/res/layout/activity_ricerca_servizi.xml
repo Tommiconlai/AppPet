@@ -70,10 +70,12 @@
 
         android:id="@+id/listviewServ"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/LinearServ"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 
