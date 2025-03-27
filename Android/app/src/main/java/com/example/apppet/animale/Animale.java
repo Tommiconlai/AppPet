@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 public class Animale implements Parcelable {
 
     long id;
+    long idUtente;
     String nome;
     String peso;
     String altezza;
@@ -97,6 +98,14 @@ public class Animale implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
+    }
+
+    public long getId() {
+        return id;
+    }
+    public void setIdUtente(long idUtente){
+        this.idUtente = idUtente;
+
     }
 
     @Override

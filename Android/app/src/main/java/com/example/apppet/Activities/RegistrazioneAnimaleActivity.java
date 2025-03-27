@@ -4,6 +4,7 @@ import static com.example.apppet.Activities.HomeActivity.animaliLista;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,9 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
     Animale a1 = new Animale(null, 0, null, null, null, null);
 
+    SharedPreferences sharedPreferences= getSharedPreferences("user_pref", MODE_PRIVATE);
+    long idUtente = sharedPreferences.getLong("idUtente", 0);
+
     @SuppressLint("SuspiciousIndentation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         EditText noteAnimaleET = findViewById(R.id.noteAnimaleEditText);
         Button btnConfermaModifiche = findViewById(R.id.btnConfermaModifiche);
         Button btnRegistraAnimale = findViewById(R.id.btnConfermaRegistrazione);
+
 
 
         String callerActivity = getIntent().getStringExtra("ActivityCaller");
@@ -151,6 +156,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         a1.setPeso(pesoAnimale);
         a1.setAltezza(altezzaAnimale);
         a1.setNote(noteAnimale);
+        a1.setIdUtente(idUtente);
         animaliLista.add(a1);
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterResponse> call = apiService.registrazioneAnimale(a1);
