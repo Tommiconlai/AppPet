@@ -39,6 +39,16 @@
             android:textSize="20sp"
             android:textStyle="bold"/>
 
+
+        <ImageButton
+            android:id="@+id/add_Data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_clinic_data"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/lightblue"/>
+
+
         <ListView
             android:id="@+id/listaCartellaClinica"
             android:layout_width="350dp"
