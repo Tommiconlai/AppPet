@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
             System.out.println("Nome animale: " + animale.getNome());
         }
 
-        adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
+        adapterAnimali = new ListaAnimaliAdapter((Context) this, animaliLista, this);
         recyclerAnimali.setAdapter(adapterAnimali);
         recyclerAnimali.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
