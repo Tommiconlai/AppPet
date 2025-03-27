@@ -34,6 +34,8 @@ public class CartellaClinicaActivity extends AppCompatActivity {
     private List<LogCartellaClinica> lista = new ArrayList<>();
     private CustomAdapterCC adapter;
 
+    long idAnimale;
+
     ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
 
 
@@ -45,8 +47,9 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         ListView listviewLogClinica = findViewById(R.id.listaCartellaClinica);
         adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
+        idAnimale = getIntent().getLongExtra("idAnimale", -1);
 
-        loadClinicData();
+
 
         ImageButton addDataButton = findViewById(R.id.add_Data);
 
@@ -59,10 +62,12 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         //al posto di questa lista ci vorrebbe il database
        List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
-/*
+
         //List <LogCartellaClinica> lista = new ArrayList<>();
 
-        ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
+
+       //ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
+       /*
         lista.add(new LogCartellaClinica(1,"Evento 1", "01/03/2025", "Descrizione evento 1"));
         lista.add(new LogCartellaClinica(2,"Evento 2", "02/03/2025", "Descrizione evento 2"));
         lista.add(new LogCartellaClinica(3,"Evento 3", "03/03/2025", "Descrizione evento 3"));
@@ -70,6 +75,10 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         CustomAdapterCC adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
+        showDialogToAddClinicData();
+        loadClinicData();
+
+
 
 
 
@@ -104,7 +113,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
     }
 
     private void loadClinicData() {
-        apiService.getAllClinicLogs().enqueue(new Callback<ArrayList<LogCartellaClinica>>() {
+        apiService.listaCartelleCliniche((int) idAnimale).enqueue(new Callback<ArrayList<LogCartellaClinica>>() {
             @Override
             public void onResponse(Call<ArrayList<LogCartellaClinica>> call, Response<ArrayList<LogCartellaClinica>> response) {
                 if (response.isSuccessful()) {
@@ -137,14 +146,18 @@ public class CartellaClinicaActivity extends AppCompatActivity {
             dateStr = today.format(formatter);
         }
 
-        SharedPreferences prefs = getSharedPreferences("your_prefs_name", MODE_PRIVATE); // Sostituisci con il nome effettivo delle tue prefs
-            long idAnimale = prefs.getLong("animal_id_key", -1); // Sostituisci con la tua chiave effettiva
+        System.out.println("ClinicData" + "Tentativo di recuperare l'ID animale da SharedPreferences");
+
+        SharedPreferences prefs = getSharedPreferences("animal_id_pref", MODE_PRIVATE);// Sostituisci con il nome effettivo delle tue prefs
+
+            long idAnimale = prefs.getLong("selected_animal_id", -1); // Sostituisci con la tua chiave effettiva
             if (idAnimale == -1) {
                 Toast.makeText(this, "ID animale non trovato!", Toast.LENGTH_SHORT).show();
                 return;
             }
+        System.out.println("ClinicData" + "ID animale recuperato: " + idAnimale);
 
-            LogCartellaClinica newLog = new LogCartellaClinica(0, title, dateStr, description, idAnimale); // Usa il nuovo costruttore
+            LogCartellaClinica newLog = new LogCartellaClinica( title, dateStr, description, idAnimale); // Usa il nuovo costruttore
 
             apiService.createClinicLog(newLog).enqueue(new Callback<LogCartellaClinica>() {
                 @Override
@@ -157,7 +170,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(CartellaClinicaActivity.this, "Errore nell'aggiunta dei dati", Toast.LENGTH_SHORT).show();
 
-                         Log.e("API Error", "Code: " + response.code() + ", Message: " + response.message() + ", Body: " + response.errorBody());
+                        System.out.println("API Error" + "Code: " + response.code() + " Message: " + response.message() + ", Body: " + response.errorBody());
                     }
                 }
 
@@ -165,7 +178,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                 public void onFailure(Call<LogCartellaClinica> call, Throwable t) {
                     Toast.makeText(CartellaClinicaActivity.this, "Errore di rete", Toast.LENGTH_SHORT).show();
 
-                     Log.e("Network Error", "Message: " + t.getMessage(), t);
+                    System.out.println("Network Error" + "Message: " + t.getMessage() + t);
                 }
             });
     }
