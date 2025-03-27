@@ -105,7 +105,10 @@ public class Animale implements Parcelable {
     }
     public void setIdutente(long idutente){
         this.idutente = idutente;
+    }
 
+    public long getIdutente() {
+        return idutente;
     }
 
     @Override

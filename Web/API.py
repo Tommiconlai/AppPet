@@ -9,7 +9,7 @@ connection = pymysql.connect(
     host='localhost',
     user='root',
     password='1234',
-    database= 'appet',
+    database= 'apppet',
     autocommit=True,
     cursorclass=pymysql.cursors.DictCursor
 )
