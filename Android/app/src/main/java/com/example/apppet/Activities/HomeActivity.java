@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
                 animaliLista = response.body();
-                adapterAnimali = new ListaAnimaliAdapter(HomeActivity.this, (ArrayList<Animale>) animaliLista, HomeActivity.this);
+                adapterAnimali = new ListaAnimaliAdapter(HomeActivity.this, animaliLista);
                 recyclerAnimali.setAdapter(adapterAnimali);
                 recyclerAnimali.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
             }
