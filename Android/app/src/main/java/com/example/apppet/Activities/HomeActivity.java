@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
         idutente = sharedPreferences.getLong("userId", 0);
 
+
         inizializzaAnimali();
 
         System.out.println("Iddio utente = " + idutente);
@@ -99,7 +100,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         call.enqueue(new Callback<>() {
                          @Override
                          public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
-                             HomeActivity.this.animaliLista = response.body();
+                             animaliLista = response.body();
                          }
 
                          @Override
@@ -130,7 +131,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("DATANASCITA", animaliLista.get(position).getDataNascita());
          */
 
-        intent.putExtra("ANIMALE", (Parcelable) animaliLista.get(position));
+        intent.putExtra("ANIMALE", animaliLista.get(position));
 
         startActivity(intent);
     }
