@@ -43,11 +43,15 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_home);
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
+
+        inizializzaAnimali();
+
+
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
         idutente = sharedPreferences.getLong("userId", 0);
 
 
-        inizializzaAnimali();
+
 
         System.out.println("Iddio utente = " + idutente);
         for (Animale animale : animaliLista) {

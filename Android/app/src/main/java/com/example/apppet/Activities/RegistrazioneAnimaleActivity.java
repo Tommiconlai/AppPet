@@ -157,6 +157,8 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         a1.setNote(noteAnimale);
         a1.setIdutente(idUtente);
         animaliLista.add(a1);
+        System.out.println("Nome animale: " + a1.getIdutente());
+
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterResponse> call = apiService.registrazioneAnimale(a1);
 
