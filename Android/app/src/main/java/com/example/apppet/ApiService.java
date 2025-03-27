@@ -34,9 +34,6 @@ public interface ApiService {
     @GET("/listaCartellecliniche")
     Call<ArrayList<LogCartellaClinica>> listaCartelleCliniche (@Query("idAnimale") int idAnimale);
 
-    @GET("/cartella_clinica")
-    Call<ArrayList<LogCartellaClinica>> getAllClinicLogs();
-
     @POST("/cartella_clinica")
     Call<LogCartellaClinica> createClinicLog(@Body LogCartellaClinica log);
     

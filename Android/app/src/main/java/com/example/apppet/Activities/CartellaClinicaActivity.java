@@ -1,5 +1,7 @@
 package com.example.apppet.Activities;
 
+import static androidx.core.content.IntentCompat.getParcelableExtra;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apppet.ApiService;
 import com.example.apppet.RetrofitClient;
+import com.example.apppet.animale.Animale;
 import com.example.apppet.cartellaClinica.CustomAdapterCC;
 import com.example.apppet.cartellaClinica.LogCartellaClinica;
 import com.example.apppet.R;
@@ -47,7 +50,8 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         ListView listviewLogClinica = findViewById(R.id.listaCartellaClinica);
         adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
-        idAnimale = getIntent().getLongExtra("idAnimale", -1);
+        Animale animale = getIntent().getParcelableExtra("ANIMALE");
+        idAnimale = animale.getId();
 
 
 
@@ -116,6 +120,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         apiService.listaCartelleCliniche((int) idAnimale).enqueue(new Callback<ArrayList<LogCartellaClinica>>() {
             @Override
             public void onResponse(Call<ArrayList<LogCartellaClinica>> call, Response<ArrayList<LogCartellaClinica>> response) {
+                System.out.println("idAnimale" + idAnimale);
                 if (response.isSuccessful()) {
                     lista = response.body();
                     adapter.setData(lista);

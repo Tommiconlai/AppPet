@@ -16,8 +16,9 @@ public class Animale implements Parcelable {
     String sesso;
     float ratingAnimale;
 
-    public Animale(String nome, float rating, String peso, String altezza, String note, String sesso) {
+    public Animale(long id,String nome, float rating, String peso, String altezza, String note, String sesso) {
         super();
+        this.id = id;
         this.nome = nome;
         this.ratingAnimale = rating;
         this.peso = peso;

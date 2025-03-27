@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
-    Animale a1 = new Animale(null, 0, null, null, null, null);
+    Animale a1 = new Animale(-1L, "", 0.0f, "", "", "", "");;
 
     SharedPreferences sharedPreferences;
     long idUtente;
