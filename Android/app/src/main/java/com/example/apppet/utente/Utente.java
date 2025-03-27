@@ -3,7 +3,7 @@ package com.example.apppet.utente;
 import com.google.gson.annotations.SerializedName;
 
 public class Utente {
-    long id;
+    long idutente;
     @SerializedName("nome")
     String nome;
     @SerializedName("cognome")

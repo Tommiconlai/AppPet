@@ -32,16 +32,26 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
     private ListaAnimaliAdapter adapterAnimali;
     public static ArrayList<Animale> animaliLista = new ArrayList<>();
 
+    SharedPreferences sharedPreferences;
+    long idutente;
+
     RatingBar ratingAnimale;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
         RecyclerView recyclerAnimali = findViewById(R.id.animali_recycler_view);
+        idutente = sharedPreferences.getLong("userId", 0);
 
         inizializzaAnimali();
+
+        System.out.println("Iddio utente = " + idutente);
+        for (Animale animale : animaliLista) {
+            System.out.println("Nome animale: " + animale.getNome());
+        }
 
         adapterAnimali = new ListaAnimaliAdapter((Context) this, (ArrayList<Animale>) animaliLista, this);
         recyclerAnimali.setAdapter(adapterAnimali);
@@ -84,12 +94,9 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
 
 
     public void inizializzaAnimali(){
-        SharedPreferences sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
-        int idutente = (int) sharedPreferences.getLong("userId", -1);
-
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<ArrayList<Animale>> call = apiService.listaAnimali(idutente);
-        call.enqueue(new Callback<ArrayList<Animale>>() {
+        call.enqueue(new Callback<>() {
                          @Override
                          public void onResponse(Call<ArrayList<Animale>> call, Response<ArrayList<Animale>> response) {
                              HomeActivity.this.animaliLista = response.body();

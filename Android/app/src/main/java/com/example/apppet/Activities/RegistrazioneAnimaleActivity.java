@@ -14,15 +14,12 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
 
 import com.example.apppet.ApiService;
 import com.example.apppet.R;
 import com.example.apppet.RetrofitClient;
 import com.example.apppet.RegisterResponse;
 import com.example.apppet.animale.Animale;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,14 +29,16 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
     Animale a1 = new Animale(null, 0, null, null, null, null);
 
-    SharedPreferences sharedPreferences= getSharedPreferences("user_pref", MODE_PRIVATE);
-    long idUtente = sharedPreferences.getLong("idUtente", 0);
+    SharedPreferences sharedPreferences;
+    long idUtente;
 
     @SuppressLint("SuspiciousIndentation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
+        sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
+        idUtente = sharedPreferences.getLong("userId", 0);
 
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
         RadioButton sessoM = findViewById(R.id.rbMaschio);
@@ -156,7 +155,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         a1.setPeso(pesoAnimale);
         a1.setAltezza(altezzaAnimale);
         a1.setNote(noteAnimale);
-        a1.setIdUtente(idUtente);
+        a1.setIdutente(idUtente);
         animaliLista.add(a1);
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterResponse> call = apiService.registrazioneAnimale(a1);

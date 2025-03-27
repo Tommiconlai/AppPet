@@ -25,7 +25,7 @@ public interface ApiService {
     Call<RegisterResponse> login (@Body LoginRequest loginRequest);
 
     @GET("/listaAnimali")
-    Call<ArrayList<Animale>> listaAnimali (@Query("idutente") int idutente);
+    Call<ArrayList<Animale>> listaAnimali (@Query("idutente") long idutente);
 
     //da provare
     @GET("/animale")

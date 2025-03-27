@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     LoginRequest utente = new LoginRequest("", "");
 
+    String email = "test";
+    String password = "test";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +38,22 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
 
-        Button loginBTN = findViewById(R.id.loginBTN);
-        loginBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailET.getText().toString();
-                String password = passwordET.getText().toString();
-                checkCredentials(email, password);
+        email = sharedPreferences.getString("userEmail", "");
+        password = sharedPreferences.getString("userPassword", "");
+        emailET.setText(email);
+        passwordET.setText(password);
 
-            }
+        System.out.println("Shared preferences: email = " + sharedPreferences.getString("userEmail", "") +
+                " id = " + sharedPreferences.getLong("userId", 0) +
+                " password = " + sharedPreferences.getString("userPassword", ""));
+
+        Button loginBTN = findViewById(R.id.loginBTN);
+        loginBTN.setOnClickListener(v -> {
+
+            email = emailET.getText().toString();
+            password = passwordET.getText().toString();
+            checkCredentials(email, password);
+
         });
 
         TextView goToRegistration = findViewById(R.id.registrazioneTxt);
@@ -71,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("userEmail", registerResponse.getEmail());
                         editor.putString("userPassword", registerResponse.getPassword());
                         editor.apply();
+
 
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(intent);
