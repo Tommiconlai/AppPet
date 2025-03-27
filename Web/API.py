@@ -69,9 +69,40 @@ def registrazioneA():
         
     return jsonify({'message': 'Animale registrato con successo'})
 
+@crickle.route('/registrazioneFornitore', methods = ['POST'])
+def registrazioneUtente():
+    data = request.get_json()
+    nome = data.get('nome')
+    cognome = data.get('cognome')
+    email = data.get('email')
+    password = data.get('password')
+    telefono = data.get('telefono')
+    
+    query = "INSERT INTO utenti (nome, cognome, email, password, telefono) VALUES (%s, %s, %s, %s, %s)"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (nome, cognome, email, password, telefono))
+        
+    return jsonify({'message': 'fornitore registrato con successo'})
+
 @crickle.route('/creaAttività', methods = ['POST'])
 def creaAttività():
-    return "ciao2"
+    data = request.get_json()
+    idFornitore = data.get('idFornitore')
+    idTipoAttivita = data.get('idTipoAttività')
+    nome = data.get('nome')
+    indirizzo = data.get('indirizzo')
+    orario = data.get('orario')
+    CAP = data.get('cap')
+    lat = data.get('lat')
+    long = data.get('long')
+    
+    query = "INSERT INTO servizi (ID_fornitore,ID_tipo_attività,nome,indirizzo,orario,cap,latitudine,longitudine) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idFornitore,idTipoAttivita,nome,indirizzo,orario,CAP,lat,long))
+        
+    return jsonify({'message': 'Animale registrato con successo'})
 
 @crickle.route('/registrazioneFornitore', methods = ['POST','GET'])
 def registrazioneF():
