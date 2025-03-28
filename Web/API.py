@@ -14,7 +14,7 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 #/api/login
-@crickle.route('login', methods = ['POST'])
+@crickle.route('/login', methods = ['POST'])
     
 def APIlogin():
         data = request.get_json()

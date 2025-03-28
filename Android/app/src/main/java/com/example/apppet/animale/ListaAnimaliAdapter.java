@@ -1,8 +1,9 @@
 package com.example.apppet.animale;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,33 +11,30 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.OptIn;
-import androidx.media3.common.util.Log;
-import androidx.media3.common.util.UnstableApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apppet.Activities.CartellaClinicaActivity;
-import com.example.apppet.Activities.HomeActivity;
 import com.example.apppet.Activities.ProfiloAnimaleActivity;
+import com.example.apppet.Activities.RecyclerViewInterface;
 import com.example.apppet.R;
-
 
 import java.util.ArrayList;
 
 public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapter.ViewHolder> {
+    private final RecyclerViewInterface recyclerViewListaAnimaliInterface;
     private Context context;
     private ArrayList<Animale> animali;
 
-    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali) { // Rimosso RecyclerViewInterface
+    public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
         this.context = context;
         this.animali = animali;
+        this.recyclerViewListaAnimaliInterface = recyclerViewListaAnimaliInterface;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_animali_image, parent, false);
-        return new ViewHolder(view); // Rimosso RecyclerViewInterface
+        return new ViewHolder(view, recyclerViewListaAnimaliInterface);
     }
 
     @Override
@@ -51,34 +49,23 @@ public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapte
         return animali.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder { // Rimosso "static"
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nomeAnimale;
         RatingBar ratingAnimale;
 
-        public ViewHolder(@NonNull View itemView) { // Rimosso RecyclerViewInterface
+        public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
             super(itemView);
             nomeAnimale = itemView.findViewById(R.id.nome_animale);
             ratingAnimale = itemView.findViewById(R.id.rating_animale);
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @OptIn(markerClass = UnstableApi.class)
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        Animale selectedAnimal = animali.get(position);
-                        long animalId = selectedAnimal.getId();
-                        System.out.println("AnimalSelection" + "ID animale selezionato: " + animalId);
-
-                        // Salva l'ID in SharedPreferences
-                        SharedPreferences prefs = context.getSharedPreferences("animal_id_pref", Context.MODE_PRIVATE); // Assicurati che il nome sia coerente
-                        prefs.edit().putLong("selected_animal_id", animalId).apply(); // Assicurati che la chiave sia coerente
-
-                        System.out.println("AnimalSelection" + "ID animale salvato: " + animalId + " in SharedPreferences");
-
-                        // Avvia CartellaClinicaActivity
-                        Intent intent = new Intent(context, ProfiloAnimaleActivity.class);
-                        context.startActivity(intent);
+                    if (recyclerViewListaAnimaliInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewListaAnimaliInterface.onItemClicked(position);
+                        }
                     }
                 }
             });
