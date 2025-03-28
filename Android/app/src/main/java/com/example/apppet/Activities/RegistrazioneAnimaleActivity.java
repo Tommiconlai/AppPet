@@ -27,8 +27,7 @@ import retrofit2.Response;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
-    Animale a1 = new Animale(-1L, "", 0.0f, "", "", "", "");
-
+    Animale a1 = new Animale(0, "", 0, "", "", "", "");
     SharedPreferences sharedPreferences;
     long idUtente;
 
@@ -37,9 +36,11 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
+
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
         idUtente = sharedPreferences.getLong("userId", 0);
 
+        //Inizializzazione variabili
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
         RadioButton sessoM = findViewById(R.id.rbMaschio);
         RadioButton sessoF = findViewById(R.id.rbFemmina);
@@ -49,33 +50,36 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         Button btnConfermaModifiche = findViewById(R.id.btnConfermaModifiche);
         Button btnRegistraAnimale = findViewById(R.id.btnConfermaRegistrazione);
 
-
-
         String callerActivity = getIntent().getStringExtra("ActivityCaller");
-        Animale animale = getIntent().getParcelableExtra("ANIMALE");
+        a1 = getIntent().getParcelableExtra("ANIMALE");
+        long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
+        a1.setId(idAnimale);
+        a1.printAnimale();
 
+        //Se arrivo da HomeActivity/btnAggiungiAnimale allora mostro il pulsante di registrazione animale
         System.out.println("Arrivo da: " + callerActivity);
         if (callerActivity != null && callerActivity.equals("HomeActivity")) {
             btnRegistraAnimale.setVisibility(View.VISIBLE);
         }
 
+        //Se arrivo dal profilo animale allora modifico i dati dell'animale
         if (callerActivity != null && callerActivity.equals("ProfiloAnimaleActivity")) {
 
             btnConfermaModifiche.setVisibility(View.VISIBLE);
-            nomeAnimaleET.setText(animale.getNome());
-            pesoAnimaleET.setText(animale.getPeso());
-            noteAnimaleET.setText(animale.getNote());
-            altezzaAnimaleET.setText(animale.getAltezza());
-            if (animale.isSesso().equals("M"))
+            nomeAnimaleET.setText(a1.getNome());
+            pesoAnimaleET.setText(a1.getPeso());
+            noteAnimaleET.setText(a1.getNote());
+            altezzaAnimaleET.setText(a1.getAltezza());
+            if (a1.isSesso().equals("M"))
                 sessoM.setChecked(true);
-            else if (animale.isSesso().equals("F"))
+            else if (a1.isSesso().equals("F"))
                 sessoF.setChecked(true);
 
             sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (sessoM.isChecked()) {
-                        animale.setSesso("M");
+                        a1.setSesso("M");
                     }
                 }
             });
@@ -84,13 +88,11 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (sessoF.isChecked()) {
-                        animale.setSesso("F");
+                        a1.setSesso("F");
                     }
                 }
             });
-
         }
-
 
         sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -111,14 +113,15 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         });
 
 
+        //Conferma modifiche
         btnConfermaModifiche.setOnClickListener(v -> {
-            Intent intent = new Intent(RegistrazioneAnimaleActivity.this, ProfiloAnimaleActivity.class);
-            animale.setNome(nomeAnimaleET.getText().toString());
-            animale.setNote(noteAnimaleET.getText().toString());
-            animale.setPeso(pesoAnimaleET.getText().toString());
-            animale.setAltezza(altezzaAnimaleET.getText().toString());
-            intent.putExtra("ANIMALE", animale);
-            startActivity(intent);
+
+            a1.setNome(nomeAnimaleET.getText().toString());
+            a1.setNote(noteAnimaleET.getText().toString());
+            a1.setPeso(pesoAnimaleET.getText().toString());
+            a1.setAltezza(altezzaAnimaleET.getText().toString());
+
+            confermaModifiche();
         });
 
 
@@ -129,7 +132,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                 String pesoAnimale = pesoAnimaleET.getText().toString();
                 String altezzaAnimale = altezzaAnimaleET.getText().toString();
                 String noteAnimale = noteAnimaleET.getText().toString();
-                String sessoAnimale;
+                String sessoAnimale = "";
                 if (sessoM.isChecked()) {
                     sessoAnimale = "M";
                 } else {
@@ -155,6 +158,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         a1.setPeso(pesoAnimale);
         a1.setAltezza(altezzaAnimale);
         a1.setNote(noteAnimale);
+        a1.setSesso(sessoAnimale);
         a1.setIdutente(idUtente);
         animaliLista.add(a1);
         System.out.println("Nome animale: " + a1.getIdutente());
@@ -187,6 +191,40 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void confermaModifiche() {
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<Animale> call = apiService.modificaAnimale(a1);
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Animale> call, Response<Animale> response) {
+                if (response.isSuccessful()) {
+                    Animale animale = response.body();
+
+                    if (animale != null) {
+                        Toast.makeText(RegistrazioneAnimaleActivity.this, "Modifica effettuata", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegistrazioneAnimaleActivity.this, ProfiloAnimaleActivity.class);
+                        intent.putExtra("ANIMALE", a1);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(RegistrazioneAnimaleActivity.this, "Errore nella modifica", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(RegistrazioneAnimaleActivity.this, "connessione fallita(primo if)", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Animale> call, Throwable t) {
+                Toast.makeText(RegistrazioneAnimaleActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+    }
+
 }
 
 

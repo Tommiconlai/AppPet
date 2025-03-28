@@ -43,6 +43,7 @@ public class ProfiloServizio extends AppCompatActivity {
         TextView tvCap = findViewById(R.id.tvCapServizio);
         TextView tvOrario = findViewById(R.id.tvOrarioServizio);
         ListView lvRecensioni = findViewById(R.id.lvRecensioni);
+        
 
         tvNome.setText(s.getNome_attivita());
         tvIndir.setText(s.getIndirizzo());

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <!--link rel="stylesheet" href="style.css"-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_attività.css') }}">
+</head>
+
+<header>
+    
+</header>
+
+<body>
+
+    <div class="immagineSopra"></div>
+
+    <h2>Registrazione</h2>
+
+    <form method="POST" action="/registra_fornitori">
+        <div class="container">
+            
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" placeholder="Cognome" required>
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Email" required>
+            
+            <label for="telefono">N. cellulare:</label>
+            <input type="text" id="telefono" name="telefono" placeholder="telefono" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password"  name="password" placeholder="Password" required>
+            
+            <label for="password_check">Conferma password:</label>
+            <input type="password" id="password_check"  name="password_check" placeholder="Conferma Password" required>
+
+            <input type="submit" value="Registrati">
+            
+            
+        </div>
+    </form>
+
+</html>
