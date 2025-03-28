@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, session
 import pymysql
 
 import pymysql.cursors
@@ -13,10 +13,10 @@ connection = pymysql.connect(
     autocommit=True,
     cursorclass=pymysql.cursors.DictCursor
 )
-
-@crickle.route('/login', methods = ['POST'])
+#/api/login
+@crickle.route('login', methods = ['POST'])
     
-def login():
+def APIlogin():
         data = request.get_json()
         email = data.get('email')
         password = data.get('password')
@@ -27,11 +27,37 @@ def login():
         with connection.cursor() as cursor:
             cursor.execute(query, (email, password))
             result = cursor.fetchone()
-            
+                        
         if result:
             return jsonify({'userId': result['id'], 'message': 'Login effettuato', 'email': email})
         else:
             return jsonify({'message': 'Login fallito'}), 401
+        
+
+@crickle.route('/loginFornitori', methods = ['POST'])
+    
+def loginF():
+        data = request.form
+        email = data.get('email')
+        password = data.get('password')
+        
+        query = "SELECT id FROM fornitori WHERE email = %s AND password = %s"
+        
+        
+        with connection.cursor() as cursor:
+            cursor.execute(query, (email, password))
+            result = cursor.fetchone()
+                        
+        if result:
+            
+            #forn = Fornitore(**result)
+            #session["username"]=forn.username
+            return "utente loggato"
+        else:
+            return "utente fallito"
+
+
+
         
 
 
@@ -163,7 +189,7 @@ def cartellaClinica():
 @crickle.route('/')
 def prova():
     #aggiunto questo reder template
-    return render_template('home.html')
+    return render_template('login.html')
 
 
 if __name__ == '__main__':

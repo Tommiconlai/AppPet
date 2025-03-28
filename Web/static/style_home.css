@@ -40,7 +40,20 @@ input {
     margin-left: 4%;
     margin-bottom: -1%;
 }
-
+/*da guardare*/
+input[type="submit"] {
+    margin: 1%;
+    width: 10%;
+    padding: 10px;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    text-align: center;
+}
 button {
     margin: 1%;
     width: 10%;
