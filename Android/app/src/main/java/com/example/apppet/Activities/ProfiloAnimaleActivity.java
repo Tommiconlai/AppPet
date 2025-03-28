@@ -16,6 +16,7 @@ import com.example.apppet.animale.Animale;
 
 public class ProfiloAnimaleActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         ImageButton modificaProfiloAnimale = findViewById(R.id.modificaBTN);
         TextView cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
         ImageButton apriCartellaClinica = findViewById(R.id.cartellaClinicaBTN);
+        Button btnBackHome = findViewById(R.id.btnBackHome);
 
         //Set Text
         tvNomeAnimale.setText(animale.getNome());
@@ -79,5 +81,11 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
             intent.putExtra("ANIMALE", animale);
             startActivity(intent);
         });
+
+        btnBackHome.setOnClickListener(v ->{
+            Intent intent = new Intent(ProfiloAnimaleActivity.this, HomeActivity.class);
+            startActivity(intent);
+        });
+
     }
 }
