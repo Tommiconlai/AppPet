@@ -34,9 +34,10 @@ def APIlogin():
             return jsonify({'message': 'Login fallito'}), 401
         
 
-@crickle.route('/loginFornitori', methods = ['POST'])
+@crickle.route('/login_fornitori', methods = ['POST','GET'])
     
 def loginF():
+    if(request.method=='POST'):
         data = request.form
         email = data.get('email')
         password = data.get('password')
@@ -51,10 +52,13 @@ def loginF():
         if result:
             
             #forn = Fornitore(**result)
-            #session["username"]=forn.username
+            session["idFornitore"]=result["id"]
             return "utente loggato"
         else:
             return "utente fallito"
+        
+    else:
+        return render_template('login_fornitori.html')
 
 
 
@@ -99,40 +103,56 @@ def registrazioneA():
         
     return jsonify({'message': 'Animale registrato con successo'})
 
-@crickle.route('/registrazioneFornitore', methods = ['POST'])
+@crickle.route('/registra_fornitori', methods = ['POST','GET'])
 def registrazioneFornitore():
-    data = request.get_json()
-    nome = data.get('nome')
-    cognome = data.get('cognome')
-    email = data.get('email')
-    password = data.get('password')
-    telefono = data.get('telefono')
-    
-    query = "INSERT INTO utenti (nome, cognome, email, password, telefono) VALUES (%s, %s, %s, %s, %s)"
-    
-    with connection.cursor() as cursor:
-        cursor.execute(query, (nome, cognome, email, password, telefono))
-        
-    return jsonify({'message': 'fornitore registrato con successo'})
 
-@crickle.route('/creaAttività', methods = ['POST'])
-def creaAttività():
-    data = request.get_json()
-    idFornitore = data.get('idFornitore')
-    idTipoAttivita = data.get('idTipoAttività')
-    nome = data.get('nome')
-    indirizzo = data.get('indirizzo')
-    orario = data.get('orario')
-    cap = data.get('cap')
-    lat = data.get('lat')
-    long = data.get('long')
-    
-    query = "INSERT INTO servizi (ID_fornitore,ID_tipo_attività,nome,indirizzo,orario,cap,latitudine,longitudine) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-    
-    with connection.cursor() as cursor:
-        cursor.execute(query, (idFornitore,idTipoAttivita,nome,indirizzo,orario,cap,lat,long))
+    if(request.method=='POST'):
+        data = request.form
+        nome = data.get('nome')
+        cognome = data.get('cognome')
+        email = data.get('email')
+        password = data.get('password')
+        telefono = data.get('telefono')
+        passwordCheck= data.get('password_check')
+
+        if(password == passwordCheck):
+            query = "INSERT INTO fornitori (nome, cognome, email, password, telefono) VALUES (%s, %s, %s, %s, %s)"
+            with connection.cursor() as cursor:
+                cursor.execute(query, (nome, cognome, email, password, telefono))   
+            return redirect('/login_fornitori')
         
-    return jsonify({'message': 'Animale registrato con successo'})
+        else:
+            return "password non corrisponde con conferma password"
+    else:
+        return render_template('registra_fornitori.html')
+
+    
+
+@crickle.route('/registra_attività', methods = ['POST'])
+def creaAttività():
+    if(request.method=='POST'):
+        data = request.form
+        idFornitore = session["idFornitore"]
+        #da cambiare se si vuole usare autocomplete con tabella annessa
+        TipoAttivita = data.get('Tipo_attività')
+        nome = data.get('nome')
+        indirizzo = data.get('indirizzo_attività')
+        orario = data.get('orario')
+        città = data.get('città')
+        desc = data.get('descrizione')
+        cap = data.get('cap')
+        #la query è da cambiare perche il database non combacia
+        query = "INSERT INTO servizi (ID_fornitore,ID_tipo_attività,nome,indirizzo,orario,cap,latitudine,longitudine) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        
+        with connection.cursor() as cursor:
+            #questo idem
+            cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap,lat,long))
+            
+        return 
+    else:
+        idFornitore = session["idFornitore"]
+        return idFornitore
+
 
 
 
@@ -183,13 +203,17 @@ def cartellaClinica():
         
     return jsonify({'message': 'appuntamento registrato con successo'})
 
+@crickle.route('/home_fornitori')
+def homeFornitori():
+    return render_template('index.html', listautenti= lista)
+
 
     
 
 @crickle.route('/')
 def prova():
     #aggiunto questo reder template
-    return render_template('login.html')
+    return render_template('login_fornitori.html')
 
 
 if __name__ == '__main__':

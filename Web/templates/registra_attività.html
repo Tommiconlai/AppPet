@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style_attività.css">
+</head>
+<header>
+    
+</header>
+
+<body>
+    <div class="immagineSopra">
+    </div>
+    
+    <!--div class="mainContainer">
+        <h2>Registrazione attività</h2>
+    <div class="container">
+        <input type="text" id="nome attività" placeholder="Nome attività " required>
+        <input type="text" id="tipo attività" placeholder="Tipo attività" required>
+        <input type="text" id="descrizione" placeholder="Descrizione attività" required>
+        <p id="location"></p>
+        <input type="text" id="indirizzo attività" placeholder="Indirizzo attività" required>
+        <input type="text" id="inserisci città" placeholder="Città" required>
+        <input type="text" id="cap" placeholder="CAP" required>
+        <input type="text" id="Orario" placeholder="Orario" required>
+    </div-->
+    
+    <form method="POST" action="/registra_attività">
+        <div class="container">
+            <label for="nome">Nome attività:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome attività" required><br>
+            
+            <label for="tipo_attività">Tipo attività:</label>
+            <input type="text" id="tipo_attività"  name="tipo_attività" placeholder="tipo Attività" required>
+            <label for="descrizione">Descrizione:</label>
+            <input type="text" id="descrizione"  name="descrizione" placeholder="Descrizione" required>
+
+            <p id="location"></p>
+
+            <label for="indirizzo_attività">indirizzo:</label>
+            <input type="text" id="indirizzo_attività" placeholder="Indirizzo Attività">
+
+            <label for="città">Città:</label>
+            <input type="text" id="città" name="città" placeholder="Città" required>
+
+            <label for="cap">CAP:</label>
+            <input type="text" id="cap" name="cap" placeholder="CAP" required>
+
+            <label for="orario">orario:</label>
+            <input type="text" id="orario" name="orario" placeholder="Orario">
+
+            <input type="submit" value="Get started!">
+            
+        </div>
+    </form>
+
+        
+    
+        <button>Conferma</button>
+        
+
+        <button>Torna indietro</button>
+    </div>
+    
+    
+</body>
+<footer>
+
+</footer>
+</html>
