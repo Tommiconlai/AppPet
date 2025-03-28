@@ -218,3 +218,20 @@ def prova():
 
 if __name__ == '__main__':
     crickle.run(host = '0.0.0.0', debug=True)
+
+@crickle.route('/modificaAnimale', methods = ['PUT'])
+def modificaAnimale():
+    data = request.get_json()
+    nome = data.get('nome')
+    peso = data.get('peso')
+    altezza = data.get('altezza')
+    note = data.get('note')
+    sesso = data.get('sesso')
+    ratingAnimale = data.get('ratingAnimale')
+    idUtente = data.get('idutente')
+    idAnimale = data.get('id')
+
+    query = "UPDATE animali SET ID_utente = %s, Nome = %s, Peso = %s, Altezza = %s, Note = %s, Sesso = %s, RatingAnimale = %s WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))

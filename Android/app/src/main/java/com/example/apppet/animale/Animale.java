@@ -48,6 +48,10 @@ public class Animale implements Parcelable {
         }
     };
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -121,5 +125,15 @@ public class Animale implements Parcelable {
         dest.writeString(note);
         dest.writeString(sesso);
         dest.writeFloat(ratingAnimale);
+    }
+
+    public void printAnimale(){
+        System.out.println("ID: " + id);
+        System.out.println("Nome: " + nome);
+        System.out.println("Peso: " + peso);
+        System.out.println("Altezza: " + altezza);
+        System.out.println("Note: " + note);
+        System.out.println("Sesso: " + sesso);
+        System.out.println("Rating: " + ratingAnimale);
     }
 }

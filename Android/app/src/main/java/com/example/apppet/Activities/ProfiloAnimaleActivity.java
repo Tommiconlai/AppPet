@@ -35,6 +35,8 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
          */
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
+        long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
+        System.out.println("Nome animale: " + idAnimale);
         //Toast.makeText(ProfiloAnimaleActivity.this,Toast.LENGTH_SHORT).show();
 
         //findviewbyid
@@ -72,6 +74,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
                  */
                 intent.putExtra("ActivityCaller", "ProfiloAnimaleActivity");
                 intent.putExtra("ANIMALE", animale);
+                intent.putExtra("IdAnimale", idAnimale);
                 startActivity(intent);
             }
         });

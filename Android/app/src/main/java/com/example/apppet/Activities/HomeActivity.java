@@ -104,6 +104,9 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
                 adapterAnimali = new ListaAnimaliAdapter(HomeActivity.this, animaliLista, HomeActivity.this);
                 recyclerAnimali.setAdapter(adapterAnimali);
                 recyclerAnimali.setLayoutManager(new LinearLayoutManager(HomeActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                for (Animale animale : animaliLista) {
+                    System.out.println("Nome animale: " + animale.getId());
+                }
             }
 
             @Override
@@ -118,6 +121,8 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent = new Intent(HomeActivity.this, ProfiloAnimaleActivity.class);
 
         intent.putExtra("ANIMALE", animaliLista.get(position));
+        intent.putExtra("IdAnimale", animaliLista.get(position).getId());
+
 
         startActivity(intent);
     }

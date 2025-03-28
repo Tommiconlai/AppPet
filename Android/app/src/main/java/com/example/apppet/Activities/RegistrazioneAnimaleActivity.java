@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
-    Animale a1 = new Animale(-1L, "", 0.0f, "", "", "", "");
+    Animale a1 = new Animale(0, "", 0, "", "", "", "");
     SharedPreferences sharedPreferences;
     long idUtente;
 
@@ -36,9 +36,11 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione_animale);
+
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
         idUtente = sharedPreferences.getLong("userId", 0);
 
+        //Inizializzazione variabili
         EditText nomeAnimaleET = findViewById(R.id.nomeAnimaleEditText);
         RadioButton sessoM = findViewById(R.id.rbMaschio);
         RadioButton sessoF = findViewById(R.id.rbFemmina);
@@ -50,12 +52,17 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
 
         String callerActivity = getIntent().getStringExtra("ActivityCaller");
         a1 = getIntent().getParcelableExtra("ANIMALE");
+        long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
+        a1.setId(idAnimale);
+        a1.printAnimale();
 
+        //Se arrivo da HomeActivity/btnAggiungiAnimale allora mostro il pulsante di registrazione animale
         System.out.println("Arrivo da: " + callerActivity);
         if (callerActivity != null && callerActivity.equals("HomeActivity")) {
             btnRegistraAnimale.setVisibility(View.VISIBLE);
         }
 
+        //Se arrivo dal profilo animale allora modifico i dati dell'animale
         if (callerActivity != null && callerActivity.equals("ProfiloAnimaleActivity")) {
 
             btnConfermaModifiche.setVisibility(View.VISIBLE);
@@ -91,7 +98,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sessoM.isChecked()) {
-                    RegistrazioneAnimaleActivity.this.a1.setSesso("M");
+                    a1.setSesso("M");
                 }
             }
         });
@@ -100,12 +107,13 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sessoF.isChecked()) {
-                    RegistrazioneAnimaleActivity.this.a1.setSesso("F");
+                    a1.setSesso("F");
                 }
             }
         });
 
 
+        //Conferma modifiche
         btnConfermaModifiche.setOnClickListener(v -> {
 
             a1.setNome(nomeAnimaleET.getText().toString());
@@ -124,7 +132,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                 String pesoAnimale = pesoAnimaleET.getText().toString();
                 String altezzaAnimale = altezzaAnimaleET.getText().toString();
                 String noteAnimale = noteAnimaleET.getText().toString();
-                String sessoAnimale;
+                String sessoAnimale = "";
                 if (sessoM.isChecked()) {
                     sessoAnimale = "M";
                 } else {
@@ -150,6 +158,7 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         a1.setPeso(pesoAnimale);
         a1.setAltezza(altezzaAnimale);
         a1.setNote(noteAnimale);
+        a1.setSesso(sessoAnimale);
         a1.setIdutente(idUtente);
         animaliLista.add(a1);
         System.out.println("Nome animale: " + a1.getIdutente());
