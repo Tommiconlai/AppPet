@@ -27,17 +27,6 @@
         android:inputType="textShortMessage"/>
 
 
-
-    <Button
-        android:id="@+id/addData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aggiungi"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:backgroundTint="@color/Blu_base"
-        android:textColor="@color/black"/>
+    
 
 </LinearLayout>
