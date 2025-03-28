@@ -57,10 +57,6 @@ def loginF():
             return "utente fallito"
 
 
-
-        
-
-
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
     data = request.get_json()
@@ -156,6 +152,30 @@ def animale():
         value=cursor.fetchone()
 
     return jsonify (value)
+
+@crickle.route('/salvaCartellaClinica', methods = ['POST'])
+def salvaCartellaClinica():
+    data = request.get_json()
+    ID_animale = data.get('idAnimale')
+    descrizione = data.get('descrizione')
+    data_appuntamento = data.get('data_appuntamento')
+    titolo = data.get('titolo')
+    
+    query = "INSERT INTO cartelle_cliniche (ID_animale, descrizione, data_appuntamento, titolo) VALUES (%s, %s, %s, %s)"
+    
+    
+    with connection.cursor() as cursor:
+        print(f"Inserting data: idAnimale={ID_animale}, desc={descrizione}, dataAppuntamento={data_appuntamento}, titolo={titolo}")
+        cursor.execute(query, (ID_animale, descrizione, data_appuntamento, titolo))
+        result = cursor.fetchone()
+        if result[0] == 0:
+            return "Errore: id animale inesistente", 400
+        if cursor.fetchone() is None:
+    # Se non trova l'animale, restituisce un errore
+            return "Errore: l'ID dell'animale non esiste!", 400
+        
+    return jsonify({'message': 'Cartella clinica salvata'})
+    
 
 @crickle.route('/listaCartelleCliniche', methods = ['GET'])
 def listaCartelleCliniche():

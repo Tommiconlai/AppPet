@@ -1,5 +1,7 @@
 package com.example.apppet.Activities;
 
+import static com.example.apppet.Activities.HomeActivity.animaliLista;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,6 +17,8 @@ import com.example.apppet.R;
 import com.example.apppet.animale.Animale;
 
 public class ProfiloAnimaleActivity extends AppCompatActivity {
+
+    Animale animale = new Animale(-1L, "", 0.0f, "", "", "", "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,9 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         String dataNascita = getIntent().getStringExtra("DATANASCITA");
 
          */
-        Animale animale = getIntent().getParcelableExtra("ANIMALE");
+        animale = getIntent().getParcelableExtra("ANIMALE");
+        long id = getIntent().getLongExtra("idAnimale", -1);
+        System.out.println("ID Animale: " + id);
         //Toast.makeText(ProfiloAnimaleActivity.this,Toast.LENGTH_SHORT).show();
 
         //findviewbyid
@@ -77,6 +83,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         apriCartellaClinica.setOnClickListener(v ->{
             Intent intent = new Intent(ProfiloAnimaleActivity.this, CartellaClinicaActivity.class);
             intent.putExtra("ANIMALE", animale);
+            intent.putExtra("idAnimale", id);
             startActivity(intent);
         });
     }

@@ -118,6 +118,7 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent = new Intent(HomeActivity.this, ProfiloAnimaleActivity.class);
 
         intent.putExtra("ANIMALE", animaliLista.get(position));
+        intent.putExtra("idAnimale", animaliLista.get(position).getId());
 
         startActivity(intent);
     }

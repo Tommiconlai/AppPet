@@ -36,5 +36,8 @@ public interface ApiService {
 
     @POST("/cartella_clinica")
     Call<LogCartellaClinica> createClinicLog(@Body LogCartellaClinica log);
+
+    @POST("/salvaCartellaClinica")
+    Call<RegisterResponse> salvaCartellaClinica(@Body LogCartellaClinica log);
     
 }

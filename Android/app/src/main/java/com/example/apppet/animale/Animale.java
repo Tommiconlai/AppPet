@@ -122,4 +122,9 @@ public class Animale implements Parcelable {
         dest.writeString(sesso);
         dest.writeFloat(ratingAnimale);
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }

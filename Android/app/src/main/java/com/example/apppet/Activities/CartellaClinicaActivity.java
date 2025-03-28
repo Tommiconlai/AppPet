@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apppet.ApiService;
+import com.example.apppet.RegisterResponse;
 import com.example.apppet.RetrofitClient;
 import com.example.apppet.animale.Animale;
 import com.example.apppet.cartellaClinica.CustomAdapterCC;
@@ -51,7 +52,9 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
-        idAnimale = animale.getId();
+        long id = getIntent().getLongExtra("idAnimale", -1);
+        System.out.println("ID Animale: " + id);
+        ImageButton add = findViewById(R.id.add_Data);
 
 
 
@@ -65,7 +68,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         });
 
         //al posto di questa lista ci vorrebbe il database
-       List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
+       //List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
 
         //List <LogCartellaClinica> lista = new ArrayList<>();
 
@@ -79,8 +82,14 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         CustomAdapterCC adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
-        showDialogToAddClinicData();
-        loadClinicData();
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogToAddClinicData();
+
+            }
+
+        });
 
 
 
@@ -104,7 +113,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                 String description = dataNameEditText.getText().toString().trim();
                 String title = dataTitleEditText.getText().toString().trim();
                 if (!description.isEmpty() && !title.isEmpty()) {
-                    addNewClinicData(title, description);
+                    addCartellaClinicaToList(title, description, " "); // Aggiungi la data effettiva qui, se disponibile
                 } else {
                     Toast.makeText(CartellaClinicaActivity.this, "Inserisci i dati clinici", Toast.LENGTH_SHORT).show();
                 }
@@ -115,7 +124,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         builder.create().show();
     }
-
+    /*
     private void loadClinicData() {
         apiService.listaCartelleCliniche((int) idAnimale).enqueue(new Callback<ArrayList<LogCartellaClinica>>() {
             @Override
@@ -186,5 +195,38 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                     System.out.println("Network Error" + "Message: " + t.getMessage() + t);
                 }
             });
+    }
+
+     */
+    private void addCartellaClinicaToList(final String titolo, final String descrizione, final String dataAppuntamento) {
+        // Controlla se l'ID dell'animale è valido (ad esempio, non può essere 0 o un valore negativo)
+        if (idAnimale <= 0) {
+            // Se l'ID non è valido, mostra un messaggio di errore
+            Toast.makeText(CartellaClinicaActivity.this, "ID animale non valido", Toast.LENGTH_SHORT).show();
+            return; // Esce dal metodo senza inviare la richiesta
+        }
+        LogCartellaClinica logCartellaClinica = new LogCartellaClinica(titolo, descrizione, dataAppuntamento, idAnimale);
+
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<RegisterResponse> call = apiService.salvaCartellaClinica(logCartellaClinica);
+
+        call.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (response.isSuccessful()) {
+                    // Salvataggio riuscito, aggiungi la cartella alla lista e aggiorna la UI
+                    lista.add(new LogCartellaClinica(titolo, descrizione, dataAppuntamento, idAnimale));
+                    adapter.notifyDataSetChanged(); // Rende visibile il nuovo dato nella ListView
+                } else {
+                    // Gestisci l'errore, ad esempio mostrando un messaggio all'utente
+                    Toast.makeText(CartellaClinicaActivity.this, "Errore nel salvataggio della cartella", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(CartellaClinicaActivity.this, "Errore di connessione", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
