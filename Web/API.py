@@ -99,6 +99,25 @@ def registrazioneA():
         
     return jsonify({'message': 'Animale registrato con successo'})
 
+@crickle.route('/modificaAnimale', methods = ['PUT'])
+def modificaAnimale():
+    data = request.get_json()
+    nome = data.get('nome')
+    peso = data.get('peso')
+    altezza = data.get('altezza')
+    note = data.get('note')
+    sesso = data.get('sesso')
+    ratingAnimale = data.get('ratingAnimale')
+    idUtente = data.get('idutente')
+    idAnimale = data.get('id')
+
+    query = "UPDATE animali SET ID_utente = %s, Nome = %s, Peso = %s, Altezza = %s, Note = %s, Sesso = %s, RatingAnimale = %s WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))
+
+    return jsonify({'message': 'Modifica effettuata'}), 200
+
 @crickle.route('/registrazioneFornitore', methods = ['POST'])
 def registrazioneFornitore():
     data = request.get_json()
