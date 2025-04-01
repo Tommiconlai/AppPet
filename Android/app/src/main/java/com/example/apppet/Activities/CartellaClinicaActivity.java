@@ -91,11 +91,6 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         });
 
-
-
-
-
-
     }
 
     private void showDialogToAddClinicData() {
@@ -124,82 +119,9 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
         builder.create().show();
     }
-    /*
-    private void loadClinicData() {
-        apiService.listaCartelleCliniche((int) idAnimale).enqueue(new Callback<ArrayList<LogCartellaClinica>>() {
-            @Override
-            public void onResponse(Call<ArrayList<LogCartellaClinica>> call, Response<ArrayList<LogCartellaClinica>> response) {
-                System.out.println("idAnimale" + idAnimale);
-                if (response.isSuccessful()) {
-                    lista = response.body();
-                    adapter.setData(lista);
-                } else {
-                    Toast.makeText(CartellaClinicaActivity.this, "Errore nel caricamento dei dati", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<ArrayList<LogCartellaClinica>> call, Throwable t) {
-                Toast.makeText(CartellaClinicaActivity.this, "Errore di rete", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-
-    private void addNewClinicData(String title, String description) {
-        LocalDate today = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            today = LocalDate.now();
-        }
-        DateTimeFormatter formatter = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        }
-        String dateStr = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            dateStr = today.format(formatter);
-        }
-
-        System.out.println("ClinicData" + "Tentativo di recuperare l'ID animale da SharedPreferences");
-
-        SharedPreferences prefs = getSharedPreferences("animal_id_pref", MODE_PRIVATE);// Sostituisci con il nome effettivo delle tue prefs
-
-            long idAnimale = prefs.getLong("selected_animal_id", -1); // Sostituisci con la tua chiave effettiva
-            if (idAnimale == -1) {
-                Toast.makeText(this, "ID animale non trovato!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        System.out.println("ClinicData" + "ID animale recuperato: " + idAnimale);
-
-            LogCartellaClinica newLog = new LogCartellaClinica( title, dateStr, description, idAnimale); // Usa il nuovo costruttore
-
-            apiService.createClinicLog(newLog).enqueue(new Callback<LogCartellaClinica>() {
-                @Override
-                public void onResponse(Call<LogCartellaClinica> call, Response<LogCartellaClinica> response) {
-                    if (response.isSuccessful()) {
-                        LogCartellaClinica createdLog = response.body();
-                        lista.add(createdLog); // Aggiungi il log restituito dall'API (con l'ID assegnato)
-                        adapter.setData(lista);
-                        Toast.makeText(CartellaClinicaActivity.this, "Dati aggiunti", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(CartellaClinicaActivity.this, "Errore nell'aggiunta dei dati", Toast.LENGTH_SHORT).show();
-
-                        System.out.println("API Error" + "Code: " + response.code() + " Message: " + response.message() + ", Body: " + response.errorBody());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<LogCartellaClinica> call, Throwable t) {
-                    Toast.makeText(CartellaClinicaActivity.this, "Errore di rete", Toast.LENGTH_SHORT).show();
-
-                    System.out.println("Network Error" + "Message: " + t.getMessage() + t);
-                }
-            });
-    }
-
-     */
     private void addCartellaClinicaToList(final String titolo, final String descrizione, final String dataAppuntamento) {
-        // Controlla se l'ID dell'animale è valido (ad esempio, non può essere 0 o un valore negativo)
+        // Controlla se l'ID dell'animale è valido
         if (idAnimale <= 0) {
             // Se l'ID non è valido, mostra un messaggio di errore
             Toast.makeText(CartellaClinicaActivity.this, "ID animale non valido", Toast.LENGTH_SHORT).show();

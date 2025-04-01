@@ -40,5 +40,9 @@ public interface ApiService {
 
     @PUT("/modificaAnimale")
     Call<Animale> modificaAnimale (@Body Animale animale);
+
+
+    @POST("/salvaCartellaClinica")
+    Call<RegisterResponse> salvaCartellaClinica (@Body LogCartellaClinica logCartellaClinica);
     
 }
