@@ -44,5 +44,7 @@ public interface ApiService {
 
     @POST("/salvaCartellaClinica")
     Call<RegisterResponse> salvaCartellaClinica (@Body LogCartellaClinica logCartellaClinica);
-    
+
+    @POST("/modificaUtente")
+    Call<Utente> modificaUtente (@Body Utente utente);
 }

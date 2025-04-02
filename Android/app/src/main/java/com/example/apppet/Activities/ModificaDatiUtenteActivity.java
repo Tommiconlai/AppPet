@@ -20,6 +20,7 @@ public class ModificaDatiUtenteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modifica_dati_utente);
 
         Button button = findViewById(R.id.modificaButton);
+
         button.setOnClickListener(v -> {
 
             EditText nomeET = findViewById(R.id.nomeET);

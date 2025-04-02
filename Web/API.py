@@ -255,3 +255,18 @@ def modificaAnimale():
 
     with connection.cursor() as cursor:
         cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))
+
+
+@crickle.route('/modificaUtente', methods = ['PUT'])
+def modificaUtente():
+    data = request.get_json()
+    nome = data.get('nome')
+    cognome = data.get('cognome')
+    email = data.get('email')
+    password = data.get('password')
+    telefono = data.get('telefono')
+
+    query = "UPDATE utenti SET Nome = %s, Cognome = %s, Email = %s, Password = %s, Telefono = %s WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (nome, cognome, email , password, telefono))
