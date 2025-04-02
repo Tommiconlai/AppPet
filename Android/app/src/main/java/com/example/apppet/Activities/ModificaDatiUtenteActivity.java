@@ -14,12 +14,15 @@ import com.example.apppet.R;
 
 public class ModificaDatiUtenteActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_dati_utente);
 
+
         Button button = findViewById(R.id.modificaButton);
+
 
         button.setOnClickListener(v -> {
 
@@ -34,7 +37,6 @@ public class ModificaDatiUtenteActivity extends AppCompatActivity {
             String mail = mailET.getText().toString();
 
             // logica per inviare i dati modificati al server
-            // ...
             finish();
 
 

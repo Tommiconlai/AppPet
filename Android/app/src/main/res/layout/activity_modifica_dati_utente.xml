@@ -102,14 +102,6 @@
             android:hint="Inserisci mail..."
             android:paddingLeft="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Indirizzo"
-            android:textAlignment="textStart"
-            android:textStyle="bold" />
-
-
 
         <TextView
             android:layout_width="wrap_content"
