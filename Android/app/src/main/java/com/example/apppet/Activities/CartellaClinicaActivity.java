@@ -35,8 +35,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CartellaClinicaActivity extends AppCompatActivity {
-    private List<LogCartellaClinica> lista = new ArrayList<>();
+    private ArrayList<LogCartellaClinica> lista = new ArrayList<>();
     private CustomAdapterCC adapter;
+
+    ListView listviewLogClinica;
 
     long idAnimale;
 
@@ -48,27 +50,13 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartella_clinica);
 
-        ListView listviewLogClinica = findViewById(R.id.listaCartellaClinica);
+        listviewLogClinica = findViewById(R.id.listaCartellaClinica);
         adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
-        Animale animale = getIntent().getParcelableExtra("ANIMALE");
         idAnimale = getIntent().getLongExtra("IdAnimale", -1);
         System.out.println("ID Animale: " + idAnimale);
         ImageButton add = findViewById(R.id.add_Data);
 
-
-        //al posto di questa lista ci vorrebbe il database
-       //List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
-
-        //List <LogCartellaClinica> lista = new ArrayList<>();
-
-
-       //ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
-       /*
-        lista.add(new LogCartellaClinica(1,"Evento 1", "01/03/2025", "Descrizione evento 1"));
-        lista.add(new LogCartellaClinica(2,"Evento 2", "02/03/2025", "Descrizione evento 2"));
-        lista.add(new LogCartellaClinica(3,"Evento 3", "03/03/2025", "Descrizione evento 3"));
-           */
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +65,8 @@ public class CartellaClinicaActivity extends AppCompatActivity {
             }
 
         });
+
+        inizializzaListaCartella();
 
     }
 
@@ -143,6 +133,39 @@ public class CartellaClinicaActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(CartellaClinicaActivity.this, "Errore di connessione", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void inizializzaListaCartella(){
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<ArrayList<LogCartellaClinica>> call = apiService.listaCartelleCliniche((int) idAnimale);
+        lista = new ArrayList<>();
+
+        call.enqueue(new Callback<>() {
+
+
+            @Override
+            public void onResponse(Call<ArrayList<LogCartellaClinica>> call, Response<ArrayList<LogCartellaClinica>> response) {
+                lista = response.body();
+                if (response.body() != null){
+                    adapter = new CustomAdapterCC(CartellaClinicaActivity.this, lista);
+                    listviewLogClinica = findViewById(R.id.listaCartellaClinica);
+                    listviewLogClinica.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                    System.out.println("id animale" + lista.get(0).getIdAnimale());
+                }
+                else {
+                    Toast.makeText(CartellaClinicaActivity.this, "Body vuoto", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<LogCartellaClinica>> call, Throwable t) {
+                Toast.makeText(CartellaClinicaActivity.this, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
             }
         });
     }

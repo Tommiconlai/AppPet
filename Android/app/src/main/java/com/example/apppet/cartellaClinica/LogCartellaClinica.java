@@ -11,6 +11,7 @@ public class LogCartellaClinica {
     @SerializedName("descrizione")
     private String description;
 
+    @SerializedName("idAnimale")
     private long idAnimale;
 
     public LogCartellaClinica(String title, String description, long idAnimale) {
