@@ -4,6 +4,9 @@ import pymysql
 import pymysql.cursors
 
 crickle = Flask(__name__)
+crickle.config.update(
+    SECRET_KEY='1234'
+)
 
 connection = pymysql.connect(
     host='localhost',
@@ -53,12 +56,12 @@ def loginF():
             
             #forn = Fornitore(**result)
             session["idFornitore"]=result["id"]
-            return "utente loggato"
+            return redirect('/home_fornitori')
         else:
             return "utente fallito"
         
     else:
-        return render_template('login_fornitori.html')
+        return "cIAO"
 
 
 @crickle.route('/registrazioneUtente', methods = ['POST'])
@@ -124,7 +127,7 @@ def registrazioneFornitore():
 
     
 
-@crickle.route('/registra_attività', methods = ['POST'])
+@crickle.route('/registra_attività', methods = ['POST','GET'])
 def creaAttività():
     if(request.method=='POST'):
         data = request.form
@@ -135,17 +138,16 @@ def creaAttività():
         indirizzo = data.get('indirizzo_attività')
         orario = data.get('orario')
         cap = data.get('cap')
-        #la query è da cambiare perche il database non combacia
+
         query = "INSERT INTO servizi (ID_fornitore,tipo_attività,nome,indirizzo,orario,cap) VALUES (%s, %s, %s, %s, %s, %s)"
         
         with connection.cursor() as cursor:
-            #questo idem
+
             cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap))
             
-        return 
+        return "attività registrata" 
     else:
-        idFornitore = session["idFornitore"]
-        return idFornitore
+        return render_template('registra_attività.html')
 
 
 
