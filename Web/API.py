@@ -143,6 +143,17 @@ def cartellaClinica():
         
     return jsonify({'message': 'appuntamento registrato con successo'})
 
+@crickle.route('/rimuoviCartellaClinica', methods = ['DELETE'])
+def rimuoviCartellaClinica():
+    idLogClinico = request.args.get("idCartella")
+
+    query = "DELETE FROM cartelle_cliniche WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idLogClinico))
+
+    return jsonify({'message': 'cartella cancellata'}), 200
+
 @crickle.route('/modificaAnimale', methods = ['PUT'])
 def modificaAnimale():
     data = request.get_json()
