@@ -58,6 +58,21 @@ public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapte
             nomeAnimale = itemView.findViewById(R.id.nome_animale);
             ratingAnimale = itemView.findViewById(R.id.rating_animale);
 
+            ratingAnimale.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                    if (recyclerViewListaAnimaliInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewListaAnimaliInterface.onRatingChanged(position, rating);
+                        }
+
+                    }
+
+                }
+            });
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

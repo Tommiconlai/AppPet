@@ -31,14 +31,27 @@
         <div class="container">
             <label for="nome">Nome attività:</label>
             <input type="text" id="nome" name="nome" placeholder="Nome attività" required><br>
-            
+
+
+
+
+
+
             <label for="tipo_attività">Tipo attività:</label>
-            <input type="text" id="tipo_attività"  name="tipo_attività" placeholder="tipo Attività" required><br>
-       
-            <p id="location"></p>
+            {% for categoria in tipoAttività %}
+                <input type="radio" value={{categoria.id}} name="tipo_attività">
+                {{categoria.nome}}</input>
+            {% endfor %}
+            <br>
+
+
+
+
+
+
 
             <label for="indirizzo">indirizzo:</label>
-            <input type="text" id="indirizzo" placeholder="Indirizzo Attività"><br>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder="Indirizzo Attività"><br>
 
             <label for="cap">CAP:</label>
             <input type="text" id="cap" name="cap" placeholder="CAP" required><br>
