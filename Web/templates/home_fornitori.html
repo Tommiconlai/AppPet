@@ -1,21 +1,25 @@
 <body>
-    {% if listautenti %}
+    {% if listaAttività %}
     <table>
     <tr>
-    <th>Id</th>
-    <th>Nome</th>
-    <th>Cognome</th>
-    <th>Età</th>
+    <th>Nome attività</th>
+    <th>Tipo Attività</th>
+    <th>Indirizzo</th>
+    <th>Orari</th>
+    <th>CAP</th>
     </tr>
-    {% for utente in listautenti %}
+    {% for attività in listaAttività %}
     <tr>
-    <td>{{ utente.id }}</td>
-    <td>{{ utente.nome }}</td>
-    <td>{{ utente.cognome }}</td>
-    <td>{{ utente.eta }}</td>
+        <th>{{attività.nome}}</th>
+        <th>{{attività.tipo_attività}}</th>
+        <th>{{attività.indirizzo}}</th>
+        <th>{{attività.orario}}</th>
+        <th>{{attività.cap}}</th>
     </tr>
     {% endfor %}
     </table>
     {% endif %}
+    <button> <a href="/registra_attività">aggiungi un attività</a></button>
+   
     
     </body>
