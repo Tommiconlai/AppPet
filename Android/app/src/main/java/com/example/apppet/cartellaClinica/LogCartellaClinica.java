@@ -8,11 +8,10 @@ public class LogCartellaClinica {
 
     private long idAnimale;
 
-    public LogCartellaClinica(String title, String date, String description, long idAnimale) {
+    public LogCartellaClinica(String title, String date, long idAnimale) {
 
         this.title = title;
         this.date = date;
-        this.description = description;
         this.idAnimale = idAnimale;
     }
 
