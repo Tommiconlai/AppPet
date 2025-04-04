@@ -36,12 +36,11 @@ public interface ApiService {
     @GET("/listaCartelleCliniche")
     Call<ArrayList<LogCartellaClinica>> listaCartelleCliniche (@Query("idAnimale") long idAnimale);
 
-    @POST("/cartella_clinica")
-    Call<LogCartellaClinica> createClinicLog(@Body LogCartellaClinica log);
-
     @PUT("/modificaAnimale")
     Call<Animale> modificaAnimale (@Body Animale animale);
 
+    @GET("/cercaUtente")
+    Call<Utente> cercaUtente (@Query("idUtente") long idUtente);
 
     @POST("/salvaCartellaClinica")
     Call<RegisterResponse> salvaCartellaClinica (@Body LogCartellaClinica logCartellaClinica);
@@ -51,4 +50,7 @@ public interface ApiService {
 
     @DELETE("/rimuoviCartellaClinica")
     Call<RegisterResponse> rimuoviCartellaClinica (@Query("idCartella") long id);
+
+    @DELETE("/rimuoviUtente")
+    Call<RegisterResponse> rimuoviUtente (@Query("idUtente") long idUtente);
 }

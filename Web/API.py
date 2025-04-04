@@ -154,6 +154,29 @@ def rimuoviCartellaClinica():
 
     return jsonify({'message': 'cartella cancellata'}), 200
 
+@crickle.route('/rimuoviUtente', methods = ['DELETE'])
+def rimuoviUtente():
+    idUtente = request.args.get("idUtente")
+
+    query = "DELETE FROM utenti WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idUtente))
+
+    return jsonify({'message': 'Utente cancellato'}), 200
+
+@crickle.route('/cercaUtente', methods = ['GET'])
+def cercaUtente():
+    idUtente = request.args.get("idUtente")
+
+    query = "SELECT * FROM utenti WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idUtente))
+        values = cursor.fetchall()
+
+    return jsonify(values), 200
+
 @crickle.route('/modificaAnimale', methods = ['PUT'])
 def modificaAnimale():
     data = request.get_json()
