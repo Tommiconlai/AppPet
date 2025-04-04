@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
 public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapter.ViewHolder> {
     private final RecyclerViewInterface recyclerViewListaAnimaliInterface;
-    private Context context;
+    private static Context context;
     private ArrayList<Animale> animali;
 
     public ListaAnimaliAdapter(Context context, ArrayList<Animale> animali, RecyclerViewInterface recyclerViewListaAnimaliInterface) {
@@ -58,20 +59,6 @@ public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapte
             nomeAnimale = itemView.findViewById(R.id.nome_animale);
             ratingAnimale = itemView.findViewById(R.id.rating_animale);
 
-            ratingAnimale.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-
-                @Override
-                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                    if (recyclerViewListaAnimaliInterface != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            recyclerViewListaAnimaliInterface.onRatingChanged(position, rating);
-                        }
-
-                    }
-
-                }
-            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
