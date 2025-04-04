@@ -219,6 +219,7 @@
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/quartaLinea"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/terzaLinea"
@@ -242,6 +243,18 @@
             android:textSize="20dp" />
 
     </FrameLayout>
+
+    <RatingBar
+        android:id="@+id/rating_animale2"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbarSize="400dp"
+        android:max="3"
+        android:numStars="3"
+        android:progressTint="#E91E63"
+        android:layout_below="@+id/quartaLinea"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/cancellaBTN"

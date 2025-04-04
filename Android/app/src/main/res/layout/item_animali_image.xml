@@ -45,7 +45,8 @@
             android:scrollbarSize="10dp"
             android:rating="2"
             style="@style/custom_ratingbar"
-            android:numStars="3" />
+            android:numStars="3"
+            android:progressTint="#E91E63"/>
     </LinearLayout>
 
 </FrameLayout>
