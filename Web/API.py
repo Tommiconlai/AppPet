@@ -188,11 +188,7 @@ def salvaCartellaClinica():
         print(f"Inserting data: idAnimale={ID_animale}, desc={descrizione}, dataAppuntamento={data_appuntamento}, titolo={titolo}")
         cursor.execute(query, (ID_animale, descrizione, data_appuntamento, titolo))
         result = cursor.fetchone()
-        if result[0] == 0:
-            return "Errore: id animale inesistente", 400
-        if cursor.fetchone() is None:
-    # Se non trova l'animale, restituisce un errore
-            return "Errore: l'ID dell'animale non esiste!", 400
+        
         
     return jsonify({'message': 'Cartella clinica salvata'})
     

@@ -52,8 +52,8 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         adapter = new CustomAdapterCC(this, lista);
         listviewLogClinica.setAdapter(adapter);
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
-        long id = getIntent().getLongExtra("idAnimale", -1);
-        System.out.println("ID Animale: " + id);
+        idAnimale = getIntent().getLongExtra("IdAnimale", -1);
+        System.out.println("ID Animale: " + idAnimale);
         ImageButton add = findViewById(R.id.add_Data);
 
 
