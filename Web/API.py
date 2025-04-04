@@ -170,6 +170,17 @@ def modificaAnimale():
 
     with connection.cursor() as cursor:
         cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))
+        
+@crickle.route('/rimuoviAnimale', methods = ['DELETE'])
+def rimuoviAnimale():
+    idAnimale = request.args.get("idAnimale")
+    
+    query = "DELETE FROM animali WHERE id = %s"
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idAnimale))
+    
+    return jsonify({'message': 'animale cancellato'}), 200
 
 
 @crickle.route('/modificaUtente', methods = ['PUT'])

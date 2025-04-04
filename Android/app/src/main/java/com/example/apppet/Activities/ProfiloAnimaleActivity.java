@@ -11,8 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.apppet.ApiService;
 import com.example.apppet.R;
+import com.example.apppet.RegisterResponse;
+import com.example.apppet.RetrofitClient;
 import com.example.apppet.animale.Animale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfiloAnimaleActivity extends AppCompatActivity {
 
@@ -23,21 +30,10 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profilo_animale);
 
 
-        //Get Extras
-        /*
-        String nomeAnimale = getIntent().getStringExtra("NOME");
-        float ratingAnimale = getIntent().getFloatExtra("RATING", 0);
-        String pesoAnimale = getIntent().getStringExtra("PESO");
-        String altezzaAnimale = getIntent().getStringExtra("ALTEZZA");
-        String noteAnimale = getIntent().getStringExtra("NOTE");
-        String sessoAnimale = getIntent().getStringExtra("SESSO");
-        String dataNascita = getIntent().getStringExtra("DATANASCITA");
-
-         */
         Animale animale = getIntent().getParcelableExtra("ANIMALE");
         long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
         System.out.println("Nome animale: " + idAnimale);
-        //Toast.makeText(ProfiloAnimaleActivity.this,Toast.LENGTH_SHORT).show();
+
 
         //findviewbyid
         TextView tvNomeAnimale = findViewById(R.id.nomeProfiloAnimale);
@@ -64,14 +60,6 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         modificaProfiloAnimale.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfiloAnimaleActivity.this, RegistrazioneAnimaleActivity.class);
-                /*
-                intent.putExtra("NOME", tvNomeAnimale.getText());
-                intent.putExtra("PESO", tvPesoAnimale.getText());
-                intent.putExtra("ALTEZZA", tvAltezzaAnimale.getText());
-                intent.putExtra("NOTE", tvNoteAnimale.getText());
-                intent.putExtra("SESSO", tvSessoAnimale.getText());
-                intent.putExtra("DATANASCITA", tvDataNascita.getText());
-                 */
                 intent.putExtra("ActivityCaller", "ProfiloAnimaleActivity");
                 intent.putExtra("ANIMALE", animale);
                 intent.putExtra("IdAnimale", idAnimale);
@@ -81,7 +69,6 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
         apriCartellaClinica.setOnClickListener(v ->{
             Intent intent = new Intent(ProfiloAnimaleActivity.this, CartellaClinicaActivity.class);
-            //intent.putExtra("ANIMALE", animale);
             intent.putExtra("IdAnimale", idAnimale);
             startActivity(intent);
         });
@@ -89,6 +76,37 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         btnBackHome.setOnClickListener(v ->{
             Intent intent = new Intent(ProfiloAnimaleActivity.this, HomeActivity.class);
             startActivity(intent);
+        });
+
+        cancellaprofiloAnimale.setOnClickListener(v ->{
+            ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+            Call<RegisterResponse> call = apiService.rimuoviAnimale(idAnimale);
+            System.out.println("idAnimale: " + idAnimale);
+
+            call.enqueue(new Callback<RegisterResponse>() {
+                @Override
+                public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                    if (response.isSuccessful()) {
+                        RegisterResponse registerResponse = response.body();
+                        if (registerResponse != null && "animale cancellato".equals(registerResponse.getMessage())) {
+                            Toast.makeText(ProfiloAnimaleActivity.this, "Animale cancellato correttamente", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ProfiloAnimaleActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(ProfiloAnimaleActivity.this, "Errore nella risposta del server", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                    Toast.makeText(ProfiloAnimaleActivity.this, "Cancella prima i dati nella cartella clinica", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
         });
 
     }

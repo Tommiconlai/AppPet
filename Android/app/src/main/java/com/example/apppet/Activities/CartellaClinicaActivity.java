@@ -4,12 +4,14 @@ import static androidx.core.content.IntentCompat.getParcelableExtra;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -56,6 +58,15 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         idAnimale = getIntent().getLongExtra("IdAnimale", -1);
         System.out.println("ID Animale: " + idAnimale);
         ImageButton add = findViewById(R.id.add_Data);
+        Button back = findViewById(R.id.indietro);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartellaClinicaActivity.this, ProfiloAnimaleActivity.class);
+                startActivity(intent);
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +78,8 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         });
 
         inizializzaListaCartella();
+
+
 
     }
 

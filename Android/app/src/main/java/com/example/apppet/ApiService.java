@@ -51,4 +51,7 @@ public interface ApiService {
 
     @DELETE("/rimuoviCartellaClinica")
     Call<RegisterResponse> rimuoviCartellaClinica (@Query("idCartella") long id);
+
+    @DELETE("/rimuoviAnimale")
+    Call<RegisterResponse> rimuoviAnimale (@Query("idAnimale") long id);
 }
