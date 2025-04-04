@@ -56,19 +56,6 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         System.out.println("ID Animale: " + idAnimale);
         ImageButton add = findViewById(R.id.add_Data);
 
-
-        //al posto di questa lista ci vorrebbe il database
-       //List <LogCartellaClinica> lista = new ArrayList<LogCartellaClinica>();
-
-        //List <LogCartellaClinica> lista = new ArrayList<>();
-
-
-       //ListView listviewLogClinica=findViewById(R.id.listaCartellaClinica);
-       /*
-        lista.add(new LogCartellaClinica(1,"Evento 1", "01/03/2025", "Descrizione evento 1"));
-        lista.add(new LogCartellaClinica(2,"Evento 2", "02/03/2025", "Descrizione evento 2"));
-        lista.add(new LogCartellaClinica(3,"Evento 3", "03/03/2025", "Descrizione evento 3"));
-           */
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +66,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         });
 
     }
-
+//apre alert dialog per inserire i dati clinici
     private void showDialogToAddClinicData() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -107,12 +94,13 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    //metodo per aggiungere una nuova cartella clinica alla lista
     private void addCartellaClinicaToList(String titolo,  String descrizione) {
         // Controlla se l'ID dell'animale è valido
         if (idAnimale <= 0) {
             // Se l'ID non è valido, mostra un messaggio di errore
             Toast.makeText(CartellaClinicaActivity.this, "ID animale non valido", Toast.LENGTH_SHORT).show();
-            return; // Esce dal metodo senza inviare la richiesta
+            return;
         }
         LogCartellaClinica logCartellaClinica = new LogCartellaClinica(titolo, descrizione, idAnimale);
 
@@ -123,11 +111,9 @@ public class CartellaClinicaActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful()) {
-                    // Salvataggio riuscito, aggiungi la cartella alla lista e aggiorna la UI
                     lista.add(logCartellaClinica);
                     adapter.notifyDataSetChanged(); // Rende visibile il nuovo dato nella ListView
                 } else {
-                    // Gestisci l'errore, ad esempio mostrando un messaggio all'utente
                     Toast.makeText(CartellaClinicaActivity.this, "Errore nel salvataggio della cartella", Toast.LENGTH_SHORT).show();
                 }
             }
