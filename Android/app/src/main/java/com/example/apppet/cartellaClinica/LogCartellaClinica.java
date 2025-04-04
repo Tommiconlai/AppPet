@@ -3,11 +3,11 @@ package com.example.apppet.cartellaClinica;
 import com.google.gson.annotations.SerializedName;
 
 public class LogCartellaClinica {
+    @SerializedName("id")
     long id;
     @SerializedName("titolo")
     private String title;
 
-    private String date;
     @SerializedName("descrizione")
     private String description;
 
@@ -21,9 +21,13 @@ public class LogCartellaClinica {
         this.idAnimale = idAnimale;
     }
 
-    public String getTitle() { return title; }
-    public String getDate() { return date; }
-    public String getDescription() { return description; }
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public long getIdAnimale() {
         return idAnimale;

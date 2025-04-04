@@ -139,11 +139,10 @@ public class CartellaClinicaActivity extends AppCompatActivity {
 
     public void inizializzaListaCartella(){
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-        Call<ArrayList<LogCartellaClinica>> call = apiService.listaCartelleCliniche((int) idAnimale);
+        Call<ArrayList<LogCartellaClinica>> call = apiService.listaCartelleCliniche(idAnimale);
         lista = new ArrayList<>();
 
         call.enqueue(new Callback<>() {
-
 
             @Override
             public void onResponse(Call<ArrayList<LogCartellaClinica>> call, Response<ArrayList<LogCartellaClinica>> response) {
@@ -153,14 +152,10 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                     listviewLogClinica = findViewById(R.id.listaCartellaClinica);
                     listviewLogClinica.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-
-                    System.out.println("id animale" + lista.get(0).getIdAnimale());
                 }
                 else {
                     Toast.makeText(CartellaClinicaActivity.this, "Body vuoto", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override

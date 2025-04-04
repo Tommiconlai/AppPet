@@ -48,7 +48,6 @@ import java.util.List;
             LogCartellaClinica currentItem = lista.get(position);
 
             txtTitle.setText(currentItem.getTitle());
-            txtDate.setText(currentItem.getDate());
             txtDescription.setText(currentItem.getDescription());
 
             return convertView;

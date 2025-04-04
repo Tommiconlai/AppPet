@@ -81,7 +81,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
         apriCartellaClinica.setOnClickListener(v ->{
             Intent intent = new Intent(ProfiloAnimaleActivity.this, CartellaClinicaActivity.class);
-            intent.putExtra("ANIMALE", animale);
+            //intent.putExtra("ANIMALE", animale);
             intent.putExtra("IdAnimale", idAnimale);
             startActivity(intent);
         });
