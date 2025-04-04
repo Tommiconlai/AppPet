@@ -134,15 +134,13 @@ def creaAttività():
         nome = data.get('nome')
         indirizzo = data.get('indirizzo_attività')
         orario = data.get('orario')
-        città = data.get('città')
-        desc = data.get('descrizione')
         cap = data.get('cap')
         #la query è da cambiare perche il database non combacia
-        query = "INSERT INTO servizi (ID_fornitore,ID_tipo_attività,nome,indirizzo,orario,cap,latitudine,longitudine) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO servizi (ID_fornitore,tipo_attività,nome,indirizzo,orario,cap) VALUES (%s, %s, %s, %s, %s, %s)"
         
         with connection.cursor() as cursor:
             #questo idem
-            cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap,lat,long))
+            cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap))
             
         return 
     else:
@@ -221,7 +219,12 @@ def cartellaClinica():
 
 @crickle.route('/home_fornitori')
 def homeFornitori():
-    return render_template('index.html', listautenti= lista)
+    query = "SELECT * FROM attività WHERE ID_fornitore = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (session["idFornitore"]))
+        listaAttività=cursor.fetchall
+
+    return render_template('home_fornitori.html', listaAttività= listaAttività)
 
 
     
