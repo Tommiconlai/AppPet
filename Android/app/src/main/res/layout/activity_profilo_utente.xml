@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ProfiloUtenteActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activities.ProfiloUtenteActivity">
 
     <FrameLayout
         android:id="@+id/header_home"
@@ -25,105 +25,115 @@
     </FrameLayout>
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/header_home"
         android:id="@+id/intestazione"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/header_home"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_centerInParent="true">
+        android:orientation="horizontal">
 
         <TextView
-            android:textAlignment="textStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_centerVertical="true"
-            android:text="Dati Personali"/>
+            android:text="Dati Personali"
+            android:textAlignment="textStart"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/BTN_mod_dati_utente"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/btn_modifica"/>
+            android:background="@drawable/btn_modifica" />
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_below="@id/intestazione"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/intestazione"
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Nome"/>
+            android:text="Nome" />
 
         <TextView
             android:id="@+id/nome_utente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:text="Nome utente"
-            android:layout_marginBottom="20dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Cognome"/>
+            android:text="Cognome" />
 
         <TextView
             android:id="@+id/cognome_utente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:text="Cognome utente"
-            android:layout_marginBottom="20dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Email"/>
+            android:text="Email" />
 
         <TextView
             android:id="@+id/email_utente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:text="email@diprova.siuuu"
-            android:layout_marginBottom="20dp"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Indirizzo"/>
+            android:text="Telefono" />
 
         <TextView
-            android:id="@+id/indirizzo_utente"
+            android:id="@+id/telefono_utente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:text="Indirizzo utente"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:text="Telefono utente"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Password"/>
+            android:text="Password" />
 
         <TextView
             android:id="@+id/password_utente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
             android:text="***********"
-            android:layout_marginBottom="20dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_rimuovi_utente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Cancella profilo"
+        android:textColor="@color/red" />
 
 </RelativeLayout>
