@@ -95,7 +95,7 @@ public class CartellaClinicaActivity extends AppCompatActivity {
                 String description = dataNameEditText.getText().toString();
                 String title = dataTitleEditText.getText().toString();
                 if (!description.isEmpty() && !title.isEmpty()) {
-                    addCartellaClinicaToList(title, description); // Aggiungi la data effettiva qui, se disponibile
+                    addCartellaClinicaToList(title, description);
                 } else {
                     Toast.makeText(CartellaClinicaActivity.this, "Inserisci i dati clinici", Toast.LENGTH_SHORT).show();
                 }
@@ -119,16 +119,24 @@ public class CartellaClinicaActivity extends AppCompatActivity {
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterResponse> call = apiService.salvaCartellaClinica(logCartellaClinica);
 
-        call.enqueue(new Callback<RegisterResponse>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+
                 if (response.isSuccessful()) {
-                    // Salvataggio riuscito, aggiungi la cartella alla lista e aggiorna la UI
-                    lista.add(logCartellaClinica);
-                    adapter.notifyDataSetChanged(); // Rende visibile il nuovo dato nella ListView
+                    RegisterResponse registerResponse = response.body();
+                    Log.i("ciaociao", registerResponse.getMessage());
+                    if (registerResponse != null && "Cartella clinica salvata con successo".equals(registerResponse.getMessage())) {
+                        Toast.makeText(CartellaClinicaActivity.this, "Cartella clinica salvata con successo", Toast.LENGTH_SHORT).show();
+                        lista.add(logCartellaClinica);
+                        adapter.notifyDataSetChanged();
+                    }
+                    else {
+                        Toast.makeText(CartellaClinicaActivity.this, "Errore nel salvataggio della cartella", Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
-                    // Gestisci l'errore, ad esempio mostrando un messaggio all'utente
-                    Toast.makeText(CartellaClinicaActivity.this, "Errore nel salvataggio della cartella", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CartellaClinicaActivity.this, "connessione fallita(primo if)", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -1,17 +1,22 @@
 package com.example.apppet.cartellaClinica;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LogCartellaClinica {
     long id;
+    @SerializedName("titolo")
     private String title;
+
     private String date;
+    @SerializedName("descrizione")
     private String description;
 
     private long idAnimale;
 
-    public LogCartellaClinica(String title, String date, long idAnimale) {
+    public LogCartellaClinica(String title, String description, long idAnimale) {
 
         this.title = title;
-        this.date = date;
+        this.description = description;
         this.idAnimale = idAnimale;
     }
 

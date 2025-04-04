@@ -180,16 +180,17 @@ def salvaCartellaClinica():
     descrizione = data.get('descrizione')
     titolo = data.get('titolo')
     
+    print(data)
     query = "INSERT INTO cartelle_cliniche (ID_animale, titolo, descrizione) VALUES (%s, %s, %s)"
     
     
     with connection.cursor() as cursor:
        # print(f"Inserting data: idAnimale={ID_animale}, desc={descrizione},  titolo={titolo}")
         cursor.execute(query, (ID_animale, titolo, descrizione))
-        result = cursor.fetchone()
+        #result = cursor.fetchone()
         
         
-    return jsonify(result)
+    return jsonify({'message': 'Cartella clinica salvata con successo'})
     
 
 @crickle.route('/listaCartelleCliniche', methods = ['GET'])
