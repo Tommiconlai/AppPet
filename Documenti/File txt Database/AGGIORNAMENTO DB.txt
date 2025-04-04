@@ -1,0 +1,7 @@
+use apppet;
+alter table servizi rename attività;
+alter table attività rename column ID_tipo_attività to tipo_attività 
+alter table attività drop column latitudine
+alter table attività drop column longitudine
+alter table prenotazioni rename column ID_servizio to ID_attività;
+alter table attività rename attività_fornitori;
