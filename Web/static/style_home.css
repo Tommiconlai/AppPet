@@ -29,7 +29,7 @@ h2{
 }
 
 input {
-    width: 92%;
+    width: 100%;
     margin: 2%;
     padding: 2%;
     border: 1px solid #ccc;
@@ -43,7 +43,7 @@ input {
 /*da guardare*/
 input[type="submit"] {
     margin: 1%;
-    width: 10%;
+    width: 100%;
     padding: 10px;
     padding-left: 2%;
     padding-right: 2%;
