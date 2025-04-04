@@ -5,13 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.apppet.Activities.CartellaClinicaActivity;
+import com.example.apppet.Activities.HomeActivity;
+import com.example.apppet.ApiService;
 import com.example.apppet.R;
+import com.example.apppet.RegisterResponse;
+import com.example.apppet.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
-    public class CustomAdapterCC extends BaseAdapter {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CustomAdapterCC extends BaseAdapter {
         private Context context;
         private List<LogCartellaClinica> lista;
 
@@ -42,8 +54,41 @@ import java.util.List;
             }
 
             TextView txtTitle = convertView.findViewById(R.id.txtTitle);
-            TextView txtDate = convertView.findViewById(R.id.txtDate);
             TextView txtDescription = convertView.findViewById(R.id.txtDescription);
+            Button elimina = convertView.findViewById(R.id.elimina);
+
+            elimina.setOnClickListener(v ->{
+                ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+                long idLog = lista.get(position).getId();
+                Call<RegisterResponse> call = apiService.rimuoviCartellaClinica(idLog);
+
+                System.out.println("ID LOG: " + idLog);
+
+                call.enqueue(new Callback<>() {
+
+                    @Override
+                    public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                        if (response.isSuccessful()) {
+                            RegisterResponse deletedLog = response.body();
+                            if (deletedLog != null && "cartella cancellata".equals(response.body().getMessage())) {
+                                lista.remove(position);
+                                notifyDataSetChanged();
+                            }
+                            else {
+                                Toast.makeText(context, "Errore nell'eliminazione della cartella clinica", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            Toast.makeText(context, "connessione fallita(primo if)", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                        Toast.makeText(context, "Impossibile connettersi al server", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            });
 
             LogCartellaClinica currentItem = lista.get(position);
 

@@ -25,6 +25,10 @@ public class LogCartellaClinica {
         return title;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getDescription() {
         return description;
     }
