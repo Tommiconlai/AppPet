@@ -1,4 +1,4 @@
-from flask import Flask, flash, jsonify, redirect, render_template, request, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 import pymysql
 
 import pymysql.cursors
@@ -224,6 +224,7 @@ def homeFornitori():
     with connection.cursor() as cursor:
         cursor.execute(query, (session["idFornitore"]))
         listaAttività=cursor.fetchall()
+    print(listaAttività)
 
     return render_template('home_fornitori.html', listaAttività= listaAttività)
 
@@ -360,13 +361,15 @@ def modificaAttività(attivitaId):
         return render_template('modifica_attività.html',attività=attività,tipoAttività=tipoAttività)
     
     
-@crickle.route('/modifica_attività/<int:attivitaId>', methods = ['DELETE'])
+@crickle.route('/elimina_attività/<int:attivitaId>', methods = ['GET'])
 def eliminaAttività(attivitaId):
     query = "DELETE FROM attività_fornitori WHERE id = %s"
     with connection.cursor() as cursor:
         cursor.execute(query,attivitaId)
 
-    return 
+    return redirect(url_for("homeFornitori"))
+
+
 
 
 
