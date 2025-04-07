@@ -7,6 +7,7 @@
     <th>Indirizzo</th>
     <th>Orari</th>
     <th>CAP</th>
+    <th></th>
     </tr>
     {% for attività in listaAttività %}
     <tr>
@@ -15,10 +16,12 @@
         <th>{{attività.indirizzo}}</th>
         <th>{{attività.orario}}</th>
         <th>{{attività.cap}}</th>
+        <th><button><a href="/modifica_attività/{{ attività.id }}">modifica attività</a></button></th>
     </tr>
     {% endfor %}
     </table>
     {% endif %}
+    <br>
     <button> <a href="/registra_attività">aggiungi un attività</a></button>
    
     

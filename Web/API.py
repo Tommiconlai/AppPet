@@ -301,8 +301,38 @@ def creaAttività():
         print("attività registrata")
         return redirect('/home_fornitori')
     else:
-        return render_template('registra_attività.html')
+        
+        queryTipoAttività = "SELECT * FROM tipo_attività"
+        with connection.cursor() as cursor:
+            cursor.execute(queryTipoAttività)
+            tipoAttività=cursor.fetchall()
 
+        return render_template('registra_attività.html',tipoAttività=tipoAttività)
+
+
+@crickle.route('/modifica_attività/<int:attivitaId>', methods = ['GET','POST'])
+def modificaAttività(attivitaId):
+    #if(request.method=='POST'):
+    #idAttività = nell'url
+    #    data=request.form
+    #    queryAggiornaAttività = "UPDATE attività_fornitori SET tipo_attività = %s, nome = %s, indirizzo = %s, orario = %s cap = %s WHERE id = %s"
+
+        #with connection.cursor() as cursor:
+         #   cursor.execute(query, (tipoAttività,nome,indirizzo,orario,cap,idAttivita))
+
+    #else:
+
+        queryrecuperaAttività = "SELECT * FROM attività_fornitori WHERE id = %s"
+        with connection.cursor() as cursor:
+            cursor.execute(queryrecuperaAttività, (attivitaId))
+            attività=cursor.fetchone()
+
+        queryTipoAttività = "SELECT * FROM tipo_attività"
+        with connection.cursor() as cursor:
+            cursor.execute(queryTipoAttività)
+            tipoAttività=cursor.fetchall()
+
+        return render_template('modifica_attività.html',attività=attività,tipoAttività=tipoAttività)
 
 
 
