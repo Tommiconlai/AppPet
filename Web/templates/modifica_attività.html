@@ -9,7 +9,7 @@
     <form method="POST" action="/modifica_attività">
         <div class="container">
             <label for="nome">Nome attività:</label>
-            <input type="text" id="nome" name="nome" placeholder='{{attività.nome}}' required><br>
+            <input type="text" id="nome" name="nome" placeholder='{{attività.nome}}' value="{{attività.nome}}" required><br>
 
             <label for="tipo_attività">Tipo attività:</label>
             {% for categoria in tipoAttività %}
@@ -19,15 +19,15 @@
             <br>
 
             <label for="indirizzo">indirizzo:</label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder={{attività.indirizzo}}><br>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder='{{attività.indirizzo}}' value="{{attività.indirizzo}}"><br>
 
             <label for="cap">CAP:</label>
-            <input type="text" id="cap" name="cap" placeholder="CAP" required><br>
+            <input type="text" id="cap" name="cap" placeholder='{{attività.cap}}' value="{{attività.cap}}" required><br>
 
             <label for="orario">orario:</label>
-            <input type="text" id="orario" name="orario" placeholder="Orario"><br>
+            <input type="text" id="orario" name="orario" placeholder='{{attività.orario}}' value="{{attività.orario}}"><br>
 
-            <input type="submit" value="Get started!">
+            <input type="submit" value="aggiorna">
             
         </div>
     </form>
