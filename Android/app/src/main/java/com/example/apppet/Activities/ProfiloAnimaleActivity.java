@@ -104,7 +104,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
                 public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                     if (response.isSuccessful()) {
                         RegisterResponse registerResponse = response.body();
-                        if (registerResponse != null && "animale cancellato".equals(registerResponse.getMessage())) {
+                        if (registerResponse != null && "Animale cancellato".equals(registerResponse.getMessage())) {
                             Toast.makeText(ProfiloAnimaleActivity.this, "Animale cancellato correttamente", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ProfiloAnimaleActivity.this, HomeActivity.class);
                             startActivity(intent);

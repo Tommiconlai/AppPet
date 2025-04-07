@@ -80,6 +80,7 @@ public class ProfiloUtenteActivity extends AppCompatActivity {
                         tvEmailUtente.setText(utente.getEmail());
                         tvTelefonoUtente.setText(utente.getTelefono());
                         tvPasswordUtente.setText(utente.getPassword());
+                        
                     } else {
                         Toast.makeText(ProfiloUtenteActivity.this, "Utente non trovato", Toast.LENGTH_SHORT).show();
                     }

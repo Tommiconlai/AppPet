@@ -17,15 +17,14 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 #/api/login
-@crickle.route('/login', methods = ['POST'])
-    
+@crickle.route('/login', methods = ['POST'])   
 def APIlogin():
         data = request.get_json()
+        print(f"Login request received: {data}")
         email = data.get('email')
         password = data.get('password')
         
         query = "SELECT id FROM utenti WHERE Email = %s AND password = %s"
-        
         
         with connection.cursor() as cursor:
             cursor.execute(query, (email, password))
@@ -36,10 +35,6 @@ def APIlogin():
         else:
             return jsonify({'message': 'Login fallito'}), 401
         
-
-
-
-
 @crickle.route('/registrazioneUtente', methods = ['POST'])
 def registrazioneUtente():
     data = request.get_json()
@@ -53,10 +48,8 @@ def registrazioneUtente():
     
     with connection.cursor() as cursor:
         cursor.execute(query, (nome, cognome, email, password, telefono))
-        result = cursor.execute
 
-    if result:
-            return jsonify({'userId': result['id'], 'message': 'Login effettuato', 'email': email})
+
     return jsonify({'message': 'Utente registrato con successo'})
 
 
@@ -77,14 +70,6 @@ def registrazioneA():
         cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale))
         
     return jsonify({'message': 'Animale registrato con successo'})
-
-
-
-    
-
-
-
-
 
 @crickle.route('/listaAnimali', methods = ['GET'])
 def listaAnimali():
@@ -210,6 +195,16 @@ def modificaUtente():
 
     with connection.cursor() as cursor:
         cursor.execute(query, (nome, cognome, email , password, telefono))
+        
+@crickle.route('/rimuoviAnimale', methods = ['DELETE'])
+def rimuoviAnimale():
+    idAnimale = request.args.get("idAnimale")
+    
+    query = "DELETE FROM animali WHERE id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query, (idAnimale))
+        
+    return jsonify({'message': 'Animale cancellato'}), 200
 
 
 ####
