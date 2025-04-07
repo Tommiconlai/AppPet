@@ -299,6 +299,7 @@ def creaAttività():
 
         print(tipoAttività)
 
+#prova a printare il nome dal form e salvare quello al posto dell'id
         for x in tipoAttività:
             if(x['id']==idTipoAttivita):
                 tipoAttivita=x['nome']
