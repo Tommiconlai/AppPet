@@ -363,6 +363,15 @@ def modificaAttività(attivitaId):
             tipoAttività=cursor.fetchall()
 
         return render_template('modifica_attività.html',attività=attività,tipoAttività=tipoAttività)
+    
+    
+@crickle.route('/modifica_attività/<int:attivitaId>', methods = ['DELETE'])
+def eliminaAttività(attivitaId):
+    query = "DELETE FROM attività_fornitori WHERE id = %s"
+    with connection.cursor() as cursor:
+        cursor.execute(query,attivitaId)
+
+    return 
 
 
 
