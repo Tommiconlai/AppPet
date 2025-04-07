@@ -49,14 +49,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         TextView cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
         ImageButton apriCartellaClinica = findViewById(R.id.cartellaClinicaBTN);
         Button btnBackHome = findViewById(R.id.btnBackHome);
-        RatingBar ratingBar = findViewById(R.id.rating_animale2);
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(ProfiloAnimaleActivity.this, String.valueOf(rating), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //Set Text
         tvNomeAnimale.setText(animale.getNome());

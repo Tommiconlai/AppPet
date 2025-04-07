@@ -244,17 +244,33 @@
 
     </FrameLayout>
 
-    <RatingBar
-        android:id="@+id/rating_animale2"
-        android:layout_gravity="center"
+    <RelativeLayoutm
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quartaLinea"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_weight="40">
+
+    <ImageButton
+        android:id="@+id/first_heart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbarSize="400dp"
-        android:max="3"
-        android:numStars="3"
-        android:progressTint="#E91E63"
-        android:layout_below="@+id/quartaLinea"
-        android:layout_centerHorizontal="true"/>
+        android:src="@drawable/full_heart"
+        android:paddingTop="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <ImageButton
+        android:id="@+id/second_heart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/full_heart"
+        android:layout_below="@id/quartaLinea"
+        android:layout_alignRight="@+id/first_heart"
+        android:layout_marginBottom="20dp" />
+
+    </RelativeLayoutm>
+
 
     <TextView
         android:id="@+id/cancellaBTN"
