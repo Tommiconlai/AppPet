@@ -51,20 +51,49 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
         Button btnRegistraAnimale = findViewById(R.id.btnConfermaRegistrazione);
 
         String callerActivity = getIntent().getStringExtra("ActivityCaller");
-        a1 = getIntent().getParcelableExtra("ANIMALE");
+
         long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
-        a1.setId(idAnimale);
-        a1.printAnimale();
 
         //Se arrivo da HomeActivity/btnAggiungiAnimale allora mostro il pulsante di registrazione animale
         System.out.println("Arrivo da: " + callerActivity);
         if (callerActivity != null && callerActivity.equals("HomeActivity")) {
             btnRegistraAnimale.setVisibility(View.VISIBLE);
+
+            sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (sessoM.isChecked()) {
+                        a1.setSesso("M");
+                    }
+                }
+            });
+
+            sessoF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (sessoF.isChecked()) {
+                        a1.setSesso("F");
+                    }
+                }
+            });
+
+            btnRegistraAnimale.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nomeAnimale = nomeAnimaleET.getText().toString();
+                    String pesoAnimale = pesoAnimaleET.getText().toString();
+                    String altezzaAnimale = altezzaAnimaleET.getText().toString();
+                    String noteAnimale = noteAnimaleET.getText().toString();
+
+                    registerAnimale(nomeAnimale, altezzaAnimale, pesoAnimale, noteAnimale, a1.isSesso());
+
+                }
+            });
         }
 
         //Se arrivo dal profilo animale allora modifico i dati dell'animale
         if (callerActivity != null && callerActivity.equals("ProfiloAnimaleActivity")) {
-
+            a1 = getIntent().getParcelableExtra("ANIMALE");
             btnConfermaModifiche.setVisibility(View.VISIBLE);
             nomeAnimaleET.setText(a1.getNome());
             pesoAnimaleET.setText(a1.getPeso());
@@ -92,58 +121,18 @@ public class RegistrazioneAnimaleActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            //Conferma modifiche
+            btnConfermaModifiche.setOnClickListener(v -> {
+
+                a1.setNome(nomeAnimaleET.getText().toString());
+                a1.setNote(noteAnimaleET.getText().toString());
+                a1.setPeso(pesoAnimaleET.getText().toString());
+                a1.setAltezza(altezzaAnimaleET.getText().toString());
+
+                confermaModifiche();
+            });
         }
-
-        sessoM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (sessoM.isChecked()) {
-                    a1.setSesso("M");
-                }
-            }
-        });
-
-        sessoF.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (sessoF.isChecked()) {
-                    a1.setSesso("F");
-                }
-            }
-        });
-
-
-        //Conferma modifiche
-        btnConfermaModifiche.setOnClickListener(v -> {
-
-            a1.setNome(nomeAnimaleET.getText().toString());
-            a1.setNote(noteAnimaleET.getText().toString());
-            a1.setPeso(pesoAnimaleET.getText().toString());
-            a1.setAltezza(altezzaAnimaleET.getText().toString());
-
-            confermaModifiche();
-        });
-
-
-        btnRegistraAnimale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nomeAnimale = nomeAnimaleET.getText().toString();
-                String pesoAnimale = pesoAnimaleET.getText().toString();
-                String altezzaAnimale = altezzaAnimaleET.getText().toString();
-                String noteAnimale = noteAnimaleET.getText().toString();
-                String sessoAnimale = "";
-                if (sessoM.isChecked()) {
-                    sessoAnimale = "M";
-                } else {
-                    sessoAnimale = "F";
-                }
-
-                registerAnimale(nomeAnimale, altezzaAnimale, pesoAnimale, noteAnimale, sessoAnimale);
-
-
-            }
-        });
     }
 
     private void registerAnimale(String nomeAnimale, String altezzaAnimale, String pesoAnimale, String noteAnimale, String sessoAnimale) {

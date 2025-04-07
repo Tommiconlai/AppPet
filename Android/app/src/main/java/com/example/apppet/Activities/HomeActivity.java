@@ -45,18 +45,10 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_home);
         sharedPreferences = getSharedPreferences("user_pref", MODE_PRIVATE);
 
-
         recyclerAnimali = findViewById(R.id.animali_recycler_view);
         idutente = sharedPreferences.getLong("userId", 0);
 
         inizializzaAnimali();
-
-
-
-        System.out.println("Id utente = " + idutente);
-        for (Animale animale : animaliLista) {
-            System.out.println("Nome animale: " + animale.getNome());
-        }
 
         ImageButton btn_goToProfile = findViewById(R.id.BTNprofilo);
         btn_goToProfile.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +114,6 @@ public class HomeActivity extends AppCompatActivity implements RecyclerViewInter
 
         intent.putExtra("ANIMALE", animaliLista.get(position));
         intent.putExtra("IdAnimale", animaliLista.get(position).getId());
-
 
         startActivity(intent);
     }

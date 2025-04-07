@@ -189,10 +189,12 @@ def modificaAnimale():
     idUtente = data.get('idutente')
     idAnimale = data.get('id')
 
-    query = "UPDATE animali SET ID_utente = %s, Nome = %s, Peso = %s, Altezza = %s, Note = %s, Sesso = %s, RatingAnimale = %s WHERE id = %s"
+    query = "UPDATE animali SET ID_utente = %s, nome = %s, peso = %s, altezza = %s, note = %s, sesso = %s, ratingAnimale = %s WHERE id = %s"
 
     with connection.cursor() as cursor:
         cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))
+
+    return jsonify ({'message': 'animale modificato'})
 
 
 @crickle.route('/modificaUtente', methods = ['PUT'])

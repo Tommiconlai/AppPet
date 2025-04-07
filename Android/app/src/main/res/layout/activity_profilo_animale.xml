@@ -250,7 +250,8 @@
         android:layout_below="@id/quartaLinea"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
         <ImageButton
             android:id="@+id/first_heart"
