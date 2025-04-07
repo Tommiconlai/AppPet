@@ -39,7 +39,7 @@
             android:layout_marginTop="0dp"
             android:text="NOME Animale"
             android:textSize="36sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/modificaBTN"
@@ -244,32 +244,36 @@
 
     </FrameLayout>
 
-    <RelativeLayoutm
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/quartaLinea"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:layout_weight="40">
+        android:gravity="center">
 
-    <ImageButton
-        android:id="@+id/first_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/full_heart"
-        android:paddingTop="20dp"
-        android:layout_marginBottom="20dp" />
+        <ImageButton
+            android:id="@+id/first_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00000000"
+            android:src="@drawable/empty_heart" />
 
-    <ImageButton
-        android:id="@+id/second_heart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/full_heart"
-        android:layout_below="@id/quartaLinea"
-        android:layout_alignRight="@+id/first_heart"
-        android:layout_marginBottom="20dp" />
+        <ImageButton
+            android:id="@+id/second_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00000000"
+            android:src="@drawable/empty_heart" />
 
-    </RelativeLayoutm>
+        <ImageButton
+            android:id="@+id/third_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00000000"
+            android:src="@drawable/empty_heart" />
+
+    </LinearLayout>
 
 
     <TextView

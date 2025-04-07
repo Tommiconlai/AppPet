@@ -193,17 +193,6 @@ def modificaAnimale():
 
     with connection.cursor() as cursor:
         cursor.execute(query, (idUtente, nome, peso, altezza, note, sesso, ratingAnimale, idAnimale))
-        
-@crickle.route('/rimuoviAnimale', methods = ['DELETE'])
-def rimuoviAnimale():
-    idAnimale = request.args.get("idAnimale")
-    
-    query = "DELETE FROM animali WHERE id = %s"
-    
-    with connection.cursor() as cursor:
-        cursor.execute(query, (idAnimale))
-    
-    return jsonify({'message': 'animale cancellato'}), 200
 
 
 @crickle.route('/modificaUtente', methods = ['PUT'])
@@ -230,14 +219,10 @@ def modificaUtente():
 
 @crickle.route('/home_fornitori')
 def homeFornitori():
-    #query = "SELECT * FROM attività_fornitori WHERE ID_fornitore = %s"
-    query = "SELECT * FROM attività_fornitori JOIN tipo_attività " \
-    "ON attività_fornitori.tipo_attività=tipo_attività.id  WHERE attività_fornitori.ID_fornitore = %s"
-
+    query = "SELECT * FROM attività_fornitori WHERE ID_fornitore = %s"
     with connection.cursor() as cursor:
         cursor.execute(query, (session["idFornitore"]))
         listaAttività=cursor.fetchall()
-        print(jsonify(listaAttività))
 
     return render_template('home_fornitori.html', listaAttività= listaAttività)
 
@@ -298,36 +283,23 @@ def registrazioneFornitore():
 def creaAttività():
     if(request.method=='POST'):
         data = request.form
-        print(data)
         idFornitore = session["idFornitore"]
-        tipoAttività = data.get('tipo_attività')
+        TipoAttivita = data.get('tipo_attività')
         nome = data.get('nome')
         indirizzo = data.get('indirizzo')
         orario = data.get('orario')
         cap = data.get('cap')
 
-        #queryTipoAttività = "SELECT * FROM tipo_attività WHERE id = %s"
-        #with connection.cursor() as cursor:
-        #    cursor.execute(queryTipoAttività,(idTipoAttività))
-        #    tipoAttività=cursor.fetchone()
-
         query = "INSERT INTO attività_fornitori (ID_fornitore,tipo_attività,nome,indirizzo,orario,cap) VALUES (%s, %s, %s, %s, %s, %s)"
         
         with connection.cursor() as cursor:
 
-            cursor.execute(query, (idFornitore,tipoAttività,nome,indirizzo,orario,cap))
+            cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap))
             
         print("attività registrata")
         return redirect('/home_fornitori')
-    
     else:
-        
-        queryTipoAttività = "SELECT * FROM tipo_attività"
-        with connection.cursor() as cursor:
-            cursor.execute(queryTipoAttività)
-            tipoAttività=cursor.fetchall()
-
-        return render_template('registra_attività.html',tipoAttività=tipoAttività)
+        return render_template('registra_attività.html')
 
 
 

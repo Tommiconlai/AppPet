@@ -44,7 +44,10 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
         TextView tvNoteAnimale = findViewById(R.id.noteProfiloAnimale);
         TextView tvDataNascita = findViewById(R.id.dataProfiloAnimale);
 
-        //Buttons
+        ImageButton heart1 = findViewById(R.id.first_heart);
+        ImageButton heart2 = findViewById(R.id.second_heart);
+        ImageButton heart3 = findViewById(R.id.third_heart);
+
         ImageButton modificaProfiloAnimale = findViewById(R.id.modificaBTN);
         TextView cancellaprofiloAnimale = findViewById(R.id.cancellaBTN);
         ImageButton apriCartellaClinica = findViewById(R.id.cartellaClinicaBTN);
@@ -110,6 +113,8 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
 
         });
+
+        
 
     }
 }

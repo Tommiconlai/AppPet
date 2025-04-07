@@ -46,6 +46,12 @@ public interface ApiService {
     @POST("/modificaUtente")
     Call<Utente> modificaUtente (@Body Utente utente);
 
+    @GET("/cercaUtente")
+    Call<Utente> cercaUtente (@Query("idutente") long idutente);
+
+    @DELETE("/rimuoviUtente")
+    Call<RegisterResponse> rimuoviUtente (@Query("idutente") long idutente);
+
     @DELETE("/rimuoviCartellaClinica")
     Call<RegisterResponse> rimuoviCartellaClinica (@Query("idCartella") long id);
 

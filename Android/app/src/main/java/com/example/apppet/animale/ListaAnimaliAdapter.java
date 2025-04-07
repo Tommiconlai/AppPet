@@ -16,9 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apppet.Activities.ProfiloAnimaleActivity;
 import com.example.apppet.Activities.RecyclerViewInterface;
+import com.example.apppet.ApiService;
 import com.example.apppet.R;
+import com.example.apppet.RetrofitClient;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListaAnimaliAdapter extends RecyclerView.Adapter<ListaAnimaliAdapter.ViewHolder> {
     private final RecyclerViewInterface recyclerViewListaAnimaliInterface;
