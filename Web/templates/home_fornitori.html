@@ -8,15 +8,17 @@
     <th>Orari</th>
     <th>CAP</th>
     <th></th>
+    <th></th>
     </tr>
     {% for attività in listaAttività %}
     <tr>
-        <th>{{attività.nome}}</th>
-        <th>{{attività.tipo_attività.nome}}</th>
+        <th>{{attività.nome_attività}}</th>
+        <th>{{attività.tipo_attività}}</th>
         <th>{{attività.indirizzo}}</th>
         <th>{{attività.orario}}</th>
         <th>{{attività.cap}}</th>
         <th><button><a href="/modifica_attività/{{ attività.id }}">modifica attività</a></button></th>
+        <th><button><a href="/elimina_attività/{{ attività.id }}">elimina_attività</a></button></th>
     </tr>
     {% endfor %}
     </table>

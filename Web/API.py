@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, redirect, render_template, request, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, session
 import pymysql
 
 import pymysql.cursors
@@ -221,7 +221,11 @@ def modificaUtente():
 
 @crickle.route('/home_fornitori')
 def homeFornitori():
-    query = "SELECT * FROM attività_fornitori WHERE ID_fornitore = %s"
+    query="SELECT attività_fornitori.id AS id_attività, attività_fornitori.nome as nome_attività," \
+    "ID_fornitore, tipo_attività.nome as tipo_attività ,indirizzo,orario, cap " \
+    "FROM attività_fornitori JOIN tipo_attività ON attività_fornitori.tipo_attività=tipo_attività.id " \
+    "WHERE attività_fornitori.ID_fornitore = %s"
+    #query = "SELECT * FROM attività_fornitori WHERE ID_fornitore = %s"
     with connection.cursor() as cursor:
         cursor.execute(query, (session["idFornitore"]))
         listaAttività=cursor.fetchall()
@@ -286,17 +290,29 @@ def creaAttività():
     if(request.method=='POST'):
         data = request.form
         idFornitore = session["idFornitore"]
-        TipoAttivita = data.get('tipo_attività')
+        idTipoAttivita = data.get('tipo_attività')
         nome = data.get('nome')
         indirizzo = data.get('indirizzo')
         orario = data.get('orario')
         cap = data.get('cap')
 
+        queryTipoAttività = "SELECT * FROM tipo_attività"
+        with connection.cursor() as cursor:
+            cursor.execute(queryTipoAttività)
+            tipoAttività=cursor.fetchall()
+
+        print(tipoAttività)
+
+        for x in tipoAttività:
+            if(x['id']==idTipoAttivita):
+                tipoAttivita=x['nome']
+  
+
         query = "INSERT INTO attività_fornitori (ID_fornitore,tipo_attività,nome,indirizzo,orario,cap) VALUES (%s, %s, %s, %s, %s, %s)"
         
         with connection.cursor() as cursor:
 
-            cursor.execute(query, (idFornitore,TipoAttivita,nome,indirizzo,orario,cap))
+            cursor.execute(query, (idFornitore,tipoAttivita,nome,indirizzo,orario,cap))
             
         print("attività registrata")
         return redirect('/home_fornitori')
@@ -310,17 +326,31 @@ def creaAttività():
         return render_template('registra_attività.html',tipoAttività=tipoAttività)
 
 
+
+@crickle.route('/modifica_attività', methods = ['GET'])
+def ritornahome():
+    return redirect('/home_fornitori')
+
 @crickle.route('/modifica_attività/<int:attivitaId>', methods = ['GET','POST'])
 def modificaAttività(attivitaId):
-    #if(request.method=='POST'):
+    if(request.method=='POST'):
     #idAttività = nell'url
-    #    data=request.form
-    #    queryAggiornaAttività = "UPDATE attività_fornitori SET tipo_attività = %s, nome = %s, indirizzo = %s, orario = %s cap = %s WHERE id = %s"
+        data=request.form
+        tipoAttività = data.get('tipo_attività')
+        nome = data.get('nome')
+        indirizzo = data.get('indirizzo')
+        orario = data.get('orario')
+        cap = data.get('cap')
 
-        #with connection.cursor() as cursor:
-         #   cursor.execute(query, (tipoAttività,nome,indirizzo,orario,cap,idAttivita))
+        queryAggiornaAttività = "UPDATE attività_fornitori SET tipo_attività = %s, nome = %s, indirizzo = %s, orario = %s, cap = %s WHERE id = %s"
 
-    #else:
+        with connection.cursor() as cursor:
+           cursor.execute(queryAggiornaAttività, (tipoAttività,nome,indirizzo,orario,cap,attivitaId))
+
+
+        return redirect('/home_fornitori')
+
+    else:
 
         queryrecuperaAttività = "SELECT * FROM attività_fornitori WHERE id = %s"
         with connection.cursor() as cursor:
