@@ -6,7 +6,7 @@
     <title>{{attività.nome}}</title>
 </head>
 <body>
-    <form method="POST" action="/modifica_attività">
+    <form method="POST" action="/modifica_attività/{{attività.id}}">
         <div class="container">
             <label for="nome">Nome attività:</label>
             <input type="text" id="nome" name="nome" placeholder='{{attività.nome}}' value="{{attività.nome}}" required><br>
@@ -17,6 +17,7 @@
                 {{categoria.nome}}</input>
             {% endfor %}
             <br>
+            
 
             <label for="indirizzo">indirizzo:</label>
             <input type="text" id="indirizzo" name="indirizzo" placeholder='{{attività.indirizzo}}' value="{{attività.indirizzo}}"><br>
