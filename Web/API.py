@@ -286,30 +286,27 @@ def creaAttività():
     if(request.method=='POST'):
         data = request.form
         idFornitore = session["idFornitore"]
-        idTipoAttivita = data.get('tipo_attività')
+        idTipoAttivita = int(data.get('tipo_attività'))
         nome = data.get('nome')
         indirizzo = data.get('indirizzo')
         orario = data.get('orario')
         cap = data.get('cap')
 
-        queryTipoAttività = "SELECT * FROM tipo_attività"
-        with connection.cursor() as cursor:
-            cursor.execute(queryTipoAttività)
-            tipoAttività=cursor.fetchall()
+        #queryTipoAttività = "SELECT * FROM tipo_attività"
+        #with connection.cursor() as cursor:
+        #    cursor.execute(queryTipoAttività)
+        #    tipiAttività=cursor.fetchall()
 
-        print(tipoAttività)
-
-#prova a printare il nome dal form e salvare quello al posto dell'id
-        for x in tipoAttività:
-            if(x['id']==idTipoAttivita):
-                tipoAttivita=x['nome']
+        #for x in tipiAttività:
+        #    if(x['id']==idTipoAttivita):
+        #        categoria=x['nome']
   
 
         query = "INSERT INTO attività_fornitori (ID_fornitore,tipo_attività,nome,indirizzo,orario,cap) VALUES (%s, %s, %s, %s, %s, %s)"
         
         with connection.cursor() as cursor:
 
-            cursor.execute(query, (idFornitore,tipoAttivita,nome,indirizzo,orario,cap))
+            cursor.execute(query, (idFornitore,idTipoAttivita,nome,indirizzo,orario,cap))
             
         print("attività registrata")
         return redirect('/home_fornitori')
@@ -389,4 +386,5 @@ def prova():
 
 if __name__ == '__main__':
     crickle.run(host = '0.0.0.0', debug=True)
+
 

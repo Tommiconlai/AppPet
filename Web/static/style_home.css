@@ -3,7 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     height: 100vh;
     background-color: #f4f4f4;
     margin-top: 0vh;
@@ -13,6 +13,11 @@ body {
 
 h2{
     text-align: center;
+}
+form{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
