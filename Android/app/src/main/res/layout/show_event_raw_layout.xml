@@ -50,9 +50,9 @@
             <ImageButton
                 android:id="@+id/delete"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bin"
-                android:backgroundTint="@color/lightblue"/>
+                android:layout_height="15dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/bin" />
 
 
 

@@ -1,8 +1,10 @@
 package com.example.apppet.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +12,8 @@ import com.example.apppet.calendario.CustomCalendarView;
 import com.example.apppet.R;
 
 public class Calendario_attivita extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,19 @@ public class Calendario_attivita extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace(); // Questo ti aiuterà a vedere eventuali errori.
         }
+        Button btnBackHome = findViewById(R.id.btnBackHome);
+
+        btnBackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Calendario_attivita.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
+
+
+
+

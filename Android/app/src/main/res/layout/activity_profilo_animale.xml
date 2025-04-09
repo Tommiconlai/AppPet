@@ -295,6 +295,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
+        android:backgroundTint="@color/Blu_base"
         android:text="Home" />
 
 </RelativeLayout>

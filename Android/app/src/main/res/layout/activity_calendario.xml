@@ -64,5 +64,15 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnBackHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:text="Home"
+        android:backgroundTint="@color/Blu_base"
+        android:layout_centerHorizontal="true"/>
+
 
 </RelativeLayout>
