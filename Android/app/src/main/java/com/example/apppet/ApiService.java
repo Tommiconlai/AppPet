@@ -14,6 +14,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -38,6 +39,9 @@ public interface ApiService {
 
     @PUT("/modificaAnimale")
     Call<Animale> modificaAnimale (@Body Animale animale);
+
+    @PUT("/modificaAnimale/rating/{id}")
+    Call<Animale> modificaRating (@Path ("id")long idAnimale, @Body Animale animale);
 
 
     @POST("/salvaCartellaClinica")

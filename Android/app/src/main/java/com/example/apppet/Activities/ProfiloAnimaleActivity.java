@@ -117,7 +117,7 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                    Toast.makeText(ProfiloAnimaleActivity.this, "Cancella prima i dati nella cartella clinica", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfiloAnimaleActivity.this, "Cancella prima i dati nella cartella clinica", Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -142,19 +142,20 @@ public class ProfiloAnimaleActivity extends AppCompatActivity {
             animatorSet.setDuration(800);
 
             animale.setRatingAnimale(animale.getRatingAnimale() + 1);
+            long idAnimale = getIntent().getLongExtra("IdAnimale", 0);
 
             ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-            Call<Animale> call = apiService.modificaAnimale(animale);
+            Call<Animale> call = apiService.modificaRating(idAnimale, animale);
 
             call.enqueue(new Callback<>() {
                 @Override
                 public void onResponse(Call<Animale> call, Response<Animale> response) {
                     if (response.isSuccessful()) {
-                        Animale animale = response.body();
+                        Animale animaleAggiornato = response.body();
 
-                        if (animale != null) {
+                        if (animaleAggiornato != null) {
                             Toast.makeText(ProfiloAnimaleActivity.this, "Modifica effettuata", Toast.LENGTH_SHORT).show();
-
+                            animale = animaleAggiornato;
                         } else {
                             Toast.makeText(ProfiloAnimaleActivity.this, "Errore nella modifica", Toast.LENGTH_SHORT).show();
                         }

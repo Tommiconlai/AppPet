@@ -181,6 +181,18 @@ def modificaAnimale():
 
     return jsonify ({'message': 'animale modificato'})
 
+@crickle.route('/modificaAnimale/rating/<int:id>', methods = ['PUT'])
+def modificaRating(id):
+    data = request.get_json()
+    ratingAnimale = data.get('ratingAnimale')
+    
+    query = "UPDATE animali SET ratingAnimale = %s WHERE id = %s"
+
+    with connection.cursor() as cursor:
+        cursor.execute(query, ( ratingAnimale, id)) 
+
+    return jsonify ({'message': 'rating modificato'})
+
 
 @crickle.route('/modificaUtente', methods = ['PUT'])
 def modificaUtente():
