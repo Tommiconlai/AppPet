@@ -1,19 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!--<link rel="stylesheet" href="style_home.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: top;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin-top: 0vh;
+            overflow-x: hidden;
+        }
+
+        .immagineSopra {
+            position: absolute;
+            margin-top: -13cap;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            width: 150%;
+            height: 30%;
+            border-radius: 50%;
+        }
+
+        .login-card {
+            background-color: #fff;
+            width: 400px;
+            margin: auto;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group label {
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .login-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: #218838;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .register-link a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <header>
-    
+
 </header>
 
 <body>
     <div class="immagineSopra"></div>
-    
+
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <form method="POST" action="/login_fornitori">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <input type="submit" value="Login" class="login-button">
+            </div>
+        </form>
+
+        <p class="register-link">
+            Non hai un account? <a href="/registra_fornitori">Registrati</a>
+        </p>
+    </div>
+</body>
+
+
+<!--
+<body>
+    <div class="immagineSopra"></div>
+
     <h2>Login</h2>
 
     <form method="POST" action="/login_fornitori">
@@ -21,15 +140,19 @@
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" placeholder="Email" required><br>
             <label for="password">Password:</label>
-            <input type="password" id="password"  name="password" placeholder="Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
-            
+
         </div>
     </form>
 
-    <a href="/registra_fornitori"><p>Non hai un account? Registrati</p></a>
+    <a href="/registra_fornitori">
+        <p>Non hai un account? Registrati</p>
+    </a>
 </body>
+-->
 <footer>
 
 </footer>
+
 </html>
