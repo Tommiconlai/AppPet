@@ -33,7 +33,7 @@
             border-radius: 50%;
         }
 
-        .login-card {
+        .main-container {
             background-color: #fff;
             width: 400px;
             margin: auto;
@@ -43,7 +43,7 @@
             text-align: center;
         }
 
-        .login-card h2 {
+        .main-container h2 {
             margin-bottom: 20px;
             color: #333;
         }
@@ -98,6 +98,12 @@
         .register-link a:hover {
             text-decoration: underline;
         }
+
+        .inside-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
     </style>
 </head>
 <header>
@@ -107,16 +113,20 @@
 <body>
     <div class="immagineSopra"></div>
 
-    <div class="login-card">
+    <div class="main-container">
         <h2>Login</h2>
 
         <form method="POST" action="/login_fornitori">
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" placeholder="Email" required>
+                <div class="inside-container">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                </div>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="inside-container">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
 
                 <input type="submit" value="Login" class="login-button">
             </div>

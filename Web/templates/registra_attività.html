@@ -1,18 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Registra Attività</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: top;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin-top: 0vh;
+            overflow-x: hidden;
+        }
+
+        .immagineSopra {
+            position: absolute;
+            margin-top: -13cap;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            width: 150%;
+            height: 30%;
+            border-radius: 50%;
+        }
+
+        .main-container {
+            background-color: #fff;
+            width: 400px;
+            margin: auto;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .main-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group label {
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .registra-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .registra-button:hover {
+            background-color: #218838;
+        }
+
+        .inside-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    </style>
 </head>
 <header>
-    
+
 </header>
 
 <body>
-    <div class="immagineSopra">
-    </div>
-    
+    <div class="immagineSopra"></div>
+
     <!--div class="mainContainer">
         <h2>Registrazione attività</h2>
     <div class="container">
@@ -25,44 +107,47 @@
         <input type="text" id="cap" placeholder="CAP" required>
         <input type="text" id="Orario" placeholder="Orario" required>
     </div-->
-    
-    <form method="POST" action="/registra_attività">
-        <div class="container">
-            <label for="nome">Nome attività:</label>
-            <input type="text" id="nome" name="nome" placeholder="Nome attività" required><br>
 
+    <div class="main-container">
+        <form method="POST" action="/registra_attività">
+            <div class="form-group">
+                <div class="inside-container">
+                    <label for="nome">Nome attività:</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome attività" required>
+                </div>
 
+                <div class="inside-container">
+                    <label>Tipo attività:</label>
+                    {% for categoria in tipoAttività %}
+                    <input type="radio" value="{{categoria.id}}" name="tipo_attività">
+                    {{categoria.nome}}</input>
+                    {% endfor %}
+                </div>
 
+                <div class="inside-container">
+                    <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" placeholder="Indirizzo Attività">
+                </div>
 
+                <div class="inside-container">
+                    <label for="cap">CAP:</label>
+                <input type="text" id="cap" name="cap" placeholder="CAP" required>
+                </div>
 
+                <div class="inside-container">
+                    <label for="orario">Orario:</label>
+                <input type="text" id="orario" name="orario" placeholder="Orario">
+                </div>
 
-            <label>Tipo attività:</label>
-            {% for categoria in tipoAttività %}
-                <input type="radio" value="{{categoria.id}}" name="tipo_attività">
-                {{categoria.nome}}</input>
-            {% endfor %}
-        <br>
+                <input type="submit" value="Get started!" class="registra-button">
 
-
-            <label for="indirizzo">indirizzo:</label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder="Indirizzo Attività"><br>
-
-            <label for="cap">CAP:</label>
-            <input type="text" id="cap" name="cap" placeholder="CAP" required><br>
-
-            <label for="orario">orario:</label>
-            <input type="text" id="orario" name="orario" placeholder="Orario"><br>
-
-            <input type="submit" value="Get started!">
-            
-        </div>
-    </form>
-
+            </div>
+        </form>
     </div>
-    
-    
 </body>
+
 <footer>
 
 </footer>
+
 </html>

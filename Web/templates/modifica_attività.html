@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
-    <title>{{attività.nome}}</title>
+    <title>Modifica Attività</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +30,7 @@
             border-radius: 50%;
         }
 
-        .login-card {
+        .main-container {
             background-color: #fff;
             width: 400px;
             margin: auto;
@@ -40,7 +40,7 @@
             text-align: center;
         }
 
-        .login-card h2 {
+        .main-container h2 {
             margin-bottom: 20px;
             color: #333;
         }
@@ -82,29 +82,13 @@
         .confirm-button:hover {
             background-color: #218838;
         }
-
-        .register-link {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .register-link a {
-            color: #28a745;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .register-link a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
     <div class="immagineSopra"></div>
 
-    <div class="login-card">
+    <div class="main-container">
         <form method="POST" action="/modifica_attività/{{attività.id}}">
             <div class="form-group">
                 <label for="nome">Nome attività:</label>
