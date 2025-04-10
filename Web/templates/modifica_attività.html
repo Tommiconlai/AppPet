@@ -4,35 +4,130 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
     <title>{{attività.nome}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: top;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin-top: 0vh;
+            overflow-x: hidden;
+        }
+
+        .immagineSopra {
+            position: absolute;
+            margin-top: -13cap;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            width: 150%;
+            height: 30%;
+            border-radius: 50%;
+        }
+
+        .login-card {
+            background-color: #fff;
+            width: 400px;
+            margin: auto;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            text-align: left;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .confirm-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .confirm-button:hover {
+            background-color: #218838;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .register-link a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <form method="POST" action="/modifica_attività/{{attività.id}}">
-        <div class="container">
-            <label for="nome">Nome attività:</label>
-            <input type="text" id="nome" name="nome" placeholder='{{attività.nome}}' value="{{attività.nome}}" required><br>
 
-            <label for="tipo_attività">Tipo attività:</label>
-            {% for categoria in tipoAttività %}
-                <input type="radio" value={{categoria.id}} name="tipo_attività">
-                {{categoria.nome}}</input>
-            {% endfor %}
-            <br>
-            
+    <div class="immagineSopra"></div>
 
-            <label for="indirizzo">indirizzo:</label>
-            <input type="text" id="indirizzo" name="indirizzo" placeholder='{{attività.indirizzo}}' value="{{attività.indirizzo}}"><br>
-
-            <label for="cap">CAP:</label>
-            <input type="text" id="cap" name="cap" placeholder='{{attività.cap}}' value="{{attività.cap}}" required><br>
-
-            <label for="orario">orario:</label>
-            <input type="text" id="orario" name="orario" placeholder='{{attività.orario}}' value="{{attività.orario}}"><br>
-
-            <input type="submit" value="aggiorna">
-            
-        </div>
-    </form>
-
-
+    <div class="login-card">
+        <form method="POST" action="/modifica_attività/{{attività.id}}">
+            <div class="form-group">
+                <label for="nome">Nome attività:</label>
+                <input type="text" id="nome" name="nome" placeholder='{{attività.nome}}' value="{{attività.nome}}" required><br>
+    
+                <label for="tipo_attività">Tipo attività:</label>
+                {% for categoria in tipoAttività %}
+                    <input type="radio" value={{categoria.id}} name="tipo_attività">
+                    {{categoria.nome}}</input>
+                {% endfor %}
+                <br>
+                
+    
+                <label for="indirizzo">indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" placeholder='{{attività.indirizzo}}' value="{{attività.indirizzo}}"><br>
+    
+                <label for="cap">CAP:</label>
+                <input type="text" id="cap" name="cap" placeholder='{{attività.cap}}' value="{{attività.cap}}" required><br>
+    
+                <label for="orario">orario:</label>
+                <input type="text" id="orario" name="orario" placeholder='{{attività.orario}}' value="{{attività.orario}}"><br>
+    
+                <input type="submit" value="Aggiorna" class="confirm-button">
+                
+            </div>
+        </form>
+    </div>
 </body>
 </html>
