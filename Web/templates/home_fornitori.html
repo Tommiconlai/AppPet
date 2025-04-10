@@ -1,36 +1,140 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_home.css') }}">
+    <title>Home Fornitori</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: top;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin-top: 0vh;
+            overflow-x: hidden;
+        }
+
+        .immagineSopra {
+            position: absolute;
+            margin-top: -13cap;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            width: 150%;
+            height: 30%;
+            border-radius: 50%;
+        }
+
+        table {
+            margin: auto;
+            width: 80%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 10%;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th {
+            
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        th button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        th button:hover {
+            background-color: #218838;
+        }
+
+        th button a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .add-button {
+            position: fixed;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: auto;
+            background-color: #28a745;
+            padding: 10px;
+            width: 10%;
+            border: none;
+            border-radius: 5rem;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+
+        .add-button a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
 <body>
+
+    <div class="immagineSopra"></div>
+
     {% if listaAttività %}
     <table>
-    <tr>
-    <th>Nome attività</th>
-    <th>Tipo Attività</th>
-    <th>Indirizzo</th>
-    <th>Orari</th>
-    <th>CAP</th>
-    <th></th>
-    <th></th>
-    </tr>
-    {% for attività in listaAttività %}
-    <tr>
-        <th>{{attività.nome_attività}}</th>
-        <th>{{attività.tipo_attività}}</th>
-        <th>{{attività.indirizzo}}</th>
-        <th>{{attività.orario}}</th>
-        <th>{{attività.cap}}</th>
-        <th><button><a href="/modifica_attività/{{ attività.id_attività }}">modifica attività</a></button></th>
-        <th><button><a href="/elimina_attività/{{ attività.id_attività }}">elimina_attività</a></button></th>
-    </tr>
-    {% endfor %}
+        <tr>
+            <th>Nome attività</th>
+            <th>Tipo Attività</th>
+            <th>Indirizzo</th>
+            <th>Orari</th>
+            <th>CAP</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for attività in listaAttività %}
+        <tr>
+            <th>{{attività.nome_attività}}</th>
+            <th>{{attività.tipo_attività}}</th>
+            <th>{{attività.indirizzo}}</th>
+            <th>{{attività.orario}}</th>
+            <th>{{attività.cap}}</th>
+            <th><button><a href="/modifica_attività/{{ attività.id_attività }}">Modifica Attività</a></button></th>
+            <th><button><a href="/elimina_attività/{{ attività.id_attività }}">Elimina Attività</a></button></th>
+        </tr>
+        {% endfor %}
     </table>
     {% endif %}
     <br>
-    <button> <a href="/registra_attività">aggiungi un attività</a></button>
-   
-    
-    </body>
+    <button class="add-button"> <a href="/registra_attività">Nuova Attività</a></button>
+
+
+</body>
+
 </html>
