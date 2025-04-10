@@ -44,6 +44,9 @@
             margin-bottom: 20px;
             color: #333;
         }
+        input[radio]{
+            width: auto; margin: 0 10px 0 10px;
+        }
 
         .form-group {
             display: flex;
@@ -109,7 +112,7 @@
     
                 <label for="tipo_attività">Tipo attività:</label>
                 {% for categoria in tipoAttività %}
-                    <input type="radio" value={{categoria.id}} name="tipo_attività">
+                    <input type="radio" value={{categoria.id}} name="tipo_attività" checked>
                     {{categoria.nome}}</input>
                 {% endfor %}
                 <br>
